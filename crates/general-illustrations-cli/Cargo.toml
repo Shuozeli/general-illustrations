@@ -1,0 +1,18 @@
+[package]
+name = "general-illustrations-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "CLI for General Illustrations provider adapters"
+
+[[bin]]
+name = "general-illustrations"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+general-illustrations-core = { path = "../general-illustrations-core" }
+general-illustrations-minimax = { path = "../general-illustrations-minimax" }
+

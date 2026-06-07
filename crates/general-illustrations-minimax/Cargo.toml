@@ -1,0 +1,15 @@
+[package]
+name = "general-illustrations-minimax"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "MiniMax image provider adapter for General Illustrations"
+
+[dependencies]
+base64.workspace = true
+general-illustrations-core = { path = "../general-illustrations-core" }
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+

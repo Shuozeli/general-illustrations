@@ -1,0 +1,4 @@
+interface:
+  display_name: "General Illustrations"
+  short_description: "Recipe-based article and technical illustrations"
+  default_prompt: "Use $general-illustrations to design the right illustration recipe and generate visuals for this document."
