@@ -24,6 +24,25 @@ skill-name/
 The source of truth should be a typed spec that can be sent over a REST API,
 stored as JSON, or encoded with Protobuf.
 
+## Improvement Over Hand-Written Skills
+
+The reference illustration skill is hand-authored around one strong identity.
+That is useful for a fixed visual brand, but it makes each new style or new
+provider feel like another Markdown fork.
+
+This project changes that boundary:
+
+- The authoring unit is a JSON object, not a Markdown file.
+- A style is a structured record, not a paragraph buried in instructions.
+- A composition pattern is a structured record, independent from style.
+- A provider is an adapter, independent from recipes and skill prose.
+- The Codex skill directory is generated output.
+
+This makes the project general. It is not bound to one character, one visual
+style, one composition type, one prompt shape, or one image generation provider.
+Future tools can create a `SkillSpec` from a REST request, database row, UI form,
+or protobuf message and render the same skill layout deterministically.
+
 ## Non-Goals
 
 - Do not replace Codex skills with a new runtime format.

@@ -13,6 +13,30 @@ The first implemented provider adapter is MiniMax. Codex/CodeIce currently
 remains a tool-backed provider used by Codex itself, so the Rust API treats it
 as a provider target to support without pretending it has the same HTTP API.
 
+## What This Improves
+
+This project started from studying `ian-xiaohei-illustrations`, but it is not a
+single-character or single-style clone.
+
+The important improvement is that illustration knowledge is now broken into
+structured, reusable pieces:
+
+- `SkillSpec`: the skill definition, workflow, references, QA, and metadata.
+- `StyleSpec`: one selectable visual style, such as `simple-doodle` or
+  `technical-minimal`.
+- `CompositionPatternSpec`: one visual structure, such as workflow, system
+  slice, before/after, or comic panels.
+- `PromptTemplateSpec`: reusable prompt shapes for generation and editing.
+- Provider adapters: MiniMax, Codex/CodeIce, Gemini, or future image backends.
+
+So the project is no longer bound to one fixed image identity, one character, one
+composition, or one model. A user request can choose the right recipe, style,
+composition pattern, and provider independently.
+
+Markdown skills still exist because Codex consumes `SKILL.md`, but Markdown is
+now generated from JSON. The source of truth is structured data that can later be
+edited by a CLI, REST API, UI, database record, or protobuf service.
+
 ## Workspace
 
 ```text
@@ -92,9 +116,10 @@ The skill intentionally mirrors the structure of `ian-xiaohei-illustrations`:
 - `assets/examples/`: calibration images only, not templates to copy.
 
 The main difference from the Xiaohei skill is that this skill does not bind to a
-single IP or visual style. It adds multiple prebuilt styles such as
-`simple-doodle`, `whiteboard-comic`, `sticker-layer`, `technical-minimal`, and
-`soft-clay-cartoon`.
+single IP, character, composition, model, or visual style. It adds multiple
+prebuilt styles such as `simple-doodle`, `whiteboard-comic`, `sticker-layer`,
+`technical-minimal`, and `soft-clay-cartoon`, and those styles are data in
+`specs/general-illustrations.json` rather than hand-written Markdown.
 
 ## Provider Boundary
 

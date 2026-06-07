@@ -6,11 +6,17 @@
 agent-authored visual assets. It should let one recipe target several providers
 without rewriting product logic for each model.
 
+It also makes skill authoring structured. The generated Codex skill is still a
+Markdown directory, but the source is JSON data that can be validated, stored,
+served through an API, and rendered deterministically.
+
 ## Layers
 
 ```text
 User request / Codex skill
   -> recipe selection
+  -> style selection
+  -> composition pattern selection
   -> provider-specific prompt adapter
   -> ImageGenerationRequest
   -> ImageProvider
@@ -47,6 +53,40 @@ Implements `ImageProvider` for MiniMax:
 
 Provides a small CLI for testing provider adapters and generating images from
 prompt files.
+
+It also provides:
+
+- `skill validate`: validate a JSON `SkillSpec`
+- `skill render`: render a JSON `SkillSpec` into a Codex skill directory
+
+### `general-illustrations-skill-spec`
+
+Defines the JSON authoring schema for generated skills:
+
+- skill metadata
+- style DNA
+- references
+- workflow
+- styles
+- composition patterns
+- prompt templates
+- QA rules
+- example assets
+
+### `general-illustrations-skill-renderer`
+
+Turns a validated `SkillSpec` into:
+
+- `SKILL.md`
+- `agents/openai.yaml`
+- `references/style-dna.md`
+- `references/styles.md`
+- `references/composition-patterns.md`
+- `references/prompt-template.md`
+- `references/qa-checklist.md`
+
+The renderer keeps generated output deterministic so generated diffs can be
+reviewed reliably.
 
 ## Provider Rules
 
