@@ -2,6 +2,8 @@
 
 每张图单独生成。根据正文内容替换变量，不要把多张图拼在一起。
 
+## 生图提示词模板
+
 ```text
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
@@ -69,9 +71,7 @@ Use precise boxes, arrows, shelves, layers, or paths. Do not invent components.
 Do not add long paragraphs. Make it useful for a technical blog or video.
 ```
 
-## 图像编辑提示
-
-去掉左上角标题：
+## 图像编辑提示：去掉左上角标题
 
 ```text
 Edit the provided image. Remove only the title "{要删除的文字}" and its underline
@@ -80,7 +80,7 @@ everything else exactly: objects, labels, paths, line style, composition, aspect
 ratio, and image quality. Do not add any new text or objects.
 ```
 
-降低幼稚感：
+## 图像编辑提示：降低幼稚感
 
 ```text
 Regenerate this illustration with the same core meaning and layout, but make it

@@ -1,0 +1,10 @@
+[package]
+name = "general-illustrations-skill-renderer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+general-illustrations-skill-spec = { path = "../general-illustrations-skill-spec" }
+thiserror.workspace = true

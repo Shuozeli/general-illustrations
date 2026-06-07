@@ -317,6 +317,9 @@ dependencies = [
  "clap",
  "general-illustrations-core",
  "general-illustrations-minimax",
+ "general-illustrations-skill-renderer",
+ "general-illustrations-skill-spec",
+ "serde_json",
 ]
 
 [[package]]
@@ -336,6 +339,22 @@ dependencies = [
  "reqwest",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "general-illustrations-skill-renderer"
+version = "0.1.0"
+dependencies = [
+ "general-illustrations-skill-spec",
+ "thiserror",
+]
+
+[[package]]
+name = "general-illustrations-skill-spec"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "thiserror",
 ]
 
 [[package]]

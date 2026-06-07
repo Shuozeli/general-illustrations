@@ -7,6 +7,7 @@
 - Add provider-neutral Rust core API.
 - Add MiniMax Rust provider adapter.
 - Add CLI for provider-backed generation.
+- Add JSON skill spec, validator, renderer, and codelab.
 - Add GitHub Actions CI.
 
 ## Next
@@ -25,4 +26,5 @@
   git entirely?
 - Should the public package expose async providers or keep blocking providers
   for CLI simplicity?
-- Should recipes live in Markdown only, Rust data structures only, or both?
+- Should the skill generation API accept only JSON, or also expose a Protobuf
+  endpoint after the schema stabilizes?

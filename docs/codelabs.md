@@ -1,5 +1,9 @@
 # Codelabs
 
+## Structured Skill Generation
+
+See [Codelab: Generate A Skill From JSON](codelabs/skill-generation.md).
+
 ## Generate With MiniMax
 
 Create `prompt.txt`:

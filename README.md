@@ -20,8 +20,11 @@ general-illustrations/
 ├── crates/
 │   ├── general-illustrations-core/     Provider-neutral request/response API
 │   ├── general-illustrations-minimax/  MiniMax image_generation adapter
-│   └── general-illustrations-cli/      CLI for provider-backed generation
-├── skill/general-illustrations/        Codex skill and recipe references
+│   ├── general-illustrations-skill-spec/      JSON skill schema and validation
+│   ├── general-illustrations-skill-renderer/  JSON-to-skill renderer
+│   └── general-illustrations-cli/             CLI for generation and skills
+├── specs/general-illustrations.json    Source of truth for the Codex skill
+├── skill/general-illustrations/        Generated Codex skill and references
 └── docs/                               Design notes and roadmap
 ```
 
@@ -48,11 +51,35 @@ cargo run --release -p general-illustrations-cli -- providers
 
 ## Skill
 
-The Codex skill lives at:
+The skill authoring format is JSON:
+
+```text
+specs/general-illustrations.json
+```
+
+Validate it:
+
+```bash
+cargo run --release -p general-illustrations-cli -- skill validate \
+  --spec specs/general-illustrations.json
+```
+
+Render the generated Codex skill:
+
+```bash
+cargo run --release -p general-illustrations-cli -- skill render \
+  --spec specs/general-illustrations.json \
+  --out skill/general-illustrations
+```
+
+The generated Codex skill lives at:
 
 ```text
 skill/general-illustrations/
 ```
+
+Do not hand-edit generated Markdown for durable changes. Edit the JSON spec and
+render again.
 
 The skill intentionally mirrors the structure of `ian-xiaohei-illustrations`:
 
@@ -86,6 +113,7 @@ shape, prompt length, response format, auth, and errors.
 
 - [Architecture](docs/architecture.md)
 - [Skill Generation Design](docs/skill-generation-design.md)
+- [Skill Generation Codelab](docs/codelabs/skill-generation.md)
 - [Tasks](docs/tasks.md)
 
 ## Shuozeli Open Source Management

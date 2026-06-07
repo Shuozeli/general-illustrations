@@ -15,4 +15,6 @@ anyhow.workspace = true
 clap.workspace = true
 general-illustrations-core = { path = "../general-illustrations-core" }
 general-illustrations-minimax = { path = "../general-illustrations-minimax" }
-
+general-illustrations-skill-renderer = { path = "../general-illustrations-skill-renderer" }
+general-illustrations-skill-spec = { path = "../general-illustrations-skill-spec" }
+serde_json.workspace = true

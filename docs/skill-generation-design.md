@@ -74,25 +74,40 @@ Top-level definition.
 
 ```json
 {
-  "schema_version": "v1",
+  "schema_version": 1,
   "name": "general-illustrations",
   "display_name": "General Illustrations",
+  "short_description": "Recipe-based article and technical illustrations",
   "description": "生成通用中文正文配图...",
   "default_prompt": "Use $general-illustrations ...",
   "positioning": {
+    "title": "核心定位",
+    "body": [
+      "为中文文章、技术文档和短视频知识内容设计并生成 16:9 横版配图。"
+    ]
+  },
+  "style_dna": {
     "one_liner": "清爽、可读、解释性强...",
-    "core_purpose": "为中文文章、技术文档和短视频知识内容设计并生成 16:9 横版配图。",
-    "differences": ["不绑定固定 IP", "提供多个预置风格"]
+    "must": ["16:9 横版。"],
+    "colors": ["橙色：主路径。"],
+    "text_rules": ["每张图最多 3-8 个短标注。"],
+    "never": ["不要 PPT 信息图。"],
+    "aesthetic_direction": ["要清楚、有趣、轻、有空间感。"]
   },
   "references": {
-    "style_dna": {},
-    "styles": [],
-    "composition_patterns": [],
-    "prompt_templates": [],
-    "qa": {}
+    "intro": "按任务需要读取，不要一次塞满上下文：",
+    "items": [
+      {
+        "path": "references/styles.md",
+        "description": "预置风格列表和选择规则。"
+      }
+    ]
   },
   "workflow": [],
-  "delivery": {},
+  "styles": [],
+  "composition_patterns": [],
+  "prompt_templates": [],
+  "qa": {},
   "examples": []
 }
 ```
@@ -104,15 +119,10 @@ Defines one visual style.
 ```json
 {
   "id": "whiteboard-comic",
-  "name": "Whiteboard Comic",
-  "use_when": ["工程故事", "bug 解释", "before/after"],
-  "visual_rules": [
-    "白板线稿",
-    "2-4 格分镜",
-    "少量箭头和动作线"
-  ],
-  "avoid": ["长段手写字", "太多格", "太可爱"],
-  "prompt_fragment": "whiteboard comic explainer, black marker lines..."
+  "name": "whiteboard-comic",
+  "use_when": "工程故事、bug 解释、before/after。",
+  "drawing_rule": "白板线稿，2-4 格分镜，少量箭头和动作线。",
+  "avoid": "长段手写字、太多格、太可爱。"
 }
 ```
 
@@ -124,7 +134,7 @@ Defines one structure type.
 {
   "id": "workflow",
   "name": "Workflow 流程",
-  "use_when": ["输入 -> 处理 -> 输出", "AI 工作流"],
+  "use_when": "输入 -> 处理 -> 输出，AI 工作流。",
   "drawing_rule": "左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。"
 }
 ```
@@ -137,15 +147,7 @@ Defines reusable prompt templates.
 {
   "id": "default-image",
   "name": "Default Image Prompt",
-  "template": "Generate one standalone 16:9 horizontal...",
-  "variables": [
-    "style",
-    "theme",
-    "structure_type",
-    "core_idea",
-    "composition",
-    "labels"
-  ]
+  "body": "Generate one standalone 16:9 horizontal..."
 }
 ```
 
@@ -173,9 +175,9 @@ Defines calibration examples.
 ```json
 {
   "id": "lsm-whiteboard-comic",
-  "source_path": "assets/examples/02-whiteboard-comic-lsm.png",
-  "caption": "LSM Tree whiteboard comic calibration",
-  "style_id": "whiteboard-comic"
+  "source_path": "../skill/general-illustrations/assets/examples/02-whiteboard-comic-lsm.png",
+  "target_path": "assets/examples/02-whiteboard-comic-lsm.png",
+  "caption": "LSM Tree whiteboard comic calibration"
 }
 ```
 

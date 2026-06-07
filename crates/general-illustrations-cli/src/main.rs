@@ -1,6 +1,6 @@
 use std::env;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use anyhow::{Context, Result, bail};
@@ -9,6 +9,8 @@ use general_illustrations_core::{
     AspectRatio, ImageGenerationRequest, ImageProvider, OutputFormat,
 };
 use general_illustrations_minimax::MinimaxImageProvider;
+use general_illustrations_skill_renderer::write_skill;
+use general_illustrations_skill_spec::SkillSpec;
 
 #[derive(Debug, Parser)]
 #[command(version, about = "Generate illustrations through provider adapters")]
@@ -21,6 +23,7 @@ struct Args {
 enum Command {
     Generate(GenerateArgs),
     Providers,
+    Skill(SkillArgs),
 }
 
 #[derive(Debug, Parser)]
@@ -39,6 +42,34 @@ struct GenerateArgs {
     output_prefix: String,
     #[arg(long, default_value = "out")]
     output_dir: PathBuf,
+}
+
+#[derive(Debug, Parser)]
+struct SkillArgs {
+    #[command(subcommand)]
+    command: SkillCommand,
+}
+
+#[derive(Debug, Subcommand)]
+enum SkillCommand {
+    Validate(SkillValidateArgs),
+    Render(SkillRenderArgs),
+}
+
+#[derive(Debug, Parser)]
+struct SkillValidateArgs {
+    #[arg(long)]
+    spec: PathBuf,
+}
+
+#[derive(Debug, Parser)]
+struct SkillRenderArgs {
+    #[arg(long)]
+    spec: PathBuf,
+    #[arg(long)]
+    out: PathBuf,
+    #[arg(long)]
+    copy_assets: bool,
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -70,7 +101,42 @@ fn main() -> Result<()> {
             println!("minimax");
             Ok(())
         }
+        Command::Skill(args) => skill(args),
     }
+}
+
+fn skill(args: SkillArgs) -> Result<()> {
+    match args.command {
+        SkillCommand::Validate(args) => validate_skill(args),
+        SkillCommand::Render(args) => render_skill(args),
+    }
+}
+
+fn validate_skill(args: SkillValidateArgs) -> Result<()> {
+    let spec = read_skill_spec(&args.spec)?;
+    spec.validate()?;
+    println!("valid: {}", spec.name);
+    Ok(())
+}
+
+fn render_skill(args: SkillRenderArgs) -> Result<()> {
+    let spec = read_skill_spec(&args.spec)?;
+    let asset_base_dir = args
+        .spec
+        .parent()
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("."));
+
+    write_skill(&spec, &args.out, &asset_base_dir, args.copy_assets)
+        .with_context(|| format!("failed to render skill to {}", args.out.display()))?;
+    println!("{}", args.out.display());
+    Ok(())
+}
+
+fn read_skill_spec(path: &Path) -> Result<SkillSpec> {
+    let contents =
+        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?;
+    serde_json::from_str(&contents).with_context(|| format!("failed to parse {}", path.display()))
 }
 
 fn generate(args: GenerateArgs) -> Result<()> {

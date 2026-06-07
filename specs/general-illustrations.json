@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "name": "general-illustrations",
+  "display_name": "General Illustrations",
+  "short_description": "Recipe-based article and technical illustrations",
+  "description": "生成通用中文正文配图、技术解释图、短视频知识图和轻量卡通讲解图。用于用户要求为中文文章、帖子、博客、Notion 文档、工作流文档、技术概念、数据库/系统结构、代码 review、方法论、流程、状态、隐喻或观点生成“配图”“文章插图”“简笔画”“卡通解释图”“白板漫画”“技术图”“shot list”“改图”等任务；默认先选择一个合适风格，再生成 16:9 清爽、可读、有记忆点的正文或视频配图。",
+  "default_prompt": "Use $general-illustrations to design the right illustration recipe and generate visuals for this document.",
+  "positioning": {
+    "title": "核心定位",
+    "body": [
+      "为中文文章、技术文档和短视频知识内容设计并生成 16:9 横版配图。目标不是做商业插画、PPT 信息图或封面海报，而是把内容里的关键判断、流程、结构、状态或隐喻，变成一张清爽、有创意、可读、适合正文或视频使用的解释图。",
+      "这个 skill 不绑定固定 IP。和小黑项目的差异只有一个：这里可以在多个预置风格之间选择，例如简笔画、白板漫画、贴纸图层、技术极简、软黏土卡通。除此之外，工作流、构图原则、shot list、QA 和交付方式都按小黑项目的方式执行。"
+    ]
+  },
+  "style_dna": {
+    "one_liner": "清爽、可读、解释性强、有一点记忆点；像一个懂产品、技术和内容的人在白纸上画出的正文配图或短视频知识图。",
+    "must": [
+      "16:9 横版。",
+      "背景干净，优先白底或极浅底。",
+      "一张图只讲一个核心动作、结构、状态或隐喻。",
+      "主体占画面约 40%-60%，保留足够留白。",
+      "中文或英文标注要少、短、可读。",
+      "风格要服务内容，不为了好看牺牲解释性。",
+      "适合放进文章、README、教程、技术视频或知识短视频。"
+    ],
+    "colors": [
+      "黑色/深灰：主体线稿、主要文字、结构。",
+      "橙色：主路径、动作、箭头、写入、流动、转换。",
+      "蓝色：系统状态、内存、云端、读路径、辅助说明。",
+      "红色：问题、失败、风险、警告、被划掉的旧方式。",
+      "颜色要克制。默认 1-3 个强调色，不要满屏彩色。"
+    ],
+    "text_rules": [
+      "每张图最多 3-8 个短标注。",
+      "标注优先使用用户原文里的关键词。",
+      "技术词可以保留英文，例如 WAL、MemTable、SSTable、RPC。",
+      "不要在图上放大段解释。",
+      "不要在左上角写“流程图 / 架构图 / Workflow / Roadmap”等类型标题。"
+    ],
+    "never": [
+      "不要商业插画。",
+      "不要 PPT 信息图。",
+      "不要正式课程课件。",
+      "不要复杂架构图。",
+      "不要真实 App 截图。",
+      "不要密密麻麻的节点和箭头。",
+      "不要 stock art。",
+      "不要为了卡通而幼稚。",
+      "不要渐变、光污染、科技感 UI、复杂背景。"
+    ],
+    "aesthetic_direction": [
+      "要清楚、有趣、轻、有空间感。",
+      "不要油腻、幼稚、复杂、死板、像模板。"
+    ]
+  },
+  "references": {
+    "intro": "按任务需要读取，不要一次塞满上下文：",
+    "items": [
+      {
+        "path": "references/style-dna.md",
+        "description": "通用视觉 DNA、颜色、文字、禁忌。"
+      },
+      {
+        "path": "references/styles.md",
+        "description": "预置风格列表和选择规则。"
+      },
+      {
+        "path": "references/composition-patterns.md",
+        "description": "结构类型、原创隐喻方法和反复刻规则。"
+      },
+      {
+        "path": "references/prompt-template.md",
+        "description": "单张生图提示词模板。"
+      },
+      {
+        "path": "references/qa-checklist.md",
+        "description": "生成后检查和迭代规则。"
+      },
+      {
+        "path": "assets/examples/",
+        "description": "只作低频视觉校准，不进入默认生成路径。不要照抄这些案例的构图、物件或标注。"
+      }
+    ]
+  },
+  "workflow": [
+    {
+      "title": "消化正文",
+      "body": [
+        "先读用户给的正文、链接、Notion 页面、Markdown 文件、技术说明、review 内容或截图。提炼：",
+        "不要平均配图。优先选择“认知锚点”，例如：核心判断、输入输出闭环、分流、前后对比、常见坑、状态变化、系统局部、失败到成功、写入路径、后台整理、风险传播。"
+      ],
+      "bullets": [
+        "核心观点是什么",
+        "哪些段落承担认知转折",
+        "哪些内容适合用图解释",
+        "这张图更适合文章正文、技术文档还是短视频画面",
+        "哪些地方只适合文字，不需要图"
+      ]
+    },
+    {
+      "title": "先出配图策略",
+      "body": [
+        "如果用户只是说“分析怎么配图 / 思考哪些地方需要配图 / 给我 shot list”，先给 shot list。每张图写清楚：",
+        "默认 4-8 张。文章很短时 1-3 张；长文或系列视频也不要轻易超过 9 张。够用就好，避免把正文做成画册。"
+      ],
+      "bullets": [
+        "放在哪个段落后或视频哪个段落",
+        "图的主题",
+        "核心意思",
+        "结构类型",
+        "选择哪个风格",
+        "画面里发生什么",
+        "建议元素",
+        "建议中文标注词"
+      ]
+    },
+    {
+      "title": "单张生成",
+      "body": [
+        "如果用户明确要求“生成 / 输出 / 做图 / 帮我生成”，不要停下来等确认；用内置 image_gen 每张单独生成。不要把多张图拼在一张里。",
+        "每张图只讲一个核心结构。提示词必须包含：",
+        "不要复刻过往案例。案例只提供风格密度、留白、文字量和构图清爽程度，不能直接复用旧案例的物件和构图，除非用户明确要求复刻某张图。每次都要从当前内容重新发明一个成立的视觉隐喻。"
+      ],
+      "bullets": [
+        "16:9 横版中文正文配图或视频知识配图",
+        "选择的预置风格",
+        "背景、线条、颜色、文字密度",
+        "核心观点",
+        "具体画面构图",
+        "3-8 个短标注",
+        "禁止 PPT、商业插画、复杂架构、密集文字、左上角类型标题"
+      ]
+    },
+    {
+      "title": "检查与迭代",
+      "body": [
+        "生成后检查 references/qa-checklist.md。如果出现以下问题，优先重生成或局部编辑："
+      ],
+      "bullets": [
+        "画面太满",
+        "太像流程图/PPT",
+        "中文太多或错字严重",
+        "左上角出现“流程图/系统架构图/路线图”等类型标题",
+        "画风太可爱、幼稚、死板",
+        "背景不干净",
+        "风格和用途不匹配"
+      ]
+    },
+    {
+      "title": "保存交付",
+      "body": [
+        "如果用户在 workspace 内工作，把最终图复制到 assets/<article-slug>-illustrations/。",
+        "按顺序命名：01-topic-name.png、02-topic-name.png。",
+        "保留原始生成文件，不要覆盖已有资产，除非用户明确要求替换。"
+      ],
+      "bullets": []
+    }
+  ],
+  "styles": [
+    {
+      "id": "clean-docs",
+      "name": "clean-docs",
+      "use_when": "README、文档、产品解释、普通文章配图。",
+      "drawing_rule": "白底或浅底，少量几何形状，清晰层级，短标注，克制配色。",
+      "avoid": "营销海报、复杂 UI、装饰性渐变。"
+    },
+    {
+      "id": "technical-minimal",
+      "name": "technical-minimal",
+      "use_when": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
+      "drawing_rule": "清晰盒子、箭头、层级、边界、存储对象。信息准确优先，审美其次。",
+      "avoid": "假组件、过多节点、营销风。"
+    },
+    {
+      "id": "review-minimal",
+      "name": "review-minimal",
+      "use_when": "代码 review、bug path、风险传播、测试缺口、before/after。",
+      "drawing_rule": "中性底色，一个红色风险点，一个蓝色修复/验证点，突出坏路径。",
+      "avoid": "泛泛的警告图标、夸大严重性、放大段代码。"
+    },
+    {
+      "id": "editorial-sketch",
+      "name": "editorial-sketch",
+      "use_when": "文章观点、方法论、抽象隐喻、认知转折。",
+      "drawing_rule": "手绘感、轻微抖动线条、大留白、少量标注、一个具体物理隐喻。",
+      "avoid": "纯装饰图、PPT 图、复制旧案例。"
+    },
+    {
+      "id": "product-explainer",
+      "name": "product-explainer",
+      "use_when": "产品能力、feature 介绍、工具说明、docs intro。",
+      "drawing_rule": "安静的 SaaS/docs 感，少量简化 UI 或抽象功能块。",
+      "avoid": "landing page hero、假 UI 细节、过度商业插画。"
+    },
+    {
+      "id": "simple-doodle",
+      "name": "simple-doodle",
+      "use_when": "短视频知识图、轻量技术解释、儿童感不能太强的简笔画。",
+      "drawing_rule": "白底，马克笔线条，简单物件，大留白，1-2 个强调色。",
+      "avoid": "画得太乱、太幼稚、太像课堂涂鸦。"
+    },
+    {
+      "id": "cartoon-explainer",
+      "name": "cartoon-explainer",
+      "use_when": "需要角色、反应、冲突、轻幽默的解释图。",
+      "drawing_rule": "圆润简化物件，可以有人物或小角色，但不要固定 IP，不要卖萌。",
+      "avoid": "表情包、二次元、儿童卡通、可爱吉祥物海报。"
+    },
+    {
+      "id": "whiteboard-comic",
+      "name": "whiteboard-comic",
+      "use_when": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
+      "drawing_rule": "白板线稿，2-4 格分镜，少量箭头和动作线，一个问题一个结果。",
+      "avoid": "长段手写字、太多格、太可爱。"
+    },
+    {
+      "id": "sticker-layer",
+      "name": "sticker-layer",
+      "use_when": "短视频动画拆层、组件介绍、流程分解。",
+      "drawing_rule": "扁平贴纸物件，清晰描边，前中后景分层，大物件可单独 pop-in。",
+      "avoid": "花哨拼贴、亮面 3D、过多小细节。"
+    },
+    {
+      "id": "soft-clay-cartoon",
+      "name": "soft-clay-cartoon",
+      "use_when": "概念隐喻、视频插图、轻松技术解释。",
+      "drawing_rule": "柔软圆润的 clay/toy-like 物件，简单光照，少文字，大形状。",
+      "avoid": "儿童玩具感、真实摄影、复杂场景、太糖果色。"
+    }
+  ],
+  "composition_patterns": [
+    {
+      "id": "workflow",
+      "name": "Workflow 流程",
+      "use_when": "输入 -> 处理 -> 输出，AI 工作流，内容生产，系统链路。",
+      "drawing_rule": "左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。"
+    },
+    {
+      "id": "system-slice",
+      "name": "系统局部",
+      "use_when": "数据库、RPC、缓存、队列、agent 系统局部、技术组件。",
+      "drawing_rule": "只画 3-6 个核心模块，突出一个关键边界或关键动作。"
+    },
+    {
+      "id": "before-after",
+      "name": "前后对比",
+      "use_when": "混乱/有序，手动/自动，本地/云端，慢/快，失败/修复。",
+      "drawing_rule": "左混乱，右稳定，中间转化动作或箭头。"
+    },
+    {
+      "id": "state-scenes",
+      "name": "角色状态",
+      "use_when": "用户痛点、开发者状态、信息焦虑、工具太多、卡住到跑起来。",
+      "drawing_rule": "2-4 个小状态，每个状态一个短标注。"
+    },
+    {
+      "id": "concept-metaphor",
+      "name": "概念隐喻",
+      "use_when": "抽象观点、技术概念、内容系统、存储结构、后台整理。",
+      "drawing_rule": "一个大的物件或机器，少量输入，一个输出。要有记忆点。"
+    },
+    {
+      "id": "layered-method",
+      "name": "方法分层",
+      "use_when": "方法论框架、系统层级、能力栈、存储层级。",
+      "drawing_rule": "一层层盒子、托盘、架子、抽屉、纸片，不要正式金字塔。"
+    },
+    {
+      "id": "route-map",
+      "name": "地图路线",
+      "use_when": "从想法到上线、用户路径、学习路线、数据流转。",
+      "drawing_rule": "一条弯曲路径，少量节点，明确起点和终点。"
+    },
+    {
+      "id": "comic-panels",
+      "name": "小漫画分镜",
+      "use_when": "失败到成功、使用前后变化、bug 发生路径、工程故事。",
+      "drawing_rule": "2-4 个小场景，每格只表达一个动作。"
+    }
+  ],
+  "prompt_templates": [
+    {
+      "id": "single-image",
+      "name": "生图提示词模板",
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+    },
+    {
+      "id": "technical-image",
+      "name": "技术图提示词",
+      "body": "Generate one clean 16:9 technical explainer diagram.\n\nTopic:\n{技术主题}\n\nEntities:\n{实体列表}\n\nFlow:\n{写入路径 / 读取路径 / 状态变化 / 风险路径}\n\nHighlight:\n{最重要的边界、tradeoff 或机制}\n\nStyle:\ntechnical-minimal, clean-docs, or whiteboard-comic.\n\nLabels only:\n{短标注列表}\n\nConstraints:\nUse precise boxes, arrows, shelves, layers, or paths. Do not invent components.\nDo not add long paragraphs. Make it useful for a technical blog or video."
+    },
+    {
+      "id": "remove-title-edit",
+      "name": "图像编辑提示：去掉左上角标题",
+      "body": "Edit the provided image. Remove only the title \"{要删除的文字}\" and its underline\nfrom the top-left corner. Fill that area with the same clean background. Preserve\neverything else exactly: objects, labels, paths, line style, composition, aspect\nratio, and image quality. Do not add any new text or objects."
+    },
+    {
+      "id": "reduce-cuteness-edit",
+      "name": "图像编辑提示：降低幼稚感",
+      "body": "Regenerate this illustration with the same core meaning and layout, but make it\nless cute and more like a clean technical explainer. Keep rounded simplified\nobjects, but reduce toy-like expressions, bright candy colors, and mascot energy.\nUse sparse labels and a clean white background."
+    }
+  ],
+  "qa": {
+    "must_pass": [
+      "是 16:9 横版。",
+      "背景干净。",
+      "选择了一个明确风格。",
+      "一张图只讲一个核心结构。",
+      "没有复刻旧案例构图，而是为当前内容生成了新隐喻。",
+      "画面清爽、有创意、有意思。",
+      "主体不超过画面约 60%。",
+      "标注少、短、能读。",
+      "风格和用途匹配：文章、技术文档、review、短视频不能混用错。",
+      "橙色只用于主路径或动作。",
+      "红色只用于重点、问题、提醒或结果。",
+      "蓝色只用于补充说明、读路径或系统状态。"
+    ],
+    "failure_signals": [
+      "左上角有“流程图 / 系统架构图 / Workflow / Roadmap”等类型标题。",
+      "画面像 PPT、课程课件、正式流程图。",
+      "元素太多、箭头太多、节点太多。",
+      "文字变成大段解释。",
+      "背景有复杂纹理、渐变、噪点或光污染。",
+      "真实 UI 截图或科技感界面。",
+      "中文错字严重或标注不可读。",
+      "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
+      "技术图发明了不存在的组件。",
+      "和 assets/examples/ 里的旧案例构图过于相似。"
+    ],
+    "iteration_rules": [
+      {
+        "problem": "太普通",
+        "fix": "加入一个具体物理动作和低科技物件。"
+      },
+      {
+        "problem": "太复杂",
+        "fix": "删节点，只保留一个动作和 3-5 个短标注。"
+      },
+      {
+        "problem": "太可爱",
+        "fix": "强调 clean technical explainer、not cute、not mascot、not childish。"
+      },
+      {
+        "problem": "太 PPT",
+        "fix": "去掉标题、边框、整齐网格和过多箭头，改成场景或物件。"
+      },
+      {
+        "problem": "太像旧案例",
+        "fix": "保留核心意思，换掉主物件和动作。"
+      },
+      {
+        "problem": "文字错",
+        "fix": "优先局部编辑；错得多就重生成并减少标注数量。"
+      },
+      {
+        "problem": "不适合视频",
+        "fix": "加大主体，减少文字，留字幕区，明确前中后景。"
+      }
+    ],
+    "delivery_judgment": "高质量图应该让读者 1 秒内看懂核心结构，并且愿意把它放进文章或短视频里。如果第一眼像模板页，而不是为当前内容专门画的一张解释图，就不合格。"
+  },
+  "examples": [
+    {
+      "id": "simple-doodle-lsm",
+      "source_path": "../skill/general-illustrations/assets/examples/01-simple-doodle-lsm.png",
+      "target_path": "assets/examples/01-simple-doodle-lsm.png",
+      "caption": "simple-doodle LSM Tree example"
+    },
+    {
+      "id": "whiteboard-comic-lsm",
+      "source_path": "../skill/general-illustrations/assets/examples/02-whiteboard-comic-lsm.png",
+      "target_path": "assets/examples/02-whiteboard-comic-lsm.png",
+      "caption": "whiteboard-comic LSM Tree example"
+    },
+    {
+      "id": "sticker-layer-lsm",
+      "source_path": "../skill/general-illustrations/assets/examples/03-sticker-layer-lsm.png",
+      "target_path": "assets/examples/03-sticker-layer-lsm.png",
+      "caption": "sticker-layer LSM Tree example"
+    },
+    {
+      "id": "technical-minimal-lsm",
+      "source_path": "../skill/general-illustrations/assets/examples/04-technical-minimal-lsm.png",
+      "target_path": "assets/examples/04-technical-minimal-lsm.png",
+      "caption": "technical-minimal LSM Tree example"
+    },
+    {
+      "id": "motion-editorial-lsm",
+      "source_path": "../skill/general-illustrations/assets/examples/05-motion-editorial-lsm.png",
+      "target_path": "assets/examples/05-motion-editorial-lsm.png",
+      "caption": "motion-editorial LSM Tree example"
+    }
+  ]
+}
