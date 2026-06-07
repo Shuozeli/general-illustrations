@@ -85,6 +85,7 @@ shape, prompt length, response format, auth, and errors.
 ## Docs
 
 - [Architecture](docs/architecture.md)
+- [Skill Generation Design](docs/skill-generation-design.md)
 - [Tasks](docs/tasks.md)
 
 ## Shuozeli Open Source Management
