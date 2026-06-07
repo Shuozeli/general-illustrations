@@ -1,61 +1,108 @@
 ---
 name: general-illustrations
-description: Recipe-based image and illustration generation for articles, technical docs, architecture explanations, product docs, code reviews, workflows, comparisons, and visual planning. Use when Codex should choose an illustration recipe, produce a shot list, generate or edit images, define a visual style, or turn text/code/design material into article illustrations, technical diagrams, review visuals, product explainers, workflow maps, or comparison charts.
+description: 生成通用中文正文配图、技术解释图、短视频知识图和轻量卡通讲解图。用于用户要求为中文文章、帖子、博客、Notion 文档、工作流文档、技术概念、数据库/系统结构、代码 review、方法论、流程、状态、隐喻或观点生成“配图”“文章插图”“简笔画”“卡通解释图”“白板漫画”“技术图”“shot list”“改图”等任务；默认先选择一个合适风格，再生成 16:9 清爽、可读、有记忆点的正文或视频配图。
 ---
 
 # General Illustrations
 
-Create useful visuals by routing each request through a recipe and a style pack.
-This skill is intentionally general: do not force one fixed IP, mascot, or art
-style on every task.
+## 核心定位
 
-## Workflow
+为中文文章、技术文档和短视频知识内容设计并生成 16:9 横版配图。目标不是做商业插画、PPT 信息图或封面海报，而是把内容里的关键判断、流程、结构、状态或隐喻，变成一张清爽、有创意、可读、适合正文或视频使用的解释图。
 
-1. Read the user's source material: article, design doc, README, code review,
-   architecture notes, screenshot, or concept.
-2. Identify the visual job: explain, compare, warn, summarize, teach, route,
-   or make a concept memorable.
-3. Choose one recipe from `references/selection-guide.md`.
-4. Choose a style from `references/style-packs.md`, or define a short ad hoc
-   style if the user already gave one.
-5. If the user asks for planning, output a concise shot list only.
-6. If the user asks to generate, create each image separately with `image_gen`;
-   do not combine multiple shots into one image unless explicitly requested.
-7. Check the output against `references/qa-checklist.md`; regenerate or edit
-   if the visual misses the recipe's purpose.
+这个 skill 不绑定固定 IP。和小黑项目的差异只有一个：这里可以在多个预置风格之间选择，例如简笔画、白板漫画、贴纸图层、技术极简、软黏土卡通。除此之外，工作流、构图原则、shot list、QA 和交付方式都按小黑项目的方式执行。
 
-## Recipes
+## 先读这些参考
 
-- **Article illustration:** use `references/article-illustration.md` for blog,
-  essay, newsletter, Notion, and long-form writing visuals.
-- **Technical diagram:** use `references/technical-diagram.md` for systems,
-  APIs, RPC, database, dataflow, architecture, and infrastructure explanations.
-- **Code review visual:** use `references/code-review-visual.md` for bugs,
-  regressions, risk surfaces, before/after behavior, and test gaps.
+按任务需要读取，不要一次塞满上下文：
 
-## Output Modes
+- `references/style-dna.md`：通用视觉 DNA、颜色、文字、禁忌。
+- `references/styles.md`：预置风格列表和选择规则。
+- `references/composition-patterns.md`：结构类型、原创隐喻方法和反复刻规则。
+- `references/prompt-template.md`：单张生图提示词模板。
+- `references/qa-checklist.md`：生成后检查和迭代规则。
+- `assets/examples/`：只作低频视觉校准，不进入默认生成路径。不要照抄这些案例的构图、物件或标注。
 
-- **Shot list:** recommend 1-8 images with placement, purpose, recipe, style,
-  composition, labels, and generation notes.
-- **Single image prompt:** produce one complete prompt ready for image
-  generation.
-- **Generated images:** call `image_gen` once per image.
-- **Edit prompt:** keep the original meaning and ask for focused edits only.
+## 工作流
 
-## Defaults
+### 1. 消化正文
 
-- Default aspect ratio: 16:9 for article/docs visuals.
-- Default background: clean and readable, not decorative.
-- Default text on image: sparse, short labels only.
-- Default visual density: one core idea per image.
-- Default style: `clean-docs` unless the recipe or user suggests otherwise.
+先读用户给的正文、链接、Notion 页面、Markdown 文件、技术说明、review 内容或截图。提炼：
 
-## Boundaries
+- 核心观点是什么
+- 哪些段落承担认知转折
+- 哪些内容适合用图解释
+- 这张图更适合文章正文、技术文档还是短视频画面
+- 哪些地方只适合文字，不需要图
 
-- Do not copy Ian's "小黑" IP or any third-party recurring character as a
-  Shuozeli identity.
-- Do not treat example images as templates to copy.
-- Do not make dense PPT slides when the user asked for illustrations.
-- Do not make decorative art when the user needs an explanatory diagram.
-- Do not invent precise UI, architecture, or code facts that are not present in
-  the source material.
+不要平均配图。优先选择“认知锚点”，例如：核心判断、输入输出闭环、分流、前后对比、常见坑、状态变化、系统局部、失败到成功、写入路径、后台整理、风险传播。
+
+### 2. 先出配图策略
+
+如果用户只是说“分析怎么配图 / 思考哪些地方需要配图 / 给我 shot list”，先给 shot list。每张图写清楚：
+
+- 放在哪个段落后或视频哪个段落
+- 图的主题
+- 核心意思
+- 结构类型
+- 选择哪个风格
+- 画面里发生什么
+- 建议元素
+- 建议中文标注词
+
+默认 4-8 张。文章很短时 1-3 张；长文或系列视频也不要轻易超过 9 张。够用就好，避免把正文做成画册。
+
+### 3. 单张生成
+
+如果用户明确要求“生成 / 输出 / 做图 / 帮我生成”，不要停下来等确认；用内置 `image_gen` 每张单独生成。不要把多张图拼在一张里。
+
+每张图只讲一个核心结构。提示词必须包含：
+
+- 16:9 横版中文正文配图或视频知识配图
+- 选择的预置风格
+- 背景、线条、颜色、文字密度
+- 核心观点
+- 具体画面构图
+- 3-8 个短标注
+- 禁止 PPT、商业插画、复杂架构、密集文字、左上角类型标题
+
+不要复刻过往案例。案例只提供风格密度、留白、文字量和构图清爽程度，不能直接复用旧案例的物件和构图，除非用户明确要求复刻某张图。每次都要从当前内容重新发明一个成立的视觉隐喻。
+
+### 4. 检查与迭代
+
+生成后检查 `references/qa-checklist.md`。如果出现以下问题，优先重生成或局部编辑：
+
+- 画面太满
+- 太像流程图/PPT
+- 中文太多或错字严重
+- 左上角出现“流程图/系统架构图/路线图”等类型标题
+- 画风太可爱、幼稚、死板
+- 背景不干净
+- 风格和用途不匹配
+
+### 5. 保存交付
+
+如果用户在 workspace 内工作，把最终图复制到：
+
+```text
+assets/<article-slug>-illustrations/
+```
+
+按顺序命名：
+
+```text
+01-topic-name.png
+02-topic-name.png
+```
+
+保留原始生成文件，不要覆盖已有资产，除非用户明确要求替换。
+
+## 输出口径
+
+生成前的策略输出要短而准。生成后的交付要包含：
+
+- 生成了几张
+- 每张图的用途
+- 保存路径
+- 哪些图最稳，哪些图是可选
+
+不要长篇解释风格理论；让图自己说话。

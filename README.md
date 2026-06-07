@@ -48,21 +48,26 @@ cargo run --release -p general-illustrations-cli -- providers
 
 ## Skill
 
-The WIP skill lives at:
+The Codex skill lives at:
 
 ```text
 skill/general-illustrations/
 ```
 
-It is a single recipe-router skill with three first recipes:
+The skill intentionally mirrors the structure of `ian-xiaohei-illustrations`:
 
-- `article-illustration`: article, essay, newsletter, and conceptual visuals.
-- `technical-diagram`: architecture, RPC, dataflow, database, and system visuals.
-- `code-review-visual`: bug path, risk surface, before/after, and test-gap
-  visuals.
+- `SKILL.md`: activation, workflow, shot list, generation, QA, delivery.
+- `references/style-dna.md`: shared visual DNA.
+- `references/styles.md`: prebuilt visual styles.
+- `references/composition-patterns.md`: structure types and originality rules.
+- `references/prompt-template.md`: prompt templates.
+- `references/qa-checklist.md`: generation QA and iteration rules.
+- `assets/examples/`: calibration images only, not templates to copy.
 
-The skill also has shared reference docs for recipe selection, style packs, and
-QA.
+The main difference from the Xiaohei skill is that this skill does not bind to a
+single IP or visual style. It adds multiple prebuilt styles such as
+`simple-doodle`, `whiteboard-comic`, `sticker-layer`, `technical-minimal`, and
+`soft-clay-cartoon`.
 
 ## Provider Boundary
 

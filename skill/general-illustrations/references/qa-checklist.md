@@ -1,41 +1,47 @@
 # QA Checklist
 
-Use this after planning prompts or generating images.
+## 必过项
 
-## Universal Checks
+- 是 16:9 横版。
+- 背景干净。
+- 选择了一个明确风格。
+- 一张图只讲一个核心结构。
+- 没有复刻旧案例构图，而是为当前内容生成了新隐喻。
+- 画面清爽、有创意、有意思。
+- 主体不超过画面约 60%。
+- 标注少、短、能读。
+- 风格和用途匹配：文章、技术文档、review、短视频不能混用错。
+- 橙色只用于主路径或动作。
+- 红色只用于重点、问题、提醒或结果。
+- 蓝色只用于补充说明、读路径或系统状态。
 
-- One image has one primary idea.
-- The chosen recipe matches the user's actual need.
-- The style supports the content instead of overpowering it.
-- Labels are sparse and readable.
-- No third-party IP, mascot, or example composition is copied.
-- No invented technical facts appear in the image.
-- The result would still make sense when embedded in a document.
+## 失败信号
 
-## Article Illustration Checks
+出现以下情况，重生成或局部编辑：
 
-- The image explains a cognitive anchor, not the whole article.
-- The metaphor is specific to the source material.
-- It is not generic stock art.
+- 左上角有“流程图 / 系统架构图 / Workflow / Roadmap”等类型标题。
+- 画面像 PPT、课程课件、正式流程图。
+- 元素太多、箭头太多、节点太多。
+- 文字变成大段解释。
+- 背景有复杂纹理、渐变、噪点或光污染。
+- 真实 UI 截图或科技感界面。
+- 中文错字严重或标注不可读。
+- 卡通风格变得太幼稚、太可爱、太像儿童玩具。
+- 技术图发明了不存在的组件。
+- 和 `assets/examples/` 里的旧案例构图过于相似。
 
-## Technical Diagram Checks
+## 迭代方法
 
-- Boundaries and ownership are visible.
-- Flow direction is unambiguous.
-- Components are named concretely.
-- It does not cram separate diagrams into one.
+- 太普通：加入一个具体物理动作和低科技物件。
+- 太复杂：删节点，只保留一个动作和 3-5 个短标注。
+- 太可爱：强调 clean technical explainer、not cute、not mascot、not childish。
+- 太 PPT：去掉标题、边框、整齐网格和过多箭头，改成场景或物件。
+- 太像旧案例：保留核心意思，换掉主物件和动作。
+- 文字错：优先局部编辑；错得多就重生成并减少标注数量。
+- 不适合视频：加大主体，减少文字，留字幕区，明确前中后景。
 
-## Code Review Checks
+## 交付判断
 
-- The bug/risk path is visible.
-- The missing guard or test gap is clear.
-- Severity is not exaggerated beyond evidence.
-- It avoids unreadable code snippets.
+高质量图应该让读者 1 秒内看懂核心结构，并且愿意把它放进文章或短视频里。
 
-## Regenerate or Edit When
-
-- The image is decorative but not explanatory.
-- It has too much text.
-- It uses the wrong recipe.
-- It copies a known example.
-- It adds fake implementation details.
+如果第一眼像模板页，而不是为当前内容专门画的一张解释图，就不合格。
