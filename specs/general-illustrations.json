@@ -207,6 +207,13 @@
       "avoid": "表情包、二次元、儿童卡通、可爱吉祥物海报。"
     },
     {
+      "id": "coupon-worker-comic",
+      "name": "coupon-worker-comic",
+      "use_when": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理和商业模式短视频，需要用角色动作解释机制。",
+      "drawing_rule": "白底或极浅底，黑色手绘线条，原创黄色票券/收据/豆形小工人角色，扁平 2D，短腿短手，动作夸张但不卖萌。每张图只放一个核心动作：锤价格、搬优惠券、追倒计时、分拣顾客、把数据装袋、锁住未来选择。文字只用 1-4 个短标签，角色和道具承担主要叙事。",
+      "avoid": "不要小黄人元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、3D 玩具质感都不要。不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。"
+    },
+    {
       "id": "whiteboard-comic",
       "name": "whiteboard-comic",
       "use_when": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
@@ -276,13 +283,24 @@
       "name": "小漫画分镜",
       "use_when": "失败到成功、使用前后变化、bug 发生路径、工程故事。",
       "drawing_rule": "2-4 个小场景，每格只表达一个动作。"
+    },
+    {
+      "id": "action-loop-scenes",
+      "name": "动作循环场景",
+      "use_when": "短视频配图、动画 slide、商业机制解释、消费心理解释，需要一张图能拆成 2-4 个可循环动作 beat。",
+      "drawing_rule": "单一场景中安排一个可见动作链：角色进入、角色改变物件、结果被强调。主体占 50%-70%，保留字幕区，动作线和物件运动方向清楚。不要依赖段落文字，优先用追、拉、锤、推、搬、锁、塞、分拣等动作表达逻辑。"
     }
   ],
   "prompt_templates": [
     {
       "id": "single-image",
       "name": "生图提示词模板",
-      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+    },
+    {
+      "id": "coupon-worker-video-frame",
+      "name": "优惠券小工人短视频画面模板",
+      "body": "Generate one 16:9 horizontal knowledge-video frame in the coupon-worker-comic style.\n\nTopic:\n{优惠券、外卖平台、会员价、App deal、消费心理或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 price discrimination / prepayment / sunk cost / urgency / data capture}\n\nMain action:\n{只选一个动作：hammering a menu price / carrying coupons / chasing a customer with a countdown clock / sorting customers at a gate / stuffing DATA receipts into bags / locking future choices with unused coupons}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow coupon-worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, paper-ticket or receipt-like shapes, simple props, and visible motion lines. Make it feel like an action beat from a smart business explainer, not a poster.\n\nShort labels only:\n{1-4 readable labels such as APP DEAL / BOGO / DATA / TIMER / $8.49 / FUTURE ORDER}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no 3D toy rendering. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
     },
     {
       "id": "technical-image",
@@ -308,8 +326,10 @@
       "一张图只讲一个核心结构。",
       "没有复刻旧案例构图，而是为当前内容生成了新隐喻。",
       "画面清爽、有创意、有意思。",
-      "主体不超过画面约 60%。",
+      "文章和文档配图主体不超过画面约 60%；短视频动作画面可以到 70%，但必须保留字幕区。",
       "标注少、短、能读。",
+      "短视频画面优先通过动作表达，不靠左侧大字或大段文字解释。",
+      "coupon-worker-comic 必须是原创黄色票券/收据小工人，不能出现小黄人式护目镜、蓝色背带裤、胶囊身体或单眼大眼。",
       "风格和用途匹配：文章、技术文档、review、短视频不能混用错。",
       "橙色只用于主路径或动作。",
       "红色只用于重点、问题、提醒或结果。",
@@ -324,6 +344,8 @@
       "真实 UI 截图或科技感界面。",
       "中文错字严重或标注不可读。",
       "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
+      "优惠券短视频画面像小黄人、玩具吉祥物、海报封面或文字卡片，而不是动作漫画。",
+      "短视频画面没有明确动作 beat，后续很难做动画。",
       "技术图发明了不存在的组件。",
       "和 assets/examples/ 里的旧案例构图过于相似。"
     ],
@@ -355,6 +377,14 @@
       {
         "problem": "不适合视频",
         "fix": "加大主体，减少文字，留字幕区，明确前中后景。"
+      },
+      {
+        "problem": "coupon-worker-comic 太像小黄人",
+        "fix": "去掉护目镜、蓝色背带裤、胶囊身体、单眼大眼和 3D 玩具感，改成扁平黄色票券/收据形小工人。"
+      },
+      {
+        "problem": "coupon-worker-comic 太依赖文字",
+        "fix": "删掉左侧文字块和大标题，把机制改成一个动作：锤价格、搬券、追倒计时、分拣顾客、装袋数据或锁住未来选择。"
       }
     ],
     "delivery_judgment": "高质量图应该让读者 1 秒内看懂核心结构，并且愿意把它放进文章或短视频里。如果第一眼像模板页，而不是为当前内容专门画的一张解释图，就不合格。"

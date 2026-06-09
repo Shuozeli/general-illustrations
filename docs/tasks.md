@@ -1,3 +1,4 @@
+<!-- agent-updated: 2026-06-09T19:31:23Z -->
 # Tasks
 
 ## Done
@@ -9,6 +10,7 @@
 - Add CLI for provider-backed generation.
 - Add JSON skill spec, validator, renderer, and codelab.
 - Add GitHub Actions CI.
+- Add coupon-worker-comic recipe for action-first coupon and app-deal video frames.
 
 ## Next
 

@@ -8,7 +8,7 @@
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
 Visual style:
-{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / whiteboard-comic / sticker-layer / soft-clay-cartoon}
+{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
 
 Visual DNA:
 Clean readable composition. White or very light background. One core idea only.
@@ -20,7 +20,7 @@ Theme:
 {正文配图主题}
 
 Structure type:
-{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜}
+{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}
 
 Core idea:
 {这张图要表达的核心意思}
@@ -41,6 +41,33 @@ write a title in the top-left corner. Do not write the structure type on the
 image. Do not make it a formal PPT slide, dense architecture, stock art, or
 commercial illustration. Do not copy prior examples; invent a fresh visual
 metaphor for this specific content.
+```
+
+## 优惠券小工人短视频画面模板
+
+```text
+Generate one 16:9 horizontal knowledge-video frame in the coupon-worker-comic style.
+
+Topic:
+{优惠券、外卖平台、会员价、App deal、消费心理或商业模式主题}
+
+Core mechanism:
+{这张图要解释的机制，例如 price discrimination / prepayment / sunk cost / urgency / data capture}
+
+Main action:
+{只选一个动作：hammering a menu price / carrying coupons / chasing a customer with a countdown clock / sorting customers at a gate / stuffing DATA receipts into bags / locking future choices with unused coupons}
+
+Composition:
+White or very light background. One large foreground action with original yellow coupon-worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, paper-ticket or receipt-like shapes, simple props, and visible motion lines. Make it feel like an action beat from a smart business explainer, not a poster.
+
+Short labels only:
+{1-4 readable labels such as APP DEAL / BOGO / DATA / TIMER / $8.49 / FUTURE ORDER}
+
+Animation beats:
+{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.
+
+Constraints:
+This must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no 3D toy rendering. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second.
 ```
 
 ## 技术图提示词
