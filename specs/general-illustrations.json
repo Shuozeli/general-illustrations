@@ -214,6 +214,13 @@
       "avoid": "不要小黄人元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、3D 玩具质感都不要。不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。"
     },
     {
+      "id": "yellow-worker-comic",
+      "name": "yellow-worker-comic",
+      "use_when": "财经、商业、消费、科技、公司新闻或知识短视频，需要一种接近“小黄人式群体动作感”但完全原创、可泛化的黄色小人动作漫画风格。",
+      "drawing_rule": "白底或极浅底，黑色粗手绘线条，原创黄色小工人角色，扁平 2D，短手短腿，点状眼睛，表情简单，动作夸张。角色可以是票券形、豆形、方块形或圆角小人，但不能固定成优惠券道具。每张图只讲一个核心动作：搬运资金、搭建服务器、拉光纤、举价格表、筛选公司、推开噪音纸张、围观火箭、追逐风险信号。道具承担主要叙事，文字只用 0-4 个短标签，并给后期标题/字幕留出干净空间。",
+      "avoid": "不要真实小黄人 IP 元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、Gru/Minions 式造型、3D 玩具质感都不要。不要优惠券专属场景绑死，不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。"
+    },
+    {
       "id": "whiteboard-comic",
       "name": "whiteboard-comic",
       "use_when": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
@@ -295,12 +302,12 @@
     {
       "id": "single-image",
       "name": "生图提示词模板",
-      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
     },
     {
-      "id": "coupon-worker-video-frame",
-      "name": "优惠券小工人短视频画面模板",
-      "body": "Generate one 16:9 horizontal knowledge-video frame in the coupon-worker-comic style.\n\nTopic:\n{优惠券、外卖平台、会员价、App deal、消费心理或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 price discrimination / prepayment / sunk cost / urgency / data capture}\n\nMain action:\n{只选一个动作：hammering a menu price / carrying coupons / chasing a customer with a countdown clock / sorting customers at a gate / stuffing DATA receipts into bags / locking future choices with unused coupons}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow coupon-worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, paper-ticket or receipt-like shapes, simple props, and visible motion lines. Make it feel like an action beat from a smart business explainer, not a poster.\n\nShort labels only:\n{1-4 readable labels such as APP DEAL / BOGO / DATA / TIMER / $8.49 / FUTURE ORDER}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no 3D toy rendering. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
+      "id": "yellow-worker-video-frame",
+      "name": "原创黄色小人动作漫画短视频画面模板",
+      "body": "Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.\n\nTopic:\n{财经、商业、消费、科技、公司新闻、AI 基建、供应链、监管、估值或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 capital expenditure / pricing power / price war / margin pressure / valuation demand / regulatory risk / cash-flow lock-in}\n\nMain action:\n{只选一个动作：building a data center / carrying cash into servers / pulling fiber cables / turning a price dial / sorting company cards / pushing away noisy headlines / inflating a valuation balloon / comparing revenue and margin piles}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles and later title overlay. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, simple props, and visible motion lines. Make it feel like an action beat from a smart business or finance explainer, not a poster.\n\nShort labels only:\n{0-4 readable labels such as AI CAPEX / FIBER / MARGIN / PRICE WAR / RISK / CASH FLOW; labels are optional and should be skipped when overlay text will be added later}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no Gru/Minions-style design, no 3D toy rendering. Avoid coupon-only props unless the topic is actually about coupons. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
     },
     {
       "id": "technical-image",
@@ -330,6 +337,7 @@
       "标注少、短、能读。",
       "短视频画面优先通过动作表达，不靠左侧大字或大段文字解释。",
       "coupon-worker-comic 必须是原创黄色票券/收据小工人，不能出现小黄人式护目镜、蓝色背带裤、胶囊身体或单眼大眼。",
+      "yellow-worker-comic 必须是原创黄色小人/小工人动作漫画，不能出现真实小黄人 IP 元素，也不能被优惠券场景绑死。",
       "风格和用途匹配：文章、技术文档、review、短视频不能混用错。",
       "橙色只用于主路径或动作。",
       "红色只用于重点、问题、提醒或结果。",
@@ -344,7 +352,7 @@
       "真实 UI 截图或科技感界面。",
       "中文错字严重或标注不可读。",
       "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
-      "优惠券短视频画面像小黄人、玩具吉祥物、海报封面或文字卡片，而不是动作漫画。",
+      "黄色小人短视频画面像真实小黄人、玩具吉祥物、海报封面或文字卡片，而不是原创动作漫画。",
       "短视频画面没有明确动作 beat，后续很难做动画。",
       "技术图发明了不存在的组件。",
       "和 assets/examples/ 里的旧案例构图过于相似。"
@@ -379,12 +387,12 @@
         "fix": "加大主体，减少文字，留字幕区，明确前中后景。"
       },
       {
-        "problem": "coupon-worker-comic 太像小黄人",
-        "fix": "去掉护目镜、蓝色背带裤、胶囊身体、单眼大眼和 3D 玩具感，改成扁平黄色票券/收据形小工人。"
+        "problem": "yellow-worker-comic 太像真实小黄人 IP",
+        "fix": "去掉护目镜、蓝色背带裤、胶囊身体、单眼大眼和 3D 玩具感，改成扁平原创黄色小人或小工人。"
       },
       {
-        "problem": "coupon-worker-comic 太依赖文字",
-        "fix": "删掉左侧文字块和大标题，把机制改成一个动作：锤价格、搬券、追倒计时、分拣顾客、装袋数据或锁住未来选择。"
+        "problem": "yellow-worker-comic 太依赖文字",
+        "fix": "删掉左侧文字块和大标题，把机制改成一个动作：搭建服务器、拉光纤、搬资金、筛选公司、推开噪音或追逐风险信号。"
       }
     ],
     "delivery_judgment": "高质量图应该让读者 1 秒内看懂核心结构，并且愿意把它放进文章或短视频里。如果第一眼像模板页，而不是为当前内容专门画的一张解释图，就不合格。"
