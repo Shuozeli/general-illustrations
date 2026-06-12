@@ -231,6 +231,7 @@
     },
     {
       "id": "mambo-meme-comic",
+      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
       "name": "mambo-meme-comic",
       "use_when": "中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。",
       "drawing_rule": "白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。",
@@ -335,6 +336,7 @@
     },
     {
       "id": "mambo-meme-video-frame",
+      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
       "name": "曼波抽象梗短视频画面模板",
       "body": "Generate one 16:9 horizontal Chinese knowledge-video frame in the mambo-meme-comic style.\n\nTopic:\n{技术主题或工程故事主题，例如 Kafka 消息堆积 / 下单链路卡死 / consumer 追 offset / Redis 热点 key / 数据库慢查询}\n\nCore mechanism:\n{这张图必须讲清的机制，不能只搞笑，例如 append-only log / queue decoupling / backpressure / consumer lag / retry storm / cache miss}\n\nMeme action loop:\n{2-4 个循环动作 beat，例如 requests wobble into a queue -> service shakes under pressure -> Kafka log conveyor carries events -> consumers catch up by offset}\n\nComposition:\nWhite or very light background. Flat 2D, thick black outlines, original abstract characters or system components, no existing meme/IP characters. One large looping action scene should occupy 50%-70% of the canvas. Use small motion lines, repeated poses, bouncing arrows, beat marks, and a few saturated red/yellow/blue accents to create a catchy Chinese short-video meme rhythm. Leave clean subtitle/title space. The technical entities must remain recognizable: topic/log/consumer/offset/database/service should be visually distinct when used.\n\nShort labels only:\n{0-4 short readable labels such as ORDER / KAFKA LOG / OFFSET / LAG / DB / RETRY; skip labels if overlay text will be added later}\n\nConstraints:\nDo not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, lyrics, cats, known characters, or audio-specific references. Do not make a dance-club scene, real dancers, anime fan art, chaotic bullet comments, low-resolution meme collage, or pure nonsense. The joke energy is allowed only if the infrastructure mechanism is still clear."
     },

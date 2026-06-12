@@ -73,7 +73,7 @@ Do not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, l
 
 ## 原创黄色小人动作漫画短视频画面模板
 
-Tags: video / business / finance / tech-news / comic / character
+Tags: video / business / finance / tech-news / comic
 
 ```text
 Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.

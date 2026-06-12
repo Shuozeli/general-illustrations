@@ -123,6 +123,18 @@
       "image": "assets/yellow-worker-finance-video/reference.png"
     },
     {
+      "id": "mambo-meme-kafka",
+      "name": "Mambo Meme Kafka Lag",
+      "description": "Original Chinese short-video meme comic direction for Kafka lag, queues, offsets, and infrastructure pressure.",
+      "style_id": "mambo-meme-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "mambo-meme-video-frame",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
+      "image": "assets/mambo-meme-kafka/codex.png"
+    },
+    {
       "id": "coupon-worker-consumer-video",
       "name": "Coupon Worker Consumer Video",
       "description": "Action-first comic direction for coupons, app deals, subscription, and consumer behavior explainers.",
