@@ -51,6 +51,18 @@
       "image": "assets/cartoon-explainer-lsm/codex.png"
     },
     {
+      "id": "honglou-retro-banquet",
+      "name": "Honglou Retro Banquet",
+      "description": "Full-bleed retro flat TV anime keyframe direction for Hongloumeng literary video scenes.",
+      "style_id": "honglou-retro-flat-anime",
+      "composition_pattern_id": "state-scenes",
+      "prompt_template_id": "honglou-anime-video-frame",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "cartoon", "anime", "literary", "honglou"],
+      "image": "assets/honglou-retro-banquet/codex.png"
+    },
+    {
       "id": "whiteboard-lsm-tree",
       "name": "Whiteboard Engineering Story",
       "description": "Comic-like whiteboard frame for explaining engineering flows and before/after stories.",

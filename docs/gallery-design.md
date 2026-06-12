@@ -135,5 +135,6 @@ The first checked-in gallery keeps at least one card for every current
 `reference` are temporary visual anchors that should be replaced with purpose
 built examples.
 
-When adding a new style such as `mambo-meme-comic`, update the JSON tags, render
-the skill references, add a Gallery card, and include at least one demo image.
+When adding a new style such as `mambo-meme-comic` or
+`honglou-retro-flat-anime`, update the JSON tags, render the skill references,
+add a Gallery card, and include at least one demo image.
