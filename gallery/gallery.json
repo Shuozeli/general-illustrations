@@ -3,6 +3,18 @@
   "updated": "2026-06-12",
   "recipes": [
     {
+      "id": "clean-docs-overview",
+      "name": "Clean Docs Overview",
+      "description": "Quiet documentation-friendly illustration direction for README, docs, and product explanation pages.",
+      "style_id": "clean-docs",
+      "composition_pattern_id": "workflow",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "reference",
+      "tags": ["article", "docs", "minimal", "product"],
+      "image": "assets/clean-docs-overview/reference.png"
+    },
+    {
       "id": "technical-lsm-tree",
       "name": "Technical LSM Tree",
       "description": "Precise technical explainer diagram for database internals and systems docs.",
@@ -27,6 +39,18 @@
       "image": "assets/cartoon-lsm-tree/codex.png"
     },
     {
+      "id": "cartoon-explainer-lsm",
+      "name": "Cartoon Explainer LSM Tree",
+      "description": "Rounded character-friendly explainer direction for light technical stories and reaction-based visuals.",
+      "style_id": "cartoon-explainer",
+      "composition_pattern_id": "state-scenes",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "cartoon", "character", "humor"],
+      "image": "assets/cartoon-explainer-lsm/codex.png"
+    },
+    {
       "id": "whiteboard-lsm-tree",
       "name": "Whiteboard Engineering Story",
       "description": "Comic-like whiteboard frame for explaining engineering flows and before/after stories.",
@@ -49,6 +73,18 @@
       "status": "sample",
       "tags": ["video", "product", "sticker", "animation"],
       "image": "assets/sticker-layer-lsm-tree/codex.png"
+    },
+    {
+      "id": "product-explainer-api",
+      "name": "Product Explainer API Layers",
+      "description": "SaaS/docs-style product explanation direction for APIs, features, and capability layers.",
+      "style_id": "product-explainer",
+      "composition_pattern_id": "layered-method",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "reference",
+      "tags": ["product", "docs", "saas", "explainer"],
+      "image": "assets/product-explainer-api/reference.png"
     },
     {
       "id": "soft-clay-lsm-tree",
