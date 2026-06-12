@@ -1,4 +1,4 @@
-<!-- agent-updated: 2026-06-09T19:31:23Z -->
+<!-- agent-updated: 2026-06-10T19:59:44Z -->
 # Tasks
 
 ## Done
@@ -11,6 +11,7 @@
 - Add JSON skill spec, validator, renderer, and codelab.
 - Add GitHub Actions CI.
 - Add coupon-worker-comic recipe for action-first coupon and app-deal video frames.
+- Add mambo-meme-comic recipe for original Chinese short-video meme hooks in technical explainers.
 
 ## Next
 

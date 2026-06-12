@@ -230,6 +230,13 @@
       "avoid": "不要真实小黄人 IP 元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、Gru/Minions 式造型、3D 玩具质感都不要。不要优惠券专属场景绑死，不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。"
     },
     {
+      "id": "mambo-meme-comic",
+      "name": "mambo-meme-comic",
+      "use_when": "中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。",
+      "drawing_rule": "白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。",
+      "avoid": "不要复刻赛马娘、哈基米、翻车鱼之歌、现成猫猫梗、已有表情包、歌词、角色或音频视觉。不要夜店风、真实舞蹈人物、二次元 IP、满屏弹幕、鬼畜糊图、低清 meme 截图。不要为了搞笑牺牲技术可读性，也不要把 Kafka、Redis、数据库等组件画成错误机制。"
+    },
+    {
       "id": "whiteboard-comic",
       "tags": ["engineering", "teaching", "comic", "whiteboard", "before-after"],
       "name": "whiteboard-comic",
@@ -324,7 +331,12 @@
       "id": "single-image",
       "tags": ["image", "general", "article", "video"],
       "name": "生图提示词模板",
-      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+    },
+    {
+      "id": "mambo-meme-video-frame",
+      "name": "曼波抽象梗短视频画面模板",
+      "body": "Generate one 16:9 horizontal Chinese knowledge-video frame in the mambo-meme-comic style.\n\nTopic:\n{技术主题或工程故事主题，例如 Kafka 消息堆积 / 下单链路卡死 / consumer 追 offset / Redis 热点 key / 数据库慢查询}\n\nCore mechanism:\n{这张图必须讲清的机制，不能只搞笑，例如 append-only log / queue decoupling / backpressure / consumer lag / retry storm / cache miss}\n\nMeme action loop:\n{2-4 个循环动作 beat，例如 requests wobble into a queue -> service shakes under pressure -> Kafka log conveyor carries events -> consumers catch up by offset}\n\nComposition:\nWhite or very light background. Flat 2D, thick black outlines, original abstract characters or system components, no existing meme/IP characters. One large looping action scene should occupy 50%-70% of the canvas. Use small motion lines, repeated poses, bouncing arrows, beat marks, and a few saturated red/yellow/blue accents to create a catchy Chinese short-video meme rhythm. Leave clean subtitle/title space. The technical entities must remain recognizable: topic/log/consumer/offset/database/service should be visually distinct when used.\n\nShort labels only:\n{0-4 short readable labels such as ORDER / KAFKA LOG / OFFSET / LAG / DB / RETRY; skip labels if overlay text will be added later}\n\nConstraints:\nDo not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, lyrics, cats, known characters, or audio-specific references. Do not make a dance-club scene, real dancers, anime fan art, chaotic bullet comments, low-resolution meme collage, or pure nonsense. The joke energy is allowed only if the infrastructure mechanism is still clear."
     },
     {
       "id": "yellow-worker-video-frame",
@@ -364,6 +376,8 @@
       "短视频画面优先通过动作表达，不靠左侧大字或大段文字解释。",
       "coupon-worker-comic 必须是原创黄色票券/收据小工人，不能出现小黄人式护目镜、蓝色背带裤、胶囊身体或单眼大眼。",
       "yellow-worker-comic 必须是原创黄色小人/小工人动作漫画，不能出现真实小黄人 IP 元素，也不能被优惠券场景绑死。",
+      "mambo-meme-comic 必须是原创中文抽象梗感动作画面，不能复刻赛马娘、哈基米、翻车鱼之歌、现成表情包、歌词、角色或音频视觉。",
+      "mambo-meme-comic 的节奏感不能牺牲技术可读性；系统组件、队列、日志、consumer、offset 等机制元素必须能看懂。",
       "风格和用途匹配：文章、技术文档、review、短视频不能混用错。",
       "橙色只用于主路径或动作。",
       "红色只用于重点、问题、提醒或结果。",
@@ -379,6 +393,8 @@
       "中文错字严重或标注不可读。",
       "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
       "黄色小人短视频画面像真实小黄人、玩具吉祥物、海报封面或文字卡片，而不是原创动作漫画。",
+      "曼波梗画面像现成 IP、表情包截图、夜店舞蹈、满屏弹幕或纯搞笑乱图。",
+      "曼波梗画面只剩节奏感，看不出真实技术机制或系统状态。",
       "短视频画面没有明确动作 beat，后续很难做动画。",
       "技术图发明了不存在的组件。",
       "和 assets/examples/ 里的旧案例构图过于相似。"
@@ -419,6 +435,14 @@
       {
         "problem": "yellow-worker-comic 太依赖文字",
         "fix": "删掉左侧文字块和大标题，把机制改成一个动作：搭建服务器、拉光纤、搬资金、筛选公司、推开噪音或追逐风险信号。"
+      },
+      {
+        "problem": "mambo-meme-comic 太像现成梗或 IP",
+        "fix": "删掉任何可识别角色、歌词、猫猫梗、赛马娘/哈基米/翻车鱼视觉，改成原创抽象系统组件和循环动作。"
+      },
+      {
+        "problem": "mambo-meme-comic 看不懂机制",
+        "fix": "减少无关搞笑元素，明确画出请求、队列、日志传送带、consumer、offset 或故障状态，并只保留 0-4 个短标签。"
       }
     ],
     "delivery_judgment": "高质量图应该让读者 1 秒内看懂核心结构，并且愿意把它放进文章或短视频里。如果第一眼像模板页，而不是为当前内容专门画的一张解释图，就不合格。"

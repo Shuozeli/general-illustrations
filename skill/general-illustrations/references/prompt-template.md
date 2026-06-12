@@ -10,7 +10,7 @@ Tags: image / general / article / video
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
 Visual style:
-{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
+{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
 
 Visual DNA:
 Clean readable composition. White or very light background. One core idea only.
@@ -45,9 +45,35 @@ commercial illustration. Do not copy prior examples; invent a fresh visual
 metaphor for this specific content.
 ```
 
+## 曼波抽象梗短视频画面模板
+
+Tags: video / tech / meme / comic / infrastructure
+
+```text
+Generate one 16:9 horizontal Chinese knowledge-video frame in the mambo-meme-comic style.
+
+Topic:
+{技术主题或工程故事主题，例如 Kafka 消息堆积 / 下单链路卡死 / consumer 追 offset / Redis 热点 key / 数据库慢查询}
+
+Core mechanism:
+{这张图必须讲清的机制，不能只搞笑，例如 append-only log / queue decoupling / backpressure / consumer lag / retry storm / cache miss}
+
+Meme action loop:
+{2-4 个循环动作 beat，例如 requests wobble into a queue -> service shakes under pressure -> Kafka log conveyor carries events -> consumers catch up by offset}
+
+Composition:
+White or very light background. Flat 2D, thick black outlines, original abstract characters or system components, no existing meme/IP characters. One large looping action scene should occupy 50%-70% of the canvas. Use small motion lines, repeated poses, bouncing arrows, beat marks, and a few saturated red/yellow/blue accents to create a catchy Chinese short-video meme rhythm. Leave clean subtitle/title space. The technical entities must remain recognizable: topic/log/consumer/offset/database/service should be visually distinct when used.
+
+Short labels only:
+{0-4 short readable labels such as ORDER / KAFKA LOG / OFFSET / LAG / DB / RETRY; skip labels if overlay text will be added later}
+
+Constraints:
+Do not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, lyrics, cats, known characters, or audio-specific references. Do not make a dance-club scene, real dancers, anime fan art, chaotic bullet comments, low-resolution meme collage, or pure nonsense. The joke energy is allowed only if the infrastructure mechanism is still clear.
+```
+
 ## 原创黄色小人动作漫画短视频画面模板
 
-Tags: video / business / finance / tech-news / comic
+Tags: video / business / finance / tech-news / comic / character
 
 ```text
 Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.
