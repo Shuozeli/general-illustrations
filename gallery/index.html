@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>General Illustrations Gallery</title>
+    <meta
+      name="description"
+      content="Recipe gallery for provider-neutral illustration styles, composition patterns, prompt templates, and generated examples."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Shuozeli / general-illustrations</p>
+        <h1>Recipe Gallery</h1>
+      </div>
+      <p class="summary">
+        Browse reusable illustration recipes by use case, visual family, and
+        prompt structure. Each card links a style, composition pattern, prompt
+        template, tags, provider, and example output.
+      </p>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="Gallery filters">
+        <a href="#video">Video</a>
+        <a href="#technical">Technical</a>
+        <a href="#business">Business</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#all">All recipes</a>
+      </section>
+
+      <section class="intro-grid">
+        <div>
+          <h2>What This Shows</h2>
+          <p>
+            The gallery is the human-facing layer over the JSON spec. It makes
+            the recipe system inspectable before contributors edit
+            <code>specs/general-illustrations.json</code>.
+          </p>
+        </div>
+        <div>
+          <h2>Contribution Rule</h2>
+          <p>
+            New recipes should include tags, sample briefs, prompts, and local
+            example images. Generated skill Markdown remains an artifact, not
+            the authoring source.
+          </p>
+        </div>
+      </section>
+
+      <section id="all" class="recipe-grid" aria-label="Recipe cards">
+        <article class="recipe-card" id="technical">
+          <img src="assets/technical-lsm-tree/codex.png" alt="Technical minimal LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>technical-minimal</span>
+              <span>sample</span>
+            </div>
+            <h2>Technical LSM Tree</h2>
+            <p>Precise technical explainer diagram for database internals and systems docs.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>system-slice</dd></div>
+              <div><dt>Template</dt><dd>technical-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">technical / systems / minimal / diagram</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" id="video">
+          <img src="assets/cartoon-lsm-tree/codex.png" alt="Simple doodle LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>simple-doodle</span>
+              <span>sample</span>
+            </div>
+            <h2>Simple Doodle LSM Tree</h2>
+            <p>Lightweight cartoon explainer for short-form technical education.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">video / doodle / cartoon / technical</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" id="engineering">
+          <img src="assets/whiteboard-lsm-tree/codex.png" alt="Whiteboard comic LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>whiteboard-comic</span>
+              <span>sample</span>
+            </div>
+            <h2>Whiteboard Engineering Story</h2>
+            <p>Comic-like whiteboard frame for engineering flows and before/after stories.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>comic-panels</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">engineering / whiteboard / comic / teaching</p>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="assets/sticker-layer-lsm-tree/codex.png" alt="Sticker layer LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>sticker-layer</span>
+              <span>sample</span>
+            </div>
+            <h2>Sticker Layer Explainer</h2>
+            <p>Layered sticker-like diagram for product, component, and motion-friendly explainers.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>layered-method</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">video / product / sticker / animation</p>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="assets/soft-clay-lsm-tree/codex.png" alt="Soft clay LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>soft-clay-cartoon</span>
+              <span>sample</span>
+            </div>
+            <h2>Soft Clay Concept</h2>
+            <p>Rounded clay-like metaphor for approachable concept explanations.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">video / cartoon / clay / metaphor</p>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="assets/motion-editorial-lsm-tree/codex.png" alt="Motion editorial LSM Tree illustration" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>editorial-sketch</span>
+              <span>sample</span>
+            </div>
+            <h2>Motion Editorial Explainer</h2>
+            <p>Editorial visual metaphor with motion-ready spacing and short labels.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">article / editorial / video / metaphor</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" id="business">
+          <img src="assets/yellow-worker-finance-video/reference.png" alt="Yellow worker finance video reference" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>yellow-worker-comic</span>
+              <span>reference</span>
+            </div>
+            <h2>Yellow Worker Finance Video</h2>
+            <p>Original yellow worker comic direction for business, finance, and tech-news video frames.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>action-loop-scenes</dd></div>
+              <div><dt>Template</dt><dd>yellow-worker-video-frame</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">video / business / finance / tech-news / comic</p>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="assets/coupon-worker-consumer-video/reference.png" alt="Coupon worker consumer video reference" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>coupon-worker-comic</span>
+              <span>reference</span>
+            </div>
+            <h2>Coupon Worker Consumer Video</h2>
+            <p>Action-first comic direction for coupons, app deals, subscription, and consumer behavior explainers.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>action-loop-scenes</dd></div>
+              <div><dt>Template</dt><dd>yellow-worker-video-frame</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">video / business / consumer / coupon / comic</p>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="assets/code-review-risk-path/reference.png" alt="Code review risk path reference" />
+          <div class="card-body">
+            <div class="card-topline">
+              <span>review-minimal</span>
+              <span>reference</span>
+            </div>
+            <h2>Code Review Risk Path</h2>
+            <p>Visual recipe direction for code review risk, missing validation, and test gap explanations.</p>
+            <dl>
+              <div><dt>Pattern</dt><dd>before-after</dd></div>
+              <div><dt>Template</dt><dd>single-image</dd></div>
+              <div><dt>Provider</dt><dd>Codex</dd></div>
+            </dl>
+            <p class="tags">code-review / risk / engineering / minimal</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Source of truth:
+        <a href="https://github.com/Shuozeli/general-illustrations/blob/main/specs/general-illustrations.json">
+          specs/general-illustrations.json
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>

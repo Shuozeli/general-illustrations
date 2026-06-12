@@ -1,0 +1,114 @@
+{
+  "title": "General Illustrations Gallery",
+  "updated": "2026-06-12",
+  "recipes": [
+    {
+      "id": "technical-lsm-tree",
+      "name": "Technical LSM Tree",
+      "description": "Precise technical explainer diagram for database internals and systems docs.",
+      "style_id": "technical-minimal",
+      "composition_pattern_id": "system-slice",
+      "prompt_template_id": "technical-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["technical", "systems", "minimal", "diagram"],
+      "image": "assets/technical-lsm-tree/codex.png"
+    },
+    {
+      "id": "cartoon-lsm-tree",
+      "name": "Simple Doodle LSM Tree",
+      "description": "Lightweight cartoon explainer for short-form technical education.",
+      "style_id": "simple-doodle",
+      "composition_pattern_id": "concept-metaphor",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "doodle", "cartoon", "technical"],
+      "image": "assets/cartoon-lsm-tree/codex.png"
+    },
+    {
+      "id": "whiteboard-lsm-tree",
+      "name": "Whiteboard Engineering Story",
+      "description": "Comic-like whiteboard frame for explaining engineering flows and before/after stories.",
+      "style_id": "whiteboard-comic",
+      "composition_pattern_id": "comic-panels",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["engineering", "whiteboard", "comic", "teaching"],
+      "image": "assets/whiteboard-lsm-tree/codex.png"
+    },
+    {
+      "id": "sticker-layer-lsm-tree",
+      "name": "Sticker Layer Explainer",
+      "description": "Layered sticker-like diagram for product, component, and motion-friendly explainers.",
+      "style_id": "sticker-layer",
+      "composition_pattern_id": "layered-method",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "product", "sticker", "animation"],
+      "image": "assets/sticker-layer-lsm-tree/codex.png"
+    },
+    {
+      "id": "soft-clay-lsm-tree",
+      "name": "Soft Clay Concept",
+      "description": "Rounded clay-like metaphor for approachable concept explanations.",
+      "style_id": "soft-clay-cartoon",
+      "composition_pattern_id": "concept-metaphor",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["video", "cartoon", "clay", "metaphor"],
+      "image": "assets/soft-clay-lsm-tree/codex.png"
+    },
+    {
+      "id": "motion-editorial-lsm-tree",
+      "name": "Motion Editorial Explainer",
+      "description": "Editorial visual metaphor with motion-ready spacing and short labels.",
+      "style_id": "editorial-sketch",
+      "composition_pattern_id": "concept-metaphor",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "sample",
+      "tags": ["article", "editorial", "video", "metaphor"],
+      "image": "assets/motion-editorial-lsm-tree/codex.png"
+    },
+    {
+      "id": "yellow-worker-finance-video",
+      "name": "Yellow Worker Finance Video",
+      "description": "Original yellow worker comic direction for business, finance, and tech-news video frames.",
+      "style_id": "yellow-worker-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "yellow-worker-video-frame",
+      "provider": "codex",
+      "status": "reference",
+      "tags": ["video", "business", "finance", "tech-news", "comic"],
+      "image": "assets/yellow-worker-finance-video/reference.png"
+    },
+    {
+      "id": "coupon-worker-consumer-video",
+      "name": "Coupon Worker Consumer Video",
+      "description": "Action-first comic direction for coupons, app deals, subscription, and consumer behavior explainers.",
+      "style_id": "coupon-worker-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "yellow-worker-video-frame",
+      "provider": "codex",
+      "status": "reference",
+      "tags": ["video", "business", "consumer", "coupon", "comic"],
+      "image": "assets/coupon-worker-consumer-video/reference.png"
+    },
+    {
+      "id": "code-review-risk-path",
+      "name": "Code Review Risk Path",
+      "description": "Visual recipe direction for code review risk, missing validation, and test gap explanations.",
+      "style_id": "review-minimal",
+      "composition_pattern_id": "before-after",
+      "prompt_template_id": "single-image",
+      "provider": "codex",
+      "status": "reference",
+      "tags": ["code-review", "risk", "engineering", "minimal"],
+      "image": "assets/code-review-risk-path/reference.png"
+    }
+  ]
+}

@@ -117,3 +117,15 @@ Group cards by:
 8. Submit the JSON, generated gallery, prompts, and images together.
 
 Do not contribute a recipe without tags, sample briefs, and example images.
+
+## Deployment
+
+The first gallery is deployed through GitHub Pages from the checked-in
+`gallery/` directory:
+
+```text
+https://shuozeli.github.io/general-illustrations/
+```
+
+The Pages workflow uploads the directory as a static artifact. No Node or Rust
+build step is required for the first version.

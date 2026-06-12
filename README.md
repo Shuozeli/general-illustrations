@@ -2,6 +2,12 @@
 
 Provider-neutral illustration recipes and image generation adapters for agents.
 
+Gallery:
+
+```text
+https://shuozeli.github.io/general-illustrations/
+```
+
 `general-illustrations` separates three concerns:
 
 - Recipes: what kind of image should be made.
