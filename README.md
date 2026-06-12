@@ -137,6 +137,7 @@ shape, prompt length, response format, auth, and errors.
 ## Docs
 
 - [Architecture](docs/architecture.md)
+- [Gallery Design](docs/gallery-design.md)
 - [Skill Generation Design](docs/skill-generation-design.md)
 - [Skill Generation Codelab](docs/codelabs/skill-generation.md)
 - [Tasks](docs/tasks.md)

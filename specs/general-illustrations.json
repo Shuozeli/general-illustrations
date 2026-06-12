@@ -159,6 +159,7 @@
   "styles": [
     {
       "id": "clean-docs",
+      "tags": ["article", "docs", "minimal", "product"],
       "name": "clean-docs",
       "use_when": "README、文档、产品解释、普通文章配图。",
       "drawing_rule": "白底或浅底，少量几何形状，清晰层级，短标注，克制配色。",
@@ -166,6 +167,7 @@
     },
     {
       "id": "technical-minimal",
+      "tags": ["technical", "systems", "minimal", "docs"],
       "name": "technical-minimal",
       "use_when": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
       "drawing_rule": "清晰盒子、箭头、层级、边界、存储对象。信息准确优先，审美其次。",
@@ -173,6 +175,7 @@
     },
     {
       "id": "review-minimal",
+      "tags": ["code-review", "risk", "minimal", "engineering"],
       "name": "review-minimal",
       "use_when": "代码 review、bug path、风险传播、测试缺口、before/after。",
       "drawing_rule": "中性底色，一个红色风险点，一个蓝色修复/验证点，突出坏路径。",
@@ -180,6 +183,7 @@
     },
     {
       "id": "editorial-sketch",
+      "tags": ["article", "editorial", "sketch", "metaphor"],
       "name": "editorial-sketch",
       "use_when": "文章观点、方法论、抽象隐喻、认知转折。",
       "drawing_rule": "手绘感、轻微抖动线条、大留白、少量标注、一个具体物理隐喻。",
@@ -187,6 +191,7 @@
     },
     {
       "id": "product-explainer",
+      "tags": ["product", "docs", "saas", "explainer"],
       "name": "product-explainer",
       "use_when": "产品能力、feature 介绍、工具说明、docs intro。",
       "drawing_rule": "安静的 SaaS/docs 感，少量简化 UI 或抽象功能块。",
@@ -194,6 +199,7 @@
     },
     {
       "id": "simple-doodle",
+      "tags": ["video", "doodle", "cartoon", "lightweight"],
       "name": "simple-doodle",
       "use_when": "短视频知识图、轻量技术解释、儿童感不能太强的简笔画。",
       "drawing_rule": "白底，马克笔线条，简单物件，大留白，1-2 个强调色。",
@@ -201,6 +207,7 @@
     },
     {
       "id": "cartoon-explainer",
+      "tags": ["video", "cartoon", "character", "humor"],
       "name": "cartoon-explainer",
       "use_when": "需要角色、反应、冲突、轻幽默的解释图。",
       "drawing_rule": "圆润简化物件，可以有人物或小角色，但不要固定 IP，不要卖萌。",
@@ -208,6 +215,7 @@
     },
     {
       "id": "coupon-worker-comic",
+      "tags": ["video", "business", "consumer", "comic", "character", "coupon"],
       "name": "coupon-worker-comic",
       "use_when": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理和商业模式短视频，需要用角色动作解释机制。",
       "drawing_rule": "白底或极浅底，黑色手绘线条，原创黄色票券/收据/豆形小工人角色，扁平 2D，短腿短手，动作夸张但不卖萌。每张图只放一个核心动作：锤价格、搬优惠券、追倒计时、分拣顾客、把数据装袋、锁住未来选择。文字只用 1-4 个短标签，角色和道具承担主要叙事。",
@@ -215,6 +223,7 @@
     },
     {
       "id": "yellow-worker-comic",
+      "tags": ["video", "business", "finance", "tech-news", "comic", "character"],
       "name": "yellow-worker-comic",
       "use_when": "财经、商业、消费、科技、公司新闻或知识短视频，需要一种接近“小黄人式群体动作感”但完全原创、可泛化的黄色小人动作漫画风格。",
       "drawing_rule": "白底或极浅底，黑色粗手绘线条，原创黄色小工人角色，扁平 2D，短手短腿，点状眼睛，表情简单，动作夸张。角色可以是票券形、豆形、方块形或圆角小人，但不能固定成优惠券道具。每张图只讲一个核心动作：搬运资金、搭建服务器、拉光纤、举价格表、筛选公司、推开噪音纸张、围观火箭、追逐风险信号。道具承担主要叙事，文字只用 0-4 个短标签，并给后期标题/字幕留出干净空间。",
@@ -222,6 +231,7 @@
     },
     {
       "id": "whiteboard-comic",
+      "tags": ["engineering", "teaching", "comic", "whiteboard", "before-after"],
       "name": "whiteboard-comic",
       "use_when": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
       "drawing_rule": "白板线稿，2-4 格分镜，少量箭头和动作线，一个问题一个结果。",
@@ -229,6 +239,7 @@
     },
     {
       "id": "sticker-layer",
+      "tags": ["video", "product", "sticker", "layered", "animation"],
       "name": "sticker-layer",
       "use_when": "短视频动画拆层、组件介绍、流程分解。",
       "drawing_rule": "扁平贴纸物件，清晰描边，前中后景分层，大物件可单独 pop-in。",
@@ -236,6 +247,7 @@
     },
     {
       "id": "soft-clay-cartoon",
+      "tags": ["video", "cartoon", "clay", "metaphor"],
       "name": "soft-clay-cartoon",
       "use_when": "概念隐喻、视频插图、轻松技术解释。",
       "drawing_rule": "柔软圆润的 clay/toy-like 物件，简单光照，少文字，大形状。",
@@ -245,54 +257,63 @@
   "composition_patterns": [
     {
       "id": "workflow",
+      "tags": ["flow", "process", "pipeline"],
       "name": "Workflow 流程",
       "use_when": "输入 -> 处理 -> 输出，AI 工作流，内容生产，系统链路。",
       "drawing_rule": "左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。"
     },
     {
       "id": "system-slice",
+      "tags": ["technical", "systems", "architecture", "boundary"],
       "name": "系统局部",
       "use_when": "数据库、RPC、缓存、队列、agent 系统局部、技术组件。",
       "drawing_rule": "只画 3-6 个核心模块，突出一个关键边界或关键动作。"
     },
     {
       "id": "before-after",
+      "tags": ["before-after", "comparison", "transformation"],
       "name": "前后对比",
       "use_when": "混乱/有序，手动/自动，本地/云端，慢/快，失败/修复。",
       "drawing_rule": "左混乱，右稳定，中间转化动作或箭头。"
     },
     {
       "id": "state-scenes",
+      "tags": ["state", "character", "pain-point"],
       "name": "角色状态",
       "use_when": "用户痛点、开发者状态、信息焦虑、工具太多、卡住到跑起来。",
       "drawing_rule": "2-4 个小状态，每个状态一个短标注。"
     },
     {
       "id": "concept-metaphor",
+      "tags": ["metaphor", "concept", "editorial"],
       "name": "概念隐喻",
       "use_when": "抽象观点、技术概念、内容系统、存储结构、后台整理。",
       "drawing_rule": "一个大的物件或机器，少量输入，一个输出。要有记忆点。"
     },
     {
       "id": "layered-method",
+      "tags": ["layers", "method", "framework"],
       "name": "方法分层",
       "use_when": "方法论框架、系统层级、能力栈、存储层级。",
       "drawing_rule": "一层层盒子、托盘、架子、抽屉、纸片，不要正式金字塔。"
     },
     {
       "id": "route-map",
+      "tags": ["route", "journey", "learning-path"],
       "name": "地图路线",
       "use_when": "从想法到上线、用户路径、学习路线、数据流转。",
       "drawing_rule": "一条弯曲路径，少量节点，明确起点和终点。"
     },
     {
       "id": "comic-panels",
+      "tags": ["comic", "story", "before-after", "engineering"],
       "name": "小漫画分镜",
       "use_when": "失败到成功、使用前后变化、bug 发生路径、工程故事。",
       "drawing_rule": "2-4 个小场景，每格只表达一个动作。"
     },
     {
       "id": "action-loop-scenes",
+      "tags": ["video", "action-loop", "animation", "business"],
       "name": "动作循环场景",
       "use_when": "短视频配图、动画 slide、商业机制解释、消费心理解释，需要一张图能拆成 2-4 个可循环动作 beat。",
       "drawing_rule": "单一场景中安排一个可见动作链：角色进入、角色改变物件、结果被强调。主体占 50%-70%，保留字幕区，动作线和物件运动方向清楚。不要依赖段落文字，优先用追、拉、锤、推、搬、锁、塞、分拣等动作表达逻辑。"
@@ -301,26 +322,31 @@
   "prompt_templates": [
     {
       "id": "single-image",
+      "tags": ["image", "general", "article", "video"],
       "name": "生图提示词模板",
       "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
     },
     {
       "id": "yellow-worker-video-frame",
+      "tags": ["video", "business", "finance", "tech-news", "comic"],
       "name": "原创黄色小人动作漫画短视频画面模板",
       "body": "Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.\n\nTopic:\n{财经、商业、消费、科技、公司新闻、AI 基建、供应链、监管、估值或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 capital expenditure / pricing power / price war / margin pressure / valuation demand / regulatory risk / cash-flow lock-in}\n\nMain action:\n{只选一个动作：building a data center / carrying cash into servers / pulling fiber cables / turning a price dial / sorting company cards / pushing away noisy headlines / inflating a valuation balloon / comparing revenue and margin piles}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles and later title overlay. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, simple props, and visible motion lines. Make it feel like an action beat from a smart business or finance explainer, not a poster.\n\nShort labels only:\n{0-4 readable labels such as AI CAPEX / FIBER / MARGIN / PRICE WAR / RISK / CASH FLOW; labels are optional and should be skipped when overlay text will be added later}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no Gru/Minions-style design, no 3D toy rendering. Avoid coupon-only props unless the topic is actually about coupons. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
     },
     {
       "id": "technical-image",
+      "tags": ["image", "technical", "systems", "diagram"],
       "name": "技术图提示词",
       "body": "Generate one clean 16:9 technical explainer diagram.\n\nTopic:\n{技术主题}\n\nEntities:\n{实体列表}\n\nFlow:\n{写入路径 / 读取路径 / 状态变化 / 风险路径}\n\nHighlight:\n{最重要的边界、tradeoff 或机制}\n\nStyle:\ntechnical-minimal, clean-docs, or whiteboard-comic.\n\nLabels only:\n{短标注列表}\n\nConstraints:\nUse precise boxes, arrows, shelves, layers, or paths. Do not invent components.\nDo not add long paragraphs. Make it useful for a technical blog or video."
     },
     {
       "id": "remove-title-edit",
+      "tags": ["edit", "cleanup", "text-removal"],
       "name": "图像编辑提示：去掉左上角标题",
       "body": "Edit the provided image. Remove only the title \"{要删除的文字}\" and its underline\nfrom the top-left corner. Fill that area with the same clean background. Preserve\neverything else exactly: objects, labels, paths, line style, composition, aspect\nratio, and image quality. Do not add any new text or objects."
     },
     {
       "id": "reduce-cuteness-edit",
+      "tags": ["edit", "style-adjustment", "cartoon"],
       "name": "图像编辑提示：降低幼稚感",
       "body": "Regenerate this illustration with the same core meaning and layout, but make it\nless cute and more like a clean technical explainer. Keep rounded simplified\nobjects, but reduce toy-like expressions, bright candy colors, and mascot energy.\nUse sparse labels and a clean white background."
     }

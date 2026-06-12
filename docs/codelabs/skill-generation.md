@@ -39,6 +39,8 @@ Use the existing spec shape:
 Rules:
 
 - `name` and all ids must be lowercase kebab-case.
+- `tags` must be lowercase kebab-case and should use existing gallery tags
+  where possible.
 - `default_prompt` must include `$<skill-name>`.
 - Keep visual content in JSON fields, not in Markdown files.
 - Keep examples as assets. The JSON should point to them by path.

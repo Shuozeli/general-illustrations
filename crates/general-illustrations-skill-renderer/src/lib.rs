@@ -215,6 +215,7 @@ fn render_styles(spec: &SkillSpec) -> String {
     for style in &spec.styles {
         push_line(&mut output, &format!("## {}", style.name));
         push_line(&mut output, "");
+        push_tags(&mut output, &style.tags);
         push_line(&mut output, &format!("适合：{}", style.use_when));
         push_line(&mut output, "");
         push_line(&mut output, &format!("画法：{}", style.drawing_rule));
@@ -238,6 +239,7 @@ fn render_composition_patterns(spec: &SkillSpec) -> String {
     for pattern in &spec.composition_patterns {
         push_line(&mut output, &format!("### {}", pattern.name));
         push_line(&mut output, "");
+        push_tags(&mut output, &pattern.tags);
         push_line(&mut output, &format!("适合：{}", pattern.use_when));
         push_line(&mut output, "");
         push_line(&mut output, &format!("画法：{}", pattern.drawing_rule));
@@ -303,6 +305,7 @@ fn render_prompt_templates(spec: &SkillSpec) -> String {
     for template in &spec.prompt_templates {
         push_line(&mut output, &format!("## {}", template.name));
         push_line(&mut output, "");
+        push_tags(&mut output, &template.tags);
         push_line(&mut output, "```text");
         push_line(&mut output, template.body.trim());
         push_line(&mut output, "```");
@@ -353,6 +356,15 @@ fn push_list_section(output: &mut String, title: &str, items: &[String]) {
     for item in items {
         push_line(output, &format!("- {item}"));
     }
+    push_line(output, "");
+}
+
+fn push_tags(output: &mut String, tags: &[String]) {
+    if tags.is_empty() {
+        return;
+    }
+
+    push_line(output, &format!("Tags: {}", tags.join(" / ")));
     push_line(output, "");
 }
 
@@ -452,6 +464,7 @@ mod tests {
             }],
             styles: vec![StyleSpec {
                 id: "clean-docs".to_string(),
+                tags: vec!["article".to_string(), "docs".to_string()],
                 name: "clean-docs".to_string(),
                 use_when: "文档配图。".to_string(),
                 drawing_rule: "白底短标注。".to_string(),
@@ -459,12 +472,14 @@ mod tests {
             }],
             composition_patterns: vec![CompositionPatternSpec {
                 id: "workflow".to_string(),
+                tags: vec!["flow".to_string()],
                 name: "Workflow 流程".to_string(),
                 use_when: "输入到输出。".to_string(),
                 drawing_rule: "左到右。".to_string(),
             }],
             prompt_templates: vec![PromptTemplateSpec {
                 id: "single-image".to_string(),
+                tags: vec!["image".to_string()],
                 name: "生图提示词模板".to_string(),
                 body: "Generate one image.".to_string(),
             }],

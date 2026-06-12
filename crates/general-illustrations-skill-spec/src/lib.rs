@@ -62,6 +62,8 @@ pub struct WorkflowStepSpec {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StyleSpec {
     pub id: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
     pub name: String,
     pub use_when: String,
     pub drawing_rule: String,
@@ -71,6 +73,8 @@ pub struct StyleSpec {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct CompositionPatternSpec {
     pub id: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
     pub name: String,
     pub use_when: String,
     pub drawing_rule: String,
@@ -79,6 +83,8 @@ pub struct CompositionPatternSpec {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PromptTemplateSpec {
     pub id: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
     pub name: String,
     pub body: String,
 }
@@ -190,6 +196,9 @@ impl SkillSpec {
             self.styles.iter().map(|style| &style.id),
             &mut problems,
         );
+        for style in &self.styles {
+            validate_tags(&format!("styles.{}", style.id), &style.tags, &mut problems);
+        }
 
         if self.composition_patterns.is_empty() {
             problems.push("composition_patterns must contain at least one pattern".to_string());
@@ -199,6 +208,13 @@ impl SkillSpec {
             self.composition_patterns.iter().map(|pattern| &pattern.id),
             &mut problems,
         );
+        for pattern in &self.composition_patterns {
+            validate_tags(
+                &format!("composition_patterns.{}", pattern.id),
+                &pattern.tags,
+                &mut problems,
+            );
+        }
 
         if self.prompt_templates.is_empty() {
             problems.push("prompt_templates must contain at least one template".to_string());
@@ -208,6 +224,13 @@ impl SkillSpec {
             self.prompt_templates.iter().map(|template| &template.id),
             &mut problems,
         );
+        for template in &self.prompt_templates {
+            validate_tags(
+                &format!("prompt_templates.{}", template.id),
+                &template.tags,
+                &mut problems,
+            );
+        }
 
         if self.qa.must_pass.is_empty() {
             problems.push("qa.must_pass must contain at least one item".to_string());
@@ -229,6 +252,20 @@ impl SkillSpec {
             Err(ValidationError {
                 problems: ValidationProblems(problems),
             })
+        }
+    }
+}
+
+fn validate_tags(label: &str, tags: &[String], problems: &mut Vec<String>) {
+    let mut seen = HashSet::new();
+
+    for tag in tags {
+        if !is_kebab_case(tag) {
+            problems.push(format!("{label}.tags.{tag} must be lowercase kebab-case"));
+        }
+
+        if !seen.insert(tag) {
+            problems.push(format!("{label}.tags.{tag} is duplicated"));
         }
     }
 }
@@ -320,6 +357,23 @@ mod tests {
         );
     }
 
+    #[test]
+    fn rejects_invalid_tags() {
+        // Arrange
+        let mut spec = valid_spec();
+        spec.styles[0].tags = vec!["Video".to_string(), "Video".to_string()];
+
+        // Act
+        let error = spec.validate().unwrap_err();
+
+        // Assert
+        assert!(
+            error
+                .problems()
+                .contains(&"styles.clean-docs.tags.Video must be lowercase kebab-case".to_string())
+        );
+    }
+
     fn valid_spec() -> SkillSpec {
         SkillSpec {
             schema_version: 1,
@@ -354,6 +408,7 @@ mod tests {
             }],
             styles: vec![StyleSpec {
                 id: "clean-docs".to_string(),
+                tags: vec!["article".to_string(), "docs".to_string()],
                 name: "clean-docs".to_string(),
                 use_when: "文档配图。".to_string(),
                 drawing_rule: "白底短标注。".to_string(),
@@ -361,12 +416,14 @@ mod tests {
             }],
             composition_patterns: vec![CompositionPatternSpec {
                 id: "workflow".to_string(),
+                tags: vec!["flow".to_string()],
                 name: "Workflow 流程".to_string(),
                 use_when: "输入到输出。".to_string(),
                 drawing_rule: "左到右。".to_string(),
             }],
             prompt_templates: vec![PromptTemplateSpec {
                 id: "single-image".to_string(),
+                tags: vec!["image".to_string()],
                 name: "生图提示词模板".to_string(),
                 body: "Generate one image.".to_string(),
             }],

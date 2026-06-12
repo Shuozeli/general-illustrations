@@ -6,11 +6,15 @@
 
 ### Workflow 流程
 
+Tags: flow / process / pipeline
+
 适合：输入 -> 处理 -> 输出，AI 工作流，内容生产，系统链路。
 
 画法：左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。
 
 ### 系统局部
+
+Tags: technical / systems / architecture / boundary
 
 适合：数据库、RPC、缓存、队列、agent 系统局部、技术组件。
 
@@ -18,11 +22,15 @@
 
 ### 前后对比
 
+Tags: before-after / comparison / transformation
+
 适合：混乱/有序，手动/自动，本地/云端，慢/快，失败/修复。
 
 画法：左混乱，右稳定，中间转化动作或箭头。
 
 ### 角色状态
+
+Tags: state / character / pain-point
 
 适合：用户痛点、开发者状态、信息焦虑、工具太多、卡住到跑起来。
 
@@ -30,11 +38,15 @@
 
 ### 概念隐喻
 
+Tags: metaphor / concept / editorial
+
 适合：抽象观点、技术概念、内容系统、存储结构、后台整理。
 
 画法：一个大的物件或机器，少量输入，一个输出。要有记忆点。
 
 ### 方法分层
+
+Tags: layers / method / framework
 
 适合：方法论框架、系统层级、能力栈、存储层级。
 
@@ -42,17 +54,23 @@
 
 ### 地图路线
 
+Tags: route / journey / learning-path
+
 适合：从想法到上线、用户路径、学习路线、数据流转。
 
 画法：一条弯曲路径，少量节点，明确起点和终点。
 
 ### 小漫画分镜
 
+Tags: comic / story / before-after / engineering
+
 适合：失败到成功、使用前后变化、bug 发生路径、工程故事。
 
 画法：2-4 个小场景，每格只表达一个动作。
 
 ### 动作循环场景
+
+Tags: video / action-loop / animation / business
 
 适合：短视频配图、动画 slide、商业机制解释、消费心理解释，需要一张图能拆成 2-4 个可循环动作 beat。
 

@@ -24,6 +24,8 @@ system is no longer pinned to one visual identity or one image shape:
 - Prompt templates are independent from providers.
 - Providers are adapters under a unified request/response API.
 - Examples are calibration assets, not templates to copy.
+- Tags make styles, prompt templates, composition patterns, and future recipes
+  groupable in a Gallery.
 
 That means a future agent or service can create, validate, store, and render a
 new illustration skill through structured data. It can add a style without

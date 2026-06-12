@@ -138,6 +138,7 @@ Defines one visual style.
 ```json
 {
   "id": "whiteboard-comic",
+  "tags": ["engineering", "teaching", "comic", "whiteboard"],
   "name": "whiteboard-comic",
   "use_when": "工程故事、bug 解释、before/after。",
   "drawing_rule": "白板线稿，2-4 格分镜，少量箭头和动作线。",
@@ -152,6 +153,7 @@ Defines one structure type.
 ```json
 {
   "id": "workflow",
+  "tags": ["flow", "process", "pipeline"],
   "name": "Workflow 流程",
   "use_when": "输入 -> 处理 -> 输出，AI 工作流。",
   "drawing_rule": "左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。"
@@ -165,6 +167,7 @@ Defines reusable prompt templates.
 ```json
 {
   "id": "default-image",
+  "tags": ["image", "general"],
   "name": "Default Image Prompt",
   "body": "Generate one standalone 16:9 horizontal..."
 }
