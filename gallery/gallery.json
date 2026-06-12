@@ -10,7 +10,7 @@
       "composition_pattern_id": "workflow",
       "prompt_template_id": "single-image",
       "provider": "codex",
-      "status": "reference",
+      "status": "sample",
       "tags": ["article", "docs", "minimal", "product"],
       "image": "assets/clean-docs-overview/reference.png"
     },
@@ -94,7 +94,7 @@
       "composition_pattern_id": "layered-method",
       "prompt_template_id": "single-image",
       "provider": "codex",
-      "status": "reference",
+      "status": "sample",
       "tags": ["product", "docs", "saas", "explainer"],
       "image": "assets/product-explainer-api/reference.png"
     },
@@ -130,7 +130,7 @@
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "yellow-worker-video-frame",
       "provider": "codex",
-      "status": "reference",
+      "status": "sample",
       "tags": ["video", "business", "finance", "tech-news", "comic"],
       "image": "assets/yellow-worker-finance-video/reference.png"
     },
@@ -154,7 +154,7 @@
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "yellow-worker-video-frame",
       "provider": "codex",
-      "status": "reference",
+      "status": "sample",
       "tags": ["video", "business", "consumer", "coupon", "comic"],
       "image": "assets/coupon-worker-consumer-video/reference.png"
     },
@@ -166,7 +166,7 @@
       "composition_pattern_id": "before-after",
       "prompt_template_id": "single-image",
       "provider": "codex",
-      "status": "reference",
+      "status": "sample",
       "tags": ["code-review", "risk", "engineering", "minimal"],
       "image": "assets/code-review-risk-path/reference.png"
     }

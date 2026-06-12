@@ -130,10 +130,9 @@ https://shuozeli.github.io/general-illustrations/
 The Pages workflow uploads the directory as a static artifact. No Node or Rust
 build step is required for the first version.
 
-The first checked-in gallery keeps at least one card for every current
-`StyleSpec`. Cards marked `sample` are closer to the target recipe. Cards marked
-`reference` are temporary visual anchors that should be replaced with purpose
-built examples.
+The checked-in gallery keeps at least one card for every current `StyleSpec`.
+Cards should be marked `sample` only after a project-local image has been
+generated specifically for that recipe.
 
 When adding a new style such as `mambo-meme-comic` or
 `honglou-retro-flat-anime`, update the JSON tags, render the skill references,
