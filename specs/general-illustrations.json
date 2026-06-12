@@ -9,7 +9,8 @@
     "title": "核心定位",
     "body": [
       "为中文文章、技术文档和短视频知识内容设计并生成 16:9 横版配图。目标不是做商业插画、PPT 信息图或封面海报，而是把内容里的关键判断、流程、结构、状态或隐喻，变成一张清爽、有创意、可读、适合正文或视频使用的解释图。",
-      "这个 skill 不绑定固定 IP。和小黑项目的差异只有一个：这里可以在多个预置风格之间选择，例如简笔画、白板漫画、贴纸图层、技术极简、软黏土卡通。除此之外，工作流、构图原则、shot list、QA 和交付方式都按小黑项目的方式执行。"
+      "这个 skill 不绑定固定 IP。和小黑项目的差异只有一个：这里可以在多个预置风格之间选择，例如简笔画、白板漫画、贴纸图层、技术极简、软黏土卡通。除此之外，工作流、构图原则、shot list、QA 和交付方式都按小黑项目的方式执行。",
+      "所有图片相关 Recipe 都应该优先写在本仓库的 specs/general-illustrations.json 中，再渲染到 skill/general-illustrations。不要在视频项目、文章项目或临时 run 目录里长期维护独立图片 Recipe；那些地方最多保留项目级引用、样例或产物记录。"
     ]
   },
   "style_dna": {
@@ -214,6 +215,14 @@
       "avoid": "表情包、二次元、儿童卡通、可爱吉祥物海报。"
     },
     {
+      "id": "honglou-retro-flat-anime",
+      "tags": ["video", "cartoon", "anime", "literary", "honglou"],
+      "name": "honglou-retro-flat-anime",
+      "use_when": "红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、需要 1980s/1990s 电视动画感和人物表演感的连续分镜。",
+      "drawing_rule": "16:9 full-bleed flat retro 2D TV anime cel frame, no border, no margins. Use simplified original Qing-era-inspired characters, thick clean outlines, large flat color shapes, limited shading, almost no texture, readable adult face shapes, restrained hair ornaments, and old painted TV animation backgrounds. For actor-comedy runs, faces should have original period-drama actor-like specificity: distinct eyes, readable adult structure, expressive emotions, not chibi. Use classical Chinese garden, mansion, pavilion, banquet, corridor, chamber, pond, moonlight and lantern settings reduced to clear shape language. For wide banquet shots, imply the banquet with empty chairs, simple table shapes, lanterns and moonlight instead of dense crowds or ornate feast detail.",
+      "avoid": "不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印，不要 chibi、Q版、吉祥物化人物，不要 3D/Pixar/玩具/黏土/光滑渲染，不要真人照片感，不要现代服装、电灯、麦克风、相机、UI 或游戏界面，不要现代国风海报、游戏 splash art、水墨插画、繁复头饰、密集刺绣、餐具和园林细节，不要借用现成动漫、影视演员、IP 角色、脸、轮廓、服装或标志性道具。"
+    },
+    {
       "id": "coupon-worker-comic",
       "tags": ["video", "business", "consumer", "comic", "character", "coupon"],
       "name": "coupon-worker-comic",
@@ -332,7 +341,13 @@
       "id": "single-image",
       "tags": ["image", "general", "article", "video"],
       "name": "生图提示词模板",
-      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+    },
+    {
+      "id": "honglou-anime-video-frame",
+      "tags": ["video", "cartoon", "anime", "literary", "honglou"],
+      "name": "红楼梦复古电视动画视频关键帧模板",
+      "body": "Generate one 16:9 full-bleed Hongloumeng / 红楼梦 video keyframe in the honglou-retro-flat-anime style.\n\nStory beat:\n{一个具体红楼梦情节或评论段落，例如 中秋夜宴空座 / 王熙凤病中看账 / 大观园抄检 / 晴雯倒箱 / 探春反击 / 凹晶馆冷月联诗}\n\nCharacters:\n{本镜头人物。Use simplified original Qing-era-inspired characters. For actor-comedy runs, give them original period-drama actor-like facial specificity: distinct eyes, readable adult facial structure, expressive emotions, not chibi. Do not copy any real actor, existing anime, TV adaptation, or IP character.}\n\nEnvironment:\n{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard, reduced to clean old painted TV animation background shapes}\n\nMood:\n{冷清 / 表面热闹但心虚 / 荒诞轻喜剧 / 家族衰败 / 诗意寒意 / 尴尬体面}\n\nComposition:\n{wide / medium / close。Keep staging readable. Use empty chairs, simplified tables, lanterns, moonlight, corridor depth, medicine bowls, account books, trunks, or cold pond reflections as symbolic props. For banquet shots, avoid dense crowds and ornate table detail.}\n\nStyle:\nFlat 1980s/1990s retro 2D TV anime cel frame. Thick clean outlines, large flat color shapes, limited shading, almost no texture, pastel moon blue / muted teal / warm lantern orange / pale rose / soft jade / low-saturation purple. Full-bleed image, no border, no margins, no white slide canvas.\n\nText policy:\nNo in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles and 5-second cover title are added by the render stage, not inside the generated source image.\n\nHard negatives:\nNo Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No chibi, super-deformed, mascot-only characters. No 3D, Pixar-like, plastic toy, clay, glossy render, photorealistic live-action frame, modern clothing, electric lights, microphones, cameras, UI, game interface, modern guofeng poster art, game splash art, ink-wash illustration, dense hair ornaments, dense embroidery, dense tableware, borrowed copyrighted characters, existing actor faces, signature costumes, or IP props."
     },
     {
       "id": "mambo-meme-video-frame",
@@ -342,7 +357,7 @@
     },
     {
       "id": "yellow-worker-video-frame",
-      "tags": ["video", "business", "finance", "tech-news", "comic"],
+      "tags": ["video", "business", "finance", "tech-news", "comic", "character"],
       "name": "原创黄色小人动作漫画短视频画面模板",
       "body": "Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.\n\nTopic:\n{财经、商业、消费、科技、公司新闻、AI 基建、供应链、监管、估值或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 capital expenditure / pricing power / price war / margin pressure / valuation demand / regulatory risk / cash-flow lock-in}\n\nMain action:\n{只选一个动作：building a data center / carrying cash into servers / pulling fiber cables / turning a price dial / sorting company cards / pushing away noisy headlines / inflating a valuation balloon / comparing revenue and margin piles}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles and later title overlay. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, simple props, and visible motion lines. Make it feel like an action beat from a smart business or finance explainer, not a poster.\n\nShort labels only:\n{0-4 readable labels such as AI CAPEX / FIBER / MARGIN / PRICE WAR / RISK / CASH FLOW; labels are optional and should be skipped when overlay text will be added later}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no Gru/Minions-style design, no 3D toy rendering. Avoid coupon-only props unless the topic is actually about coupons. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
     },
@@ -378,6 +393,7 @@
       "短视频画面优先通过动作表达，不靠左侧大字或大段文字解释。",
       "coupon-worker-comic 必须是原创黄色票券/收据小工人，不能出现小黄人式护目镜、蓝色背带裤、胶囊身体或单眼大眼。",
       "yellow-worker-comic 必须是原创黄色小人/小工人动作漫画，不能出现真实小黄人 IP 元素，也不能被优惠券场景绑死。",
+      "honglou-retro-flat-anime 必须是原创红楼梦复古电视动画关键帧：full-bleed、无白边、无图片内字幕/标题、原创人物脸和服饰，不借用影视演员或现成 IP。",
       "mambo-meme-comic 必须是原创中文抽象梗感动作画面，不能复刻赛马娘、哈基米、翻车鱼之歌、现成表情包、歌词、角色或音频视觉。",
       "mambo-meme-comic 的节奏感不能牺牲技术可读性；系统组件、队列、日志、consumer、offset 等机制元素必须能看懂。",
       "风格和用途匹配：文章、技术文档、review、短视频不能混用错。",
@@ -395,6 +411,7 @@
       "中文错字严重或标注不可读。",
       "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
       "黄色小人短视频画面像真实小黄人、玩具吉祥物、海报封面或文字卡片，而不是原创动作漫画。",
+      "红楼梦关键帧像现代国风海报、游戏立绘、精致概念艺术、白色 slide canvas、真人剧照、现成影视演员脸，或图片里直接写了大标题/字幕。",
       "曼波梗画面像现成 IP、表情包截图、夜店舞蹈、满屏弹幕或纯搞笑乱图。",
       "曼波梗画面只剩节奏感，看不出真实技术机制或系统状态。",
       "短视频画面没有明确动作 beat，后续很难做动画。",
@@ -437,6 +454,14 @@
       {
         "problem": "yellow-worker-comic 太依赖文字",
         "fix": "删掉左侧文字块和大标题，把机制改成一个动作：搭建服务器、拉光纤、搬资金、筛选公司、推开噪音或追逐风险信号。"
+      },
+      {
+        "problem": "honglou-retro-flat-anime 太像现代国风海报或概念艺术",
+        "fix": "压低细节密度，改成 1980s/1990s 电视动画 cel 感：粗线、大色块、少纹理、少头饰、少餐具、少背景细节。"
+      },
+      {
+        "problem": "honglou-retro-flat-anime 出现白边或图片内文字",
+        "fix": "明确 full-bleed、no border、no margins、no white slide canvas，并删除图片内标题/字幕；封面标题和底部字幕只在视频 render 阶段添加。"
       },
       {
         "problem": "mambo-meme-comic 太像现成梗或 IP",

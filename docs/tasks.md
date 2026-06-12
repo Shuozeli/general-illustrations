@@ -1,4 +1,4 @@
-<!-- agent-updated: 2026-06-10T19:59:44Z -->
+<!-- agent-updated: 2026-06-12T07:05:00Z -->
 # Tasks
 
 ## Done
@@ -12,6 +12,8 @@
 - Add GitHub Actions CI.
 - Add coupon-worker-comic recipe for action-first coupon and app-deal video frames.
 - Add mambo-meme-comic recipe for original Chinese short-video meme hooks in technical explainers.
+- Add honglou-retro-flat-anime recipe for Hongloumeng retro TV anime video keyframes.
+- Document that all image recipes should be authored in `specs/general-illustrations.json` first.
 
 ## Next
 

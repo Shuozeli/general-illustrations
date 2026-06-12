@@ -10,7 +10,7 @@ Tags: image / general / article / video
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
 Visual style:
-{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
+{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
 
 Visual DNA:
 Clean readable composition. White or very light background. One core idea only.
@@ -43,6 +43,38 @@ write a title in the top-left corner. Do not write the structure type on the
 image. Do not make it a formal PPT slide, dense architecture, stock art, or
 commercial illustration. Do not copy prior examples; invent a fresh visual
 metaphor for this specific content.
+```
+
+## 红楼梦复古电视动画视频关键帧模板
+
+Tags: video / cartoon / anime / literary / honglou
+
+```text
+Generate one 16:9 full-bleed Hongloumeng / 红楼梦 video keyframe in the honglou-retro-flat-anime style.
+
+Story beat:
+{一个具体红楼梦情节或评论段落，例如 中秋夜宴空座 / 王熙凤病中看账 / 大观园抄检 / 晴雯倒箱 / 探春反击 / 凹晶馆冷月联诗}
+
+Characters:
+{本镜头人物。Use simplified original Qing-era-inspired characters. For actor-comedy runs, give them original period-drama actor-like facial specificity: distinct eyes, readable adult facial structure, expressive emotions, not chibi. Do not copy any real actor, existing anime, TV adaptation, or IP character.}
+
+Environment:
+{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard, reduced to clean old painted TV animation background shapes}
+
+Mood:
+{冷清 / 表面热闹但心虚 / 荒诞轻喜剧 / 家族衰败 / 诗意寒意 / 尴尬体面}
+
+Composition:
+{wide / medium / close。Keep staging readable. Use empty chairs, simplified tables, lanterns, moonlight, corridor depth, medicine bowls, account books, trunks, or cold pond reflections as symbolic props. For banquet shots, avoid dense crowds and ornate table detail.}
+
+Style:
+Flat 1980s/1990s retro 2D TV anime cel frame. Thick clean outlines, large flat color shapes, limited shading, almost no texture, pastel moon blue / muted teal / warm lantern orange / pale rose / soft jade / low-saturation purple. Full-bleed image, no border, no margins, no white slide canvas.
+
+Text policy:
+No in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles and 5-second cover title are added by the render stage, not inside the generated source image.
+
+Hard negatives:
+No Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No chibi, super-deformed, mascot-only characters. No 3D, Pixar-like, plastic toy, clay, glossy render, photorealistic live-action frame, modern clothing, electric lights, microphones, cameras, UI, game interface, modern guofeng poster art, game splash art, ink-wash illustration, dense hair ornaments, dense embroidery, dense tableware, borrowed copyrighted characters, existing actor faces, signature costumes, or IP props.
 ```
 
 ## 曼波抽象梗短视频画面模板

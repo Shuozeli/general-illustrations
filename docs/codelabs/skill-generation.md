@@ -12,6 +12,10 @@ The current skill spec is:
 specs/general-illustrations.json
 ```
 
+All image-related recipes should be authored here first. Project-specific repos
+may reference the generated skill or keep output examples, but they should not
+be the long-term source of truth for image recipes.
+
 The generated skill directory is:
 
 ```text

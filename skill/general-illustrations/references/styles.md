@@ -72,6 +72,16 @@ Tags: video / cartoon / character / humor
 
 避免：表情包、二次元、儿童卡通、可爱吉祥物海报。
 
+## honglou-retro-flat-anime
+
+Tags: video / cartoon / anime / literary / honglou
+
+适合：红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、需要 1980s/1990s 电视动画感和人物表演感的连续分镜。
+
+画法：16:9 full-bleed flat retro 2D TV anime cel frame, no border, no margins. Use simplified original Qing-era-inspired characters, thick clean outlines, large flat color shapes, limited shading, almost no texture, readable adult face shapes, restrained hair ornaments, and old painted TV animation backgrounds. For actor-comedy runs, faces should have original period-drama actor-like specificity: distinct eyes, readable adult structure, expressive emotions, not chibi. Use classical Chinese garden, mansion, pavilion, banquet, corridor, chamber, pond, moonlight and lantern settings reduced to clear shape language. For wide banquet shots, imply the banquet with empty chairs, simple table shapes, lanterns and moonlight instead of dense crowds or ornate feast detail.
+
+避免：不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印，不要 chibi、Q版、吉祥物化人物，不要 3D/Pixar/玩具/黏土/光滑渲染，不要真人照片感，不要现代服装、电灯、麦克风、相机、UI 或游戏界面，不要现代国风海报、游戏 splash art、水墨插画、繁复头饰、密集刺绣、餐具和园林细节，不要借用现成动漫、影视演员、IP 角色、脸、轮廓、服装或标志性道具。
+
 ## coupon-worker-comic
 
 Tags: video / business / consumer / comic / character / coupon
@@ -93,8 +103,6 @@ Tags: video / business / finance / tech-news / comic / character
 避免：不要真实小黄人 IP 元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、Gru/Minions 式造型、3D 玩具质感都不要。不要优惠券专属场景绑死，不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。
 
 ## mambo-meme-comic
-
-Tags: video / tech / meme / comic / infrastructure
 
 适合：中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。
 
