@@ -104,11 +104,23 @@ Tags: video / business / finance / tech-news / comic / character
 
 ## mambo-meme-comic
 
+Tags: video / tech / meme / comic / infrastructure
+
 适合：中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。
 
 画法：白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。
 
 避免：不要复刻赛马娘、哈基米、翻车鱼之歌、现成猫猫梗、已有表情包、歌词、角色或音频视觉。不要夜店风、真实舞蹈人物、二次元 IP、满屏弹幕、鬼畜糊图、低清 meme 截图。不要为了搞笑牺牲技术可读性，也不要把 Kafka、Redis、数据库等组件画成错误机制。
+
+## story-infra-kafka-mambo-technical
+
+Tags: video / tech / kafka / infrastructure / comic / series
+
+适合：Kafka / 消息队列 / 分布式系统中文短视频系列，需要把事故开场、消息流、日志、分区、副本、offset、consumer group、重试、幂等、ISR 等机制画成可读的故事化基础设施漫画。它比通用 mambo-meme-comic 更重视机制准确性和系列一致性，是 Kafka story-infra 系列的默认风格。
+
+画法：16:9 横版，白底或极浅底，flat hand-drawn infrastructure comic。使用粗黑描边、简单扁平填色和大量留白，把 Kafka 概念画成 story objects：order blocks、blue envelopes/tokens、append-only log conveyor、partition lanes、offset markers、consumer workers、broker/service boxes、replica ledgers、risk checks、stuck workers、dedupe gates。红/橙只用于压力、告警、失败、裂缝或危险路径；蓝色点、信封和 token 表示事件流动或系统状态。每张图只解释一个 story beat，主体占 50%-70%，必须给后期封面大字和底部字幕留干净空间。图片内文字保持 0-4 个短标签，优先不用真实文字；标题、字幕和口播解释由视频后期添加。
+
+避免：不要泛化成可爱小黑正文配图，不要让小角色变成装饰主角；核心必须是 Kafka 消息流和故障窗口。不要 PPT、正式架构图、复杂 dashboard、密集节点、长文字、左上角标题、营销海报、3D/Pixar/玩具/黏土/光滑渲染、深色科技背景、渐变或抽象装饰。不要把 Kafka 画成错误机制：不能把 partition 画成全局顺序队列，不能让 offset 像消息本体一样被消费掉，不能让 follower 主动抢写，不能把 exactly-once 画成业务全链路绝不重复。
 
 ## whiteboard-comic
 

@@ -124,9 +124,9 @@ The skill intentionally mirrors the structure of `ian-xiaohei-illustrations`:
 The main difference from the Xiaohei skill is that this skill does not bind to a
 single IP, character, composition, model, or visual style. It adds multiple
 prebuilt styles such as `simple-doodle`, `whiteboard-comic`, `sticker-layer`,
-`technical-minimal`, `yellow-worker-comic`, `mambo-meme-comic`, and
-`soft-clay-cartoon`, and those styles are data in `specs/general-illustrations.json`
-rather than hand-written Markdown.
+`technical-minimal`, `yellow-worker-comic`, `mambo-meme-comic`,
+`story-infra-kafka-mambo-technical`, and `soft-clay-cartoon`. Those styles are
+data in `specs/general-illustrations.json` rather than hand-written Markdown.
 
 ## Provider Boundary
 

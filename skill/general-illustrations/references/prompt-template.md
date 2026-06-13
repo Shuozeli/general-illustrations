@@ -10,7 +10,7 @@ Tags: image / general / article / video
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
 Visual style:
-{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / whiteboard-comic / sticker-layer / soft-clay-cartoon}
+{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon}
 
 Visual DNA:
 Clean readable composition. White or very light background. One core idea only.
@@ -103,9 +103,35 @@ Constraints:
 Do not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, lyrics, cats, known characters, or audio-specific references. Do not make a dance-club scene, real dancers, anime fan art, chaotic bullet comments, low-resolution meme collage, or pure nonsense. The joke energy is allowed only if the infrastructure mechanism is still clear.
 ```
 
+## Kafka story-infra 技术短视频画面模板
+
+Tags: video / tech / kafka / infrastructure / comic / series
+
+```text
+Generate one 16:9 horizontal Chinese knowledge-video frame in the story-infra-kafka-mambo-technical style.
+
+Episode / story beat:
+{Kafka episode and segment beat, for example duplicate consumption after crash / early offset commit / ISR election / consumer group rebalance / retry dead letter queue}
+
+Core Kafka mechanism:
+{The exact mechanism this frame must explain. Be technically accurate: partition log, offset, consumer group, broker leader/follower, ISR, producer ack, retry, dedupe, idempotency key, or compaction.}
+
+Story objects:
+{Choose 3-6 concrete objects: order blocks, blue envelopes/tokens, append-only log conveyor, partition lanes, offset markers, consumer workers, broker boxes, replica ledgers, dedupe gate, database ledger, risk alarm, stuck worker, replay arrow.}
+
+Composition:
+White or very light background. Flat hand-drawn infrastructure comic, thick black outlines, simple flat fills, strong empty space. One clear Kafka mechanism scene should occupy 50%-70% of the canvas, with clean title space for a large cover overlay and clean lower subtitle space. Use blue envelopes/tokens/dots for event flow and system state. Use red/orange only for warning, pressure, failure, cracks, risky windows, or blocked paths. Arrows and motion lines should show message flow, offset movement, retry/replay, or failure windows. The image must read as an infrastructure story frame, not decoration.
+
+Text policy:
+Prefer no real in-image text. If labels are necessary, use only 0-4 very short labels such as ORDER / OFFSET / RETRY / DB / ACK / ISR. Do not put a title, subtitle, paragraph, markdown, or PPT label block inside the image; video render will add cover title and subtitles.
+
+Hard negatives:
+No PPT slide, no formal architecture diagram, no dense dashboard, no UI screenshot, no stock art, no commercial illustration, no 3D/Pixar/toy/clay/glossy render, no dark tech background, no decorative gradient, no cute mascot-centric Xiaohei image. Characters or operators may appear only if they act on the Kafka mechanism. Do not draw Kafka incorrectly: partition is not a single global FIFO for all keys, offset is not the message body, followers do not compete to write, and exactly-once should not be shown as business-wide magic.
+```
+
 ## 原创黄色小人动作漫画短视频画面模板
 
-Tags: video / business / finance / tech-news / comic
+Tags: video / business / finance / tech-news / comic / character
 
 ```text
 Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.
