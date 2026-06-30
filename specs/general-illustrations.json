@@ -160,7 +160,12 @@
   "styles": [
     {
       "id": "clean-docs",
-      "tags": ["article", "docs", "minimal", "product"],
+      "tags": [
+        "article",
+        "docs",
+        "minimal",
+        "product"
+      ],
       "name": "clean-docs",
       "use_when": "README、文档、产品解释、普通文章配图。",
       "drawing_rule": "白底或浅底，少量几何形状，清晰层级，短标注，克制配色。",
@@ -168,7 +173,12 @@
     },
     {
       "id": "technical-minimal",
-      "tags": ["technical", "systems", "minimal", "docs"],
+      "tags": [
+        "technical",
+        "systems",
+        "minimal",
+        "docs"
+      ],
       "name": "technical-minimal",
       "use_when": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
       "drawing_rule": "清晰盒子、箭头、层级、边界、存储对象。信息准确优先，审美其次。",
@@ -176,7 +186,12 @@
     },
     {
       "id": "review-minimal",
-      "tags": ["code-review", "risk", "minimal", "engineering"],
+      "tags": [
+        "code-review",
+        "risk",
+        "minimal",
+        "engineering"
+      ],
       "name": "review-minimal",
       "use_when": "代码 review、bug path、风险传播、测试缺口、before/after。",
       "drawing_rule": "中性底色，一个红色风险点，一个蓝色修复/验证点，突出坏路径。",
@@ -184,7 +199,12 @@
     },
     {
       "id": "editorial-sketch",
-      "tags": ["article", "editorial", "sketch", "metaphor"],
+      "tags": [
+        "article",
+        "editorial",
+        "sketch",
+        "metaphor"
+      ],
       "name": "editorial-sketch",
       "use_when": "文章观点、方法论、抽象隐喻、认知转折。",
       "drawing_rule": "手绘感、轻微抖动线条、大留白、少量标注、一个具体物理隐喻。",
@@ -192,7 +212,12 @@
     },
     {
       "id": "product-explainer",
-      "tags": ["product", "docs", "saas", "explainer"],
+      "tags": [
+        "product",
+        "docs",
+        "saas",
+        "explainer"
+      ],
       "name": "product-explainer",
       "use_when": "产品能力、feature 介绍、工具说明、docs intro。",
       "drawing_rule": "安静的 SaaS/docs 感，少量简化 UI 或抽象功能块。",
@@ -200,7 +225,12 @@
     },
     {
       "id": "simple-doodle",
-      "tags": ["video", "doodle", "cartoon", "lightweight"],
+      "tags": [
+        "video",
+        "doodle",
+        "cartoon",
+        "lightweight"
+      ],
       "name": "simple-doodle",
       "use_when": "短视频知识图、轻量技术解释、儿童感不能太强的简笔画。",
       "drawing_rule": "白底，马克笔线条，简单物件，大留白，1-2 个强调色。",
@@ -208,7 +238,12 @@
     },
     {
       "id": "cartoon-explainer",
-      "tags": ["video", "cartoon", "character", "humor"],
+      "tags": [
+        "video",
+        "cartoon",
+        "character",
+        "humor"
+      ],
       "name": "cartoon-explainer",
       "use_when": "需要角色、反应、冲突、轻幽默的解释图。",
       "drawing_rule": "圆润简化物件，可以有人物或小角色，但不要固定 IP，不要卖萌。",
@@ -216,15 +251,42 @@
     },
     {
       "id": "honglou-retro-flat-anime",
-      "tags": ["video", "cartoon", "anime", "literary", "honglou"],
+      "tags": [
+        "video",
+        "cartoon",
+        "anime",
+        "literary",
+        "honglou"
+      ],
       "name": "honglou-retro-flat-anime",
-      "use_when": "红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、需要 1980s/1990s 电视动画感和人物表演感的连续分镜。",
-      "drawing_rule": "16:9 full-bleed flat retro 2D TV anime cel frame, no border, no margins. Use simplified original Qing-era-inspired characters, thick clean outlines, large flat color shapes, limited shading, almost no texture, readable adult face shapes, restrained hair ornaments, and old painted TV animation backgrounds. For actor-comedy runs, faces should have original period-drama actor-like specificity: distinct eyes, readable adult structure, expressive emotions, not chibi. Use classical Chinese garden, mansion, pavilion, banquet, corridor, chamber, pond, moonlight and lantern settings reduced to clear shape language. For wide banquet shots, imply the banquet with empty chairs, simple table shapes, lanterns and moonlight instead of dense crowds or ornate feast detail.",
-      "avoid": "不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印，不要 chibi、Q版、吉祥物化人物，不要 3D/Pixar/玩具/黏土/光滑渲染，不要真人照片感，不要现代服装、电灯、麦克风、相机、UI 或游戏界面，不要现代国风海报、游戏 splash art、水墨插画、繁复头饰、密集刺绣、餐具和园林细节，不要借用现成动漫、影视演员、IP 角色、脸、轮廓、服装或标志性道具。"
+      "use_when": "红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、诗词历史文学视频。优先用于需要“红楼梦人物 + 现代日本电影感动漫”的连续分镜：晴雯、宝黛钗、秦可卿、中秋夜宴、凹晶馆联诗、咏絮词等。目标是清爽、精致、纤细、电影光影感的日系动漫，而不是哆啦A梦式圆脸儿童向、中国传统动画电影、国风概念海报或写实电视剧剧照。",
+      "drawing_rule": "16:9 full-bleed Hongloumeng 2D hand-drawn Japanese cinematic anime keyframe, no border, no margins, no white slide canvas. First priority is elegant two-dimensional anime character design, not CGI: slender oval faces, delicate jawline, natural expressive eyes that are not oversized, small readable nose and mouth, clean hair silhouette, youthful but not childlike proportions, restrained acting, visible crisp thin line art, flat cel shading, soft luminous cinematic light, and airy background depth. Avoid smooth doll skin or painterly 3D rendering; the image should read as a clean hand-drawn animation frame. Use Red Chamber / Qing-era-inspired robes, hair ornaments, mansion rooms, garden corridors, courtyards, fans, lanterns, curtains, medicine bowls, ponds and moonlight as the story world, but simplify them like a contemporary Japanese animated film background. All main Hongloumeng characters should keep black or dark brown hair; do not use red, pink, blue, purple, or fantasy-colored hair. Characters should be original anime versions of Hongloumeng roles: Qingwen is pretty, sharp, proud, lively-eyed, and slightly mischievous; Baoyu soft and slightly spoiled; Xiren gentle; Sheyue practical; Daiyu delicate; Baochai composed. For a multi-image video, keep character continuity with a written character bible: same face shape, eye shape, hair silhouette, robe color family, age, posture, and emotional role, while changing pose, camera distance, prop, light, and setting for each story beat. Compose for Editly/Ken Burns motion: leave 8%-12% clean motion margin around faces, hands, fans, and symbolic props; keep the lower third clean for subtitles; use foreground/midground/background when possible. Adjacent frames must be visually distinct and must not repeat the same composition within the first 5-10 seconds.",
+      "avoid": "不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印。不要哆啦A梦式圆脸儿童向、婴儿脸、过圆脸、低龄配角脸、恐怖大眼、粗糙廉价动画脸。不要中国传统动画电影感、宝莲灯/大闹天宫式厚重民族动画脸、写实电视剧剧照、真人照片感、现代国风海报、游戏 splash art、水墨插画。不要 3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染，不要油画皮肤、真实皮肤纹理、过度体积光、过度写实鼻梁。不要红发、粉发、蓝发、紫发或奇幻发色，不要现代服装、电灯、麦克风、相机、UI 或游戏界面。不要密集头饰、密集刺绣、密集餐具和园林细节。不要借用或复刻新海诚、你的名字、哆啦A梦、魔卡少女樱、现成动漫、影视演员、IP 角色、脸、轮廓、服装、标志性道具或镜头；只借鉴“现代日本电影感动漫的清爽、纤细、明亮光影、空气感、二维手绘线稿”这类通用视觉特征。不要让源图承担封面大字、底部字幕或平台标题；封面黄红大字、字幕、BGM、TTS、镜头运动都属于视频 render 阶段。"
+    },
+    {
+      "id": "honglou-period-drama-painterly",
+      "tags": [
+        "video",
+        "literary",
+        "honglou",
+        "period-drama",
+        "painterly"
+      ],
+      "name": "honglou-period-drama-painterly",
+      "use_when": "红楼梦 / Hongloumeng 文学视频需要更接近真人演员转绘、电视剧剧照感、成熟人物肖像和严肃家族叙事时使用。适合贾政、王夫人、贾母、贾赦、贾雨村、秦可卿托梦、家族衰败、官场压力、祠堂书房、父子冲突等偏成人戏剧和命运感的镜头。这个风格不是默认红楼梦动漫风格；当用户明确说第一张图那种“比较像真人画风”或需要大人脸、演员感、厚重戏剧感时才选。",
+      "drawing_rule": "16:9 full-bleed Hongloumeng period-drama painterly keyframe, no border, no margins, no white slide canvas. Draw original Qing-era-inspired characters as if real Chinese period-drama actors were translated into refined digital illustration: mature adult face structure, rectangular or slender oval jaw according to role, natural-sized almond eyes, readable nose bridge and mouth, restrained acting, specific but original facial features, tired eyes, subtle cheek and brow planes, and dignified posture. Use soft painterly brushwork, cinematic lantern and moonlight, deep red mansion shadows, aged wood, official dark blue robes, restrained gold, bamboo shadows, incense smoke, ancestral halls, carved screens, ledgers, study rooms, corridors and Grand View Garden thresholds. Keep skin illustrated, not photographic: painterly planes and controlled texture, no pores, no camera grain. Compose for video motion with strong foreground/midground/background depth, 8%-12% safe margin around faces and hands, clean lower subtitle area, and clean central area for later dynamic text. For continuous videos, keep a character bible with age, face shape, robe color, beard/hair silhouette, posture and emotional role, while changing camera distance, light direction, setting and action for each story beat.",
+      "avoid": "不要真人照片、电视剧截图、影视演员复刻、具体演员脸、现成影视服装复刻或 IP 镜头。不要现代国风游戏海报、仙侠概念图、战斗盔甲、魔法光效、3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染。不要幼态动漫脸、Q版、圆脸儿童向、巨大眼睛、哆啦A梦式可爱脸。不要油腻写实皮肤、毛孔、照片噪点、真实镜头景深过强、过度体积光。不要图片内标题、字幕、可读匾额、书法、logo、水印、UI、现代物品、麦克风、相机、电灯。不要密集头饰、密集刺绣和堆满餐具的繁复画面；红楼梦叙事要靠表情、姿态、光线、建筑压力和道具关系，而不是堆装饰。"
     },
     {
       "id": "coupon-worker-comic",
-      "tags": ["video", "business", "consumer", "comic", "character", "coupon"],
+      "tags": [
+        "video",
+        "business",
+        "consumer",
+        "comic",
+        "character",
+        "coupon"
+      ],
       "name": "coupon-worker-comic",
       "use_when": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理和商业模式短视频，需要用角色动作解释机制。",
       "drawing_rule": "白底或极浅底，黑色手绘线条，原创黄色票券/收据/豆形小工人角色，扁平 2D，短腿短手，动作夸张但不卖萌。每张图只放一个核心动作：锤价格、搬优惠券、追倒计时、分拣顾客、把数据装袋、锁住未来选择。文字只用 1-4 个短标签，角色和道具承担主要叙事。",
@@ -232,7 +294,14 @@
     },
     {
       "id": "yellow-worker-comic",
-      "tags": ["video", "business", "finance", "tech-news", "comic", "character"],
+      "tags": [
+        "video",
+        "business",
+        "finance",
+        "tech-news",
+        "comic",
+        "character"
+      ],
       "name": "yellow-worker-comic",
       "use_when": "财经、商业、消费、科技、公司新闻或知识短视频，需要一种接近“小黄人式群体动作感”但完全原创、可泛化的黄色小人动作漫画风格。",
       "drawing_rule": "白底或极浅底，黑色粗手绘线条，原创黄色小工人角色，扁平 2D，短手短腿，点状眼睛，表情简单，动作夸张。角色可以是票券形、豆形、方块形或圆角小人，但不能固定成优惠券道具。每张图只讲一个核心动作：搬运资金、搭建服务器、拉光纤、举价格表、筛选公司、推开噪音纸张、围观火箭、追逐风险信号。道具承担主要叙事，文字只用 0-4 个短标签，并给后期标题/字幕留出干净空间。",
@@ -240,7 +309,13 @@
     },
     {
       "id": "mambo-meme-comic",
-      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
+      "tags": [
+        "video",
+        "tech",
+        "meme",
+        "comic",
+        "infrastructure"
+      ],
       "name": "mambo-meme-comic",
       "use_when": "中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。",
       "drawing_rule": "白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。",
@@ -248,7 +323,14 @@
     },
     {
       "id": "story-infra-kafka-mambo-technical",
-      "tags": ["video", "tech", "kafka", "infrastructure", "comic", "series"],
+      "tags": [
+        "video",
+        "tech",
+        "kafka",
+        "infrastructure",
+        "comic",
+        "series"
+      ],
       "name": "story-infra-kafka-mambo-technical",
       "use_when": "Kafka / 消息队列 / 分布式系统中文短视频系列，需要把事故开场、消息流、日志、分区、副本、offset、consumer group、重试、幂等、ISR 等机制画成可读的故事化基础设施漫画。它比通用 mambo-meme-comic 更重视机制准确性和系列一致性，是 Kafka story-infra 系列的默认风格。",
       "drawing_rule": "16:9 横版，白底或极浅底，flat hand-drawn infrastructure comic。使用粗黑描边、简单扁平填色和大量留白，把 Kafka 概念画成 story objects：order blocks、blue envelopes/tokens、append-only log conveyor、partition lanes、offset markers、consumer workers、broker/service boxes、replica ledgers、risk checks、stuck workers、dedupe gates。红/橙只用于压力、告警、失败、裂缝或危险路径；蓝色点、信封和 token 表示事件流动或系统状态。每张图只解释一个 story beat，主体占 50%-70%，必须给后期封面大字和底部字幕留干净空间。图片内文字保持 0-4 个短标签，优先不用真实文字；标题、字幕和口播解释由视频后期添加。",
@@ -256,7 +338,13 @@
     },
     {
       "id": "whiteboard-comic",
-      "tags": ["engineering", "teaching", "comic", "whiteboard", "before-after"],
+      "tags": [
+        "engineering",
+        "teaching",
+        "comic",
+        "whiteboard",
+        "before-after"
+      ],
       "name": "whiteboard-comic",
       "use_when": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
       "drawing_rule": "白板线稿，2-4 格分镜，少量箭头和动作线，一个问题一个结果。",
@@ -264,7 +352,13 @@
     },
     {
       "id": "sticker-layer",
-      "tags": ["video", "product", "sticker", "layered", "animation"],
+      "tags": [
+        "video",
+        "product",
+        "sticker",
+        "layered",
+        "animation"
+      ],
       "name": "sticker-layer",
       "use_when": "短视频动画拆层、组件介绍、流程分解。",
       "drawing_rule": "扁平贴纸物件，清晰描边，前中后景分层，大物件可单独 pop-in。",
@@ -272,7 +366,12 @@
     },
     {
       "id": "soft-clay-cartoon",
-      "tags": ["video", "cartoon", "clay", "metaphor"],
+      "tags": [
+        "video",
+        "cartoon",
+        "clay",
+        "metaphor"
+      ],
       "name": "soft-clay-cartoon",
       "use_when": "概念隐喻、视频插图、轻松技术解释。",
       "drawing_rule": "柔软圆润的 clay/toy-like 物件，简单光照，少文字，大形状。",
@@ -282,63 +381,102 @@
   "composition_patterns": [
     {
       "id": "workflow",
-      "tags": ["flow", "process", "pipeline"],
+      "tags": [
+        "flow",
+        "process",
+        "pipeline"
+      ],
       "name": "Workflow 流程",
       "use_when": "输入 -> 处理 -> 输出，AI 工作流，内容生产，系统链路。",
       "drawing_rule": "左侧输入，中间处理动作，右侧输出，橙色箭头表达主流向。"
     },
     {
       "id": "system-slice",
-      "tags": ["technical", "systems", "architecture", "boundary"],
+      "tags": [
+        "technical",
+        "systems",
+        "architecture",
+        "boundary"
+      ],
       "name": "系统局部",
       "use_when": "数据库、RPC、缓存、队列、agent 系统局部、技术组件。",
       "drawing_rule": "只画 3-6 个核心模块，突出一个关键边界或关键动作。"
     },
     {
       "id": "before-after",
-      "tags": ["before-after", "comparison", "transformation"],
+      "tags": [
+        "before-after",
+        "comparison",
+        "transformation"
+      ],
       "name": "前后对比",
       "use_when": "混乱/有序，手动/自动，本地/云端，慢/快，失败/修复。",
       "drawing_rule": "左混乱，右稳定，中间转化动作或箭头。"
     },
     {
       "id": "state-scenes",
-      "tags": ["state", "character", "pain-point"],
+      "tags": [
+        "state",
+        "character",
+        "pain-point"
+      ],
       "name": "角色状态",
       "use_when": "用户痛点、开发者状态、信息焦虑、工具太多、卡住到跑起来。",
       "drawing_rule": "2-4 个小状态，每个状态一个短标注。"
     },
     {
       "id": "concept-metaphor",
-      "tags": ["metaphor", "concept", "editorial"],
+      "tags": [
+        "metaphor",
+        "concept",
+        "editorial"
+      ],
       "name": "概念隐喻",
       "use_when": "抽象观点、技术概念、内容系统、存储结构、后台整理。",
       "drawing_rule": "一个大的物件或机器，少量输入，一个输出。要有记忆点。"
     },
     {
       "id": "layered-method",
-      "tags": ["layers", "method", "framework"],
+      "tags": [
+        "layers",
+        "method",
+        "framework"
+      ],
       "name": "方法分层",
       "use_when": "方法论框架、系统层级、能力栈、存储层级。",
       "drawing_rule": "一层层盒子、托盘、架子、抽屉、纸片，不要正式金字塔。"
     },
     {
       "id": "route-map",
-      "tags": ["route", "journey", "learning-path"],
+      "tags": [
+        "route",
+        "journey",
+        "learning-path"
+      ],
       "name": "地图路线",
       "use_when": "从想法到上线、用户路径、学习路线、数据流转。",
       "drawing_rule": "一条弯曲路径，少量节点，明确起点和终点。"
     },
     {
       "id": "comic-panels",
-      "tags": ["comic", "story", "before-after", "engineering"],
+      "tags": [
+        "comic",
+        "story",
+        "before-after",
+        "engineering"
+      ],
       "name": "小漫画分镜",
       "use_when": "失败到成功、使用前后变化、bug 发生路径、工程故事。",
       "drawing_rule": "2-4 个小场景，每格只表达一个动作。"
     },
     {
       "id": "action-loop-scenes",
-      "tags": ["video", "action-loop", "animation", "business"],
+      "tags": [
+        "video",
+        "action-loop",
+        "animation",
+        "business"
+      ],
       "name": "动作循环场景",
       "use_when": "短视频配图、动画 slide、商业机制解释、消费心理解释，需要一张图能拆成 2-4 个可循环动作 beat。",
       "drawing_rule": "单一场景中安排一个可见动作链：角色进入、角色改变物件、结果被强调。主体占 50%-70%，保留字幕区，动作线和物件运动方向清楚。不要依赖段落文字，优先用追、拉、锤、推、搬、锁、塞、分拣等动作表达逻辑。"
@@ -347,49 +485,107 @@
   "prompt_templates": [
     {
       "id": "single-image",
-      "tags": ["image", "general", "article", "video"],
+      "tags": [
+        "image",
+        "general",
+        "article",
+        "video"
+      ],
       "name": "生图提示词模板",
-      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
+      "body": "Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.\n\nVisual style:\n{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / honglou-period-drama-painterly / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon}\n\nVisual DNA:\nClean readable composition. White or very light background. One core idea only.\nSparse labels. Strong empty space. Clear foreground/midground/background if the\nimage is video-ready. Use orange for main action, blue for system/read/state,\nred only for warning/problem/result.\n\nTheme:\n{正文配图主题}\n\nStructure type:\n{Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景}\n\nCore idea:\n{这张图要表达的核心意思}\n\nComposition:\n{具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动}\n\nSuggested elements:\n{元素1} / {元素2} / {元素3} / {元素4}\n\nShort labels:\n{标注词1} / {标注词2} / {标注词3} / {标注词4} / {可选标注词5}\n\nConstraints:\nOne image explains only one core structure. Keep the main subject around 40%-60%\nof the canvas. Preserve enough blank space. Use at most 3-8 short labels. Do not\nwrite a title in the top-left corner. Do not write the structure type on the\nimage. Do not make it a formal PPT slide, dense architecture, stock art, or\ncommercial illustration. Do not copy prior examples; invent a fresh visual\nmetaphor for this specific content."
     },
     {
       "id": "honglou-anime-video-frame",
-      "tags": ["video", "cartoon", "anime", "literary", "honglou"],
-      "name": "红楼梦复古电视动画视频关键帧模板",
-      "body": "Generate one 16:9 full-bleed Hongloumeng / 红楼梦 video keyframe in the honglou-retro-flat-anime style.\n\nStory beat:\n{一个具体红楼梦情节或评论段落，例如 中秋夜宴空座 / 王熙凤病中看账 / 大观园抄检 / 晴雯倒箱 / 探春反击 / 凹晶馆冷月联诗}\n\nCharacters:\n{本镜头人物。Use simplified original Qing-era-inspired characters. For actor-comedy runs, give them original period-drama actor-like facial specificity: distinct eyes, readable adult facial structure, expressive emotions, not chibi. Do not copy any real actor, existing anime, TV adaptation, or IP character.}\n\nEnvironment:\n{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard, reduced to clean old painted TV animation background shapes}\n\nMood:\n{冷清 / 表面热闹但心虚 / 荒诞轻喜剧 / 家族衰败 / 诗意寒意 / 尴尬体面}\n\nComposition:\n{wide / medium / close。Keep staging readable. Use empty chairs, simplified tables, lanterns, moonlight, corridor depth, medicine bowls, account books, trunks, or cold pond reflections as symbolic props. For banquet shots, avoid dense crowds and ornate table detail.}\n\nStyle:\nFlat 1980s/1990s retro 2D TV anime cel frame. Thick clean outlines, large flat color shapes, limited shading, almost no texture, pastel moon blue / muted teal / warm lantern orange / pale rose / soft jade / low-saturation purple. Full-bleed image, no border, no margins, no white slide canvas.\n\nText policy:\nNo in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles and 5-second cover title are added by the render stage, not inside the generated source image.\n\nHard negatives:\nNo Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No chibi, super-deformed, mascot-only characters. No 3D, Pixar-like, plastic toy, clay, glossy render, photorealistic live-action frame, modern clothing, electric lights, microphones, cameras, UI, game interface, modern guofeng poster art, game splash art, ink-wash illustration, dense hair ornaments, dense embroidery, dense tableware, borrowed copyrighted characters, existing actor faces, signature costumes, or IP props."
+      "tags": [
+        "video",
+        "cartoon",
+        "anime",
+        "literary",
+        "honglou"
+      ],
+      "name": "红楼梦现代日本电影感动漫视频关键帧模板",
+      "body": "Generate one 16:9 full-bleed Hongloumeng / 红楼梦 literary video keyframe in the honglou-retro-flat-anime style.\n\nVideo / series context:\n{视频主题与段落位置，例如 晴雯撕扇 / 秦可卿托梦 / 宝钗黛玉咏絮词 / 第七十六回凹晶馆联诗。If this belongs to a multi-image video, specify the previous and next beats so this frame is visually distinct.}\n\nStory beat:\n{一个具体情节或评论判断。Use one clear dramatic action or emotional beat only, not a general poster.}\n\nCharacter bible:\n{本视频连续人物设定。For each recurring character, define age, slender anime face shape, eye shape, hair silhouette, robe color family, posture, temperament, and emotional role. Keep this consistent across frames.}\n\nCharacters in this frame:\n{本镜头人物和主次。State who is the main face. Use original Hongloumeng characters with modern 2D Japanese cinematic anime cues: slender oval face, delicate jawline, natural expressive eyes that are not oversized, small readable nose and mouth, clean hair silhouette, youthful but not childlike proportions, restrained acting, visible thin line art, flat cel shading, not CGI. Qing-era-inspired clothing and hair should remain simplified and readable. Use black or dark brown hair for all Hongloumeng characters; no red, pink, blue, purple, or fantasy-colored hair. Do not copy any real actor, existing anime, TV adaptation, film director, film, or IP character.}\n\nEnvironment:\n{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard / Longcui Nunnery, simplified as clean contemporary anime background shapes. Use symbolic props from the source scene: fan, fan ribs, lantern, curtain, medicine bowl, empty chair, table, moon reflection, cold pond, crane shadow, bamboo stool, account books, trunks, doors, rocks, flowers, or catkins.}\n\nMood:\n{清爽电影感 / 轻喜剧 / 短暂温情 / 尴尬体面 / 家族衰败 / 诗意寒意 / 命运预告 / 短暂温情后转冷}\n\nCamera and motion readiness:\n{wide / medium / close。State intended motion: slow push-in / left-to-right pan / right-to-left pan / slight zoom-out / parallax-ready foreground-midground-background. Keep faces, hands and key props away from edges with 8%-12% safe margin. Leave a clean lower subtitle area.}\n\nComposition:\n{具体画面。Use clear staging, not a crowded poster. For adjacent frames, change camera distance, posture, main prop, light direction, or setting so the same image does not repeat in the first 5-10 seconds.}\n\nStyle:\nModern 2D Japanese cinematic anime keyframe adapted to Hongloumeng. Slender clean character faces, delicate jawline, natural expressive eyes, small readable nose and mouth, visible crisp thin line art, flat cel shading, soft cinematic lighting, luminous interior light or airy outdoor depth, refined but readable old mansion/garden backgrounds. It should read as hand-drawn animation, not CGI, doll render, oil painting, or photorealistic skin. Full-bleed image, no border, no margins, no white slide canvas.\n\nText policy:\nNo in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles, opening burn text, and yellow/red cover typography are added by the render stage, not inside the generated source image.\n\nHard negatives:\nNo Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No round Doraemon-like child face, no baby face, no overly round face, no giant anime eyes, no cute toddler proportions, no Chinese traditional animation movie look, no Lotus Lantern / Havoc in Heaven style, no realistic live-action drama still, no photorealism, no modern guofeng poster art, no game splash art, no ink-wash illustration, no red/pink/blue/purple hair, no fantasy-colored hair, no 3D, CGI, Pixar-like, toy, porcelain doll, clay, glossy render, oil-paint skin, modern clothing, electric lights, microphones, cameras, UI, game interface, dense hair ornaments, dense embroidery, dense tableware. No direct Makoto Shinkai, Your Name, Doraemon, Cardcaptor Sakura, existing anime, borrowed copyrighted characters, existing actor faces, signature costumes, signature shots, or IP props.",
+      "title": "红楼梦现代日系二维电影感动漫视频关键帧模板"
+    },
+    {
+      "id": "honglou-period-drama-video-frame",
+      "tags": [
+        "video",
+        "literary",
+        "honglou",
+        "period-drama",
+        "painterly"
+      ],
+      "name": "红楼梦真人转绘感视频关键帧模板",
+      "body": "Generate one 16:9 full-bleed Hongloumeng / 红楼梦 literary video keyframe in the honglou-period-drama-painterly style.\n\nVideo / series context:\n{视频主题与段落位置，例如 贾政父子 / 秦可卿托梦 / 贾雨村官场 / 贾府衰败 / 王熙凤理家。If this belongs to a multi-image video, specify previous and next beats so this frame is visually distinct.}\n\nStory beat:\n{一个具体情节或评论判断。Use one clear dramatic action or emotional beat only, not a general poster.}\n\nCharacter bible:\n{本视频连续人物设定。For each recurring character, define age, mature face shape, eye shape, brow/nose/mouth, beard or hair silhouette, robe color family, posture, temperament, and emotional role. Keep this consistent across frames. Do not copy any existing actor.}\n\nCharacters in this frame:\n{本镜头人物和主次。State who is the main face. Use original Hongloumeng characters rendered like Chinese period-drama actors translated into painterly illustration: mature adult facial structure, natural-sized almond eyes, readable nose and mouth, restrained acting, specific but original features, dignified posture, Qing-era-inspired robes.}\n\nEnvironment:\n{ancestral hall / study / Rongguo mansion corridor / red-pillared courtyard / Grand View Garden threshold / yamen-like official room / moonlit chamber / family hall. Use props such as ledgers, carved screens, incense smoke, official hat stand, lantern, bamboo shadows, tablets without readable text, doors, account books, empty chair, garden rocks.}\n\nMood:\n{家族压力 / 官场阴影 / 父子隔阂 / 盛极而衰 / 冷静悲剧 / 托梦寒意 / 体面下面的疲惫}\n\nCamera and motion readiness:\n{wide / medium / close。State intended motion: slow push-in / left-to-right pan / right-to-left pan / slight zoom-out / parallax-ready foreground-midground-background. Keep faces, hands and symbolic props away from edges with 8%-12% safe margin. Leave a clean lower subtitle area and a clean central area for dynamic text.}\n\nComposition:\n{具体画面。Use clear dramatic staging, not a crowded poster. For adjacent frames, change camera distance, posture, main prop, light direction, or setting so the same image does not repeat in the first 5-10 seconds.}\n\nStyle:\nRefined Chinese period-drama painterly illustration for Hongloumeng video. Mature actor-like but original faces, restrained expressions, soft painterly brushwork, cinematic lantern and moonlight, deep red mansion shadows, aged wood, official dark blue, muted gold, bamboo and incense atmosphere. It should read as a high-quality illustrated drama keyframe, not a real photo, not a TV screenshot, not anime, not CGI. Full-bleed image, no border, no margins, no white slide canvas.\n\nText policy:\nNo in-image title text, no subtitles, no captions, no logos, no watermarks, no readable plaques or calligraphy. Final video subtitles, opening burn text, and yellow/red cover typography are added by the render stage, not inside the generated source image.\n\nHard negatives:\nNo real actor likeness, no TV adaptation still, no copied costume, no direct film frame, no photorealistic photo skin, no camera grain, no pores, no modern guofeng game splash art, no fantasy armor, no xianxia magic light, no 3D/CGI/Pixar/toy/clay/glossy render, no chibi, no childlike round face, no giant anime eyes, no modern clothing, electric lights, microphones, cameras, UI, dense hair ornaments, dense embroidery, dense tableware, readable Chinese characters, calligraphy, or false text.",
+      "title": "红楼梦真人转绘感视频关键帧模板"
     },
     {
       "id": "mambo-meme-video-frame",
-      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
+      "tags": [
+        "video",
+        "tech",
+        "meme",
+        "comic",
+        "infrastructure"
+      ],
       "name": "曼波抽象梗短视频画面模板",
       "body": "Generate one 16:9 horizontal Chinese knowledge-video frame in the mambo-meme-comic style.\n\nTopic:\n{技术主题或工程故事主题，例如 Kafka 消息堆积 / 下单链路卡死 / consumer 追 offset / Redis 热点 key / 数据库慢查询}\n\nCore mechanism:\n{这张图必须讲清的机制，不能只搞笑，例如 append-only log / queue decoupling / backpressure / consumer lag / retry storm / cache miss}\n\nMeme action loop:\n{2-4 个循环动作 beat，例如 requests wobble into a queue -> service shakes under pressure -> Kafka log conveyor carries events -> consumers catch up by offset}\n\nComposition:\nWhite or very light background. Flat 2D, thick black outlines, original abstract characters or system components, no existing meme/IP characters. One large looping action scene should occupy 50%-70% of the canvas. Use small motion lines, repeated poses, bouncing arrows, beat marks, and a few saturated red/yellow/blue accents to create a catchy Chinese short-video meme rhythm. Leave clean subtitle/title space. The technical entities must remain recognizable: topic/log/consumer/offset/database/service should be visually distinct when used.\n\nShort labels only:\n{0-4 short readable labels such as ORDER / KAFKA LOG / OFFSET / LAG / DB / RETRY; skip labels if overlay text will be added later}\n\nConstraints:\nDo not copy Uma Musume, Hakimi, Manbo song visuals, existing meme screenshots, lyrics, cats, known characters, or audio-specific references. Do not make a dance-club scene, real dancers, anime fan art, chaotic bullet comments, low-resolution meme collage, or pure nonsense. The joke energy is allowed only if the infrastructure mechanism is still clear."
     },
     {
       "id": "story-infra-kafka-video-frame",
-      "tags": ["video", "tech", "kafka", "infrastructure", "comic", "series"],
+      "tags": [
+        "video",
+        "tech",
+        "kafka",
+        "infrastructure",
+        "comic",
+        "series"
+      ],
       "name": "Kafka story-infra 技术短视频画面模板",
       "body": "Generate one 16:9 horizontal Chinese knowledge-video frame in the story-infra-kafka-mambo-technical style.\n\nEpisode / story beat:\n{Kafka episode and segment beat, for example duplicate consumption after crash / early offset commit / ISR election / consumer group rebalance / retry dead letter queue}\n\nCore Kafka mechanism:\n{The exact mechanism this frame must explain. Be technically accurate: partition log, offset, consumer group, broker leader/follower, ISR, producer ack, retry, dedupe, idempotency key, or compaction.}\n\nStory objects:\n{Choose 3-6 concrete objects: order blocks, blue envelopes/tokens, append-only log conveyor, partition lanes, offset markers, consumer workers, broker boxes, replica ledgers, dedupe gate, database ledger, risk alarm, stuck worker, replay arrow.}\n\nComposition:\nWhite or very light background. Flat hand-drawn infrastructure comic, thick black outlines, simple flat fills, strong empty space. One clear Kafka mechanism scene should occupy 50%-70% of the canvas, with clean title space for a large cover overlay and clean lower subtitle space. Use blue envelopes/tokens/dots for event flow and system state. Use red/orange only for warning, pressure, failure, cracks, risky windows, or blocked paths. Arrows and motion lines should show message flow, offset movement, retry/replay, or failure windows. The image must read as an infrastructure story frame, not decoration.\n\nText policy:\nPrefer no real in-image text. If labels are necessary, use only 0-4 very short labels such as ORDER / OFFSET / RETRY / DB / ACK / ISR. Do not put a title, subtitle, paragraph, markdown, or PPT label block inside the image; video render will add cover title and subtitles.\n\nHard negatives:\nNo PPT slide, no formal architecture diagram, no dense dashboard, no UI screenshot, no stock art, no commercial illustration, no 3D/Pixar/toy/clay/glossy render, no dark tech background, no decorative gradient, no cute mascot-centric Xiaohei image. Characters or operators may appear only if they act on the Kafka mechanism. Do not draw Kafka incorrectly: partition is not a single global FIFO for all keys, offset is not the message body, followers do not compete to write, and exactly-once should not be shown as business-wide magic."
     },
     {
       "id": "yellow-worker-video-frame",
-      "tags": ["video", "business", "finance", "tech-news", "comic", "character"],
+      "tags": [
+        "video",
+        "business",
+        "finance",
+        "tech-news",
+        "comic",
+        "character"
+      ],
       "name": "原创黄色小人动作漫画短视频画面模板",
       "body": "Generate one 16:9 horizontal knowledge-video frame in the yellow-worker-comic style.\n\nTopic:\n{财经、商业、消费、科技、公司新闻、AI 基建、供应链、监管、估值或商业模式主题}\n\nCore mechanism:\n{这张图要解释的机制，例如 capital expenditure / pricing power / price war / margin pressure / valuation demand / regulatory risk / cash-flow lock-in}\n\nMain action:\n{只选一个动作：building a data center / carrying cash into servers / pulling fiber cables / turning a price dial / sorting company cards / pushing away noisy headlines / inflating a valuation balloon / comparing revenue and margin piles}\n\nComposition:\nWhite or very light background. One large foreground action with original yellow worker characters. The main character or object should occupy 50%-70% of the canvas. Leave clean space for subtitles and later title overlay. Use black hand-drawn outlines, flat yellow bodies, small limbs, tiny dot eyes, simple props, and visible motion lines. Make it feel like an action beat from a smart business or finance explainer, not a poster.\n\nShort labels only:\n{0-4 readable labels such as AI CAPEX / FIBER / MARGIN / PRICE WAR / RISK / CASH FLOW; labels are optional and should be skipped when overlay text will be added later}\n\nAnimation beats:\n{beat 1} -> {beat 2} -> {beat 3}; the still image should imply these beats clearly.\n\nConstraints:\nThis must be original character design, not Minions. No goggles, no blue overalls, no capsule bodies, no one-eyed mascot, no denim, no Gru/Minions-style design, no 3D toy rendering. Avoid coupon-only props unless the topic is actually about coupons. Avoid large title text, left-side text blocks, Markdown-like explanations, screenshots, UI mockups, and dense labels. The story must be readable through action first and text second."
     },
     {
       "id": "technical-image",
-      "tags": ["image", "technical", "systems", "diagram"],
+      "tags": [
+        "image",
+        "technical",
+        "systems",
+        "diagram"
+      ],
       "name": "技术图提示词",
       "body": "Generate one clean 16:9 technical explainer diagram.\n\nTopic:\n{技术主题}\n\nEntities:\n{实体列表}\n\nFlow:\n{写入路径 / 读取路径 / 状态变化 / 风险路径}\n\nHighlight:\n{最重要的边界、tradeoff 或机制}\n\nStyle:\ntechnical-minimal, clean-docs, or whiteboard-comic.\n\nLabels only:\n{短标注列表}\n\nConstraints:\nUse precise boxes, arrows, shelves, layers, or paths. Do not invent components.\nDo not add long paragraphs. Make it useful for a technical blog or video."
     },
     {
       "id": "remove-title-edit",
-      "tags": ["edit", "cleanup", "text-removal"],
+      "tags": [
+        "edit",
+        "cleanup",
+        "text-removal"
+      ],
       "name": "图像编辑提示：去掉左上角标题",
       "body": "Edit the provided image. Remove only the title \"{要删除的文字}\" and its underline\nfrom the top-left corner. Fill that area with the same clean background. Preserve\neverything else exactly: objects, labels, paths, line style, composition, aspect\nratio, and image quality. Do not add any new text or objects."
     },
     {
       "id": "reduce-cuteness-edit",
-      "tags": ["edit", "style-adjustment", "cartoon"],
+      "tags": [
+        "edit",
+        "style-adjustment",
+        "cartoon"
+      ],
       "name": "图像编辑提示：降低幼稚感",
       "body": "Regenerate this illustration with the same core meaning and layout, but make it\nless cute and more like a clean technical explainer. Keep rounded simplified\nobjects, but reduce toy-like expressions, bright candy colors, and mascot energy.\nUse sparse labels and a clean white background."
     }
@@ -408,6 +604,12 @@
       "coupon-worker-comic 必须是原创黄色票券/收据小工人，不能出现小黄人式护目镜、蓝色背带裤、胶囊身体或单眼大眼。",
       "yellow-worker-comic 必须是原创黄色小人/小工人动作漫画，不能出现真实小黄人 IP 元素，也不能被优惠券场景绑死。",
       "honglou-retro-flat-anime 必须是原创红楼梦复古电视动画关键帧：full-bleed、无白边、无图片内字幕/标题、原创人物脸和服饰，不借用影视演员或现成 IP。",
+      "honglou-retro-flat-anime 源图只负责关键帧；封面黄红大字、开头 burn 字幕、底部字幕、BGM 和 TTS 不属于图片 Recipe。",
+      "honglou-retro-flat-anime 必须为后期 Ken Burns/Editly 动效预留安全边界：人物脸、手和关键道具不要贴边，底部字幕区保持干净。",
+      "honglou-retro-flat-anime 用于连续视频时，相邻 5-10 秒内不能重复同一张源图或几乎相同构图；每个 beat 要换动作、镜头距离、光线、人物姿态或象征物。",
+      "honglou-period-drama-painterly 必须是原创红楼梦真人转绘感关键帧：成人脸、演员式表演、戏剧光影、full-bleed、无白边、无图片内字幕/标题。",
+      "honglou-period-drama-painterly 可以有成熟真人绘画感，但不能像真实照片、电视剧截图、具体演员脸、影视服装复刻或游戏国风海报。",
+      "honglou-period-drama-painterly 必须为后期 Ken Burns/Editly 动效预留安全边界：人物脸、手和关键道具不要贴边，底部字幕区和中央动态文字区保持干净。",
       "mambo-meme-comic 必须是原创中文抽象梗感动作画面，不能复刻赛马娘、哈基米、翻车鱼之歌、现成表情包、歌词、角色或音频视觉。",
       "mambo-meme-comic 的节奏感不能牺牲技术可读性；系统组件、队列、日志、consumer、offset 等机制元素必须能看懂。",
       "story-infra-kafka-mambo-technical 必须保持 Kafka 机制准确：消息流、partition、offset、consumer、broker、replica、ISR、retry 或 dedupe 等核心对象要能看懂，不能只是泛泛的可爱手绘。",
@@ -428,6 +630,9 @@
       "卡通风格变得太幼稚、太可爱、太像儿童玩具。",
       "黄色小人短视频画面像真实小黄人、玩具吉祥物、海报封面或文字卡片，而不是原创动作漫画。",
       "红楼梦关键帧像现代国风海报、游戏立绘、精致概念艺术、白色 slide canvas、真人剧照、现成影视演员脸，或图片里直接写了大标题/字幕。",
+      "红楼梦真人转绘感关键帧变成真实照片、电视剧截图、具体演员脸、仙侠游戏海报、3D 写实渲染，或图片里直接写了大标题/字幕。",
+      "红楼梦关键帧人物脸贴边、字幕区被关键道具占满，后期左右移动或缩放时会裁掉脸、手或诗意物件。",
+      "红楼梦连续视频在开头或相邻短段落反复使用同一张图，导致观众感觉画面卡住或素材重复。",
       "曼波梗画面像现成 IP、表情包截图、夜店舞蹈、满屏弹幕或纯搞笑乱图。",
       "曼波梗画面只剩节奏感，看不出真实技术机制或系统状态。",
       "Kafka story-infra 画面变成普通小黑装饰图、PPT 架构图、密集 dashboard，或把 Kafka 机制画错。",
@@ -479,6 +684,26 @@
       {
         "problem": "honglou-retro-flat-anime 出现白边或图片内文字",
         "fix": "明确 full-bleed、no border、no margins、no white slide canvas，并删除图片内标题/字幕；封面标题和底部字幕只在视频 render 阶段添加。"
+      },
+      {
+        "problem": "honglou-retro-flat-anime 相邻画面重复",
+        "fix": "保留同一人物 recipe，但重画为新的 story beat：换镜头距离、人物姿态、主要道具、光源方向或场景位置。前 5-10 秒尤其不要 A-B-A 式快速回到同一张图。"
+      },
+      {
+        "problem": "honglou-retro-flat-anime 不适合后期动效",
+        "fix": "重画时加入 foreground/midground/background，给脸和关键道具留 8%-12% 安全边界，底部留字幕区，并明确 intended motion: slow push-in / pan / zoom-out。"
+      },
+      {
+        "problem": "honglou-period-drama-painterly 太像照片或电视剧截图",
+        "fix": "强调 painterly illustration、original actor-like face、no real actor likeness、no TV still，并保留绘画笔触和非摄影皮肤。"
+      },
+      {
+        "problem": "honglou-period-drama-painterly 太像国风游戏海报",
+        "fix": "删掉仙侠光效、盔甲、夸张体积光和复杂服饰，改成荣国府书房、祠堂、走廊、账册、灯影和克制成人表演。"
+      },
+      {
+        "problem": "honglou-period-drama-painterly 不适合后期动效",
+        "fix": "加入明确前景/中景/背景和 8%-12% 安全边界，底部字幕区和中央动态文字区保持干净。"
       },
       {
         "problem": "mambo-meme-comic 太像现成梗或 IP",

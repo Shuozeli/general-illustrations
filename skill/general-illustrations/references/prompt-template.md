@@ -10,7 +10,7 @@ Tags: image / general / article / video
 Generate one standalone 16:9 horizontal Chinese article or knowledge-video illustration.
 
 Visual style:
-{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon}
+{选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / honglou-period-drama-painterly / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon}
 
 Visual DNA:
 Clean readable composition. White or very light background. One core idea only.
@@ -45,36 +45,86 @@ commercial illustration. Do not copy prior examples; invent a fresh visual
 metaphor for this specific content.
 ```
 
-## 红楼梦复古电视动画视频关键帧模板
+## 红楼梦现代日本电影感动漫视频关键帧模板
 
 Tags: video / cartoon / anime / literary / honglou
 
 ```text
-Generate one 16:9 full-bleed Hongloumeng / 红楼梦 video keyframe in the honglou-retro-flat-anime style.
+Generate one 16:9 full-bleed Hongloumeng / 红楼梦 literary video keyframe in the honglou-retro-flat-anime style.
+
+Video / series context:
+{视频主题与段落位置，例如 晴雯撕扇 / 秦可卿托梦 / 宝钗黛玉咏絮词 / 第七十六回凹晶馆联诗。If this belongs to a multi-image video, specify the previous and next beats so this frame is visually distinct.}
 
 Story beat:
-{一个具体红楼梦情节或评论段落，例如 中秋夜宴空座 / 王熙凤病中看账 / 大观园抄检 / 晴雯倒箱 / 探春反击 / 凹晶馆冷月联诗}
+{一个具体情节或评论判断。Use one clear dramatic action or emotional beat only, not a general poster.}
 
-Characters:
-{本镜头人物。Use simplified original Qing-era-inspired characters. For actor-comedy runs, give them original period-drama actor-like facial specificity: distinct eyes, readable adult facial structure, expressive emotions, not chibi. Do not copy any real actor, existing anime, TV adaptation, or IP character.}
+Character bible:
+{本视频连续人物设定。For each recurring character, define age, slender anime face shape, eye shape, hair silhouette, robe color family, posture, temperament, and emotional role. Keep this consistent across frames.}
+
+Characters in this frame:
+{本镜头人物和主次。State who is the main face. Use original Hongloumeng characters with modern 2D Japanese cinematic anime cues: slender oval face, delicate jawline, natural expressive eyes that are not oversized, small readable nose and mouth, clean hair silhouette, youthful but not childlike proportions, restrained acting, visible thin line art, flat cel shading, not CGI. Qing-era-inspired clothing and hair should remain simplified and readable. Use black or dark brown hair for all Hongloumeng characters; no red, pink, blue, purple, or fantasy-colored hair. Do not copy any real actor, existing anime, TV adaptation, film director, film, or IP character.}
 
 Environment:
-{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard, reduced to clean old painted TV animation background shapes}
+{garden / mansion / pavilion / corridor / chamber / banquet hall / pond / moonlit courtyard / Longcui Nunnery, simplified as clean contemporary anime background shapes. Use symbolic props from the source scene: fan, fan ribs, lantern, curtain, medicine bowl, empty chair, table, moon reflection, cold pond, crane shadow, bamboo stool, account books, trunks, doors, rocks, flowers, or catkins.}
 
 Mood:
-{冷清 / 表面热闹但心虚 / 荒诞轻喜剧 / 家族衰败 / 诗意寒意 / 尴尬体面}
+{清爽电影感 / 轻喜剧 / 短暂温情 / 尴尬体面 / 家族衰败 / 诗意寒意 / 命运预告 / 短暂温情后转冷}
+
+Camera and motion readiness:
+{wide / medium / close。State intended motion: slow push-in / left-to-right pan / right-to-left pan / slight zoom-out / parallax-ready foreground-midground-background. Keep faces, hands and key props away from edges with 8%-12% safe margin. Leave a clean lower subtitle area.}
 
 Composition:
-{wide / medium / close。Keep staging readable. Use empty chairs, simplified tables, lanterns, moonlight, corridor depth, medicine bowls, account books, trunks, or cold pond reflections as symbolic props. For banquet shots, avoid dense crowds and ornate table detail.}
+{具体画面。Use clear staging, not a crowded poster. For adjacent frames, change camera distance, posture, main prop, light direction, or setting so the same image does not repeat in the first 5-10 seconds.}
 
 Style:
-Flat 1980s/1990s retro 2D TV anime cel frame. Thick clean outlines, large flat color shapes, limited shading, almost no texture, pastel moon blue / muted teal / warm lantern orange / pale rose / soft jade / low-saturation purple. Full-bleed image, no border, no margins, no white slide canvas.
+Modern 2D Japanese cinematic anime keyframe adapted to Hongloumeng. Slender clean character faces, delicate jawline, natural expressive eyes, small readable nose and mouth, visible crisp thin line art, flat cel shading, soft cinematic lighting, luminous interior light or airy outdoor depth, refined but readable old mansion/garden backgrounds. It should read as hand-drawn animation, not CGI, doll render, oil painting, or photorealistic skin. Full-bleed image, no border, no margins, no white slide canvas.
 
 Text policy:
-No in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles and 5-second cover title are added by the render stage, not inside the generated source image.
+No in-image title text, no subtitles, no captions, no logos, no watermarks. Final video subtitles, opening burn text, and yellow/red cover typography are added by the render stage, not inside the generated source image.
 
 Hard negatives:
-No Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No chibi, super-deformed, mascot-only characters. No 3D, Pixar-like, plastic toy, clay, glossy render, photorealistic live-action frame, modern clothing, electric lights, microphones, cameras, UI, game interface, modern guofeng poster art, game splash art, ink-wash illustration, dense hair ornaments, dense embroidery, dense tableware, borrowed copyrighted characters, existing actor faces, signature costumes, or IP props.
+No Xiaohei / black-blob explainer mascot. No whiteboard or PPT slide. No round Doraemon-like child face, no baby face, no overly round face, no giant anime eyes, no cute toddler proportions, no Chinese traditional animation movie look, no Lotus Lantern / Havoc in Heaven style, no realistic live-action drama still, no photorealism, no modern guofeng poster art, no game splash art, no ink-wash illustration, no red/pink/blue/purple hair, no fantasy-colored hair, no 3D, CGI, Pixar-like, toy, porcelain doll, clay, glossy render, oil-paint skin, modern clothing, electric lights, microphones, cameras, UI, game interface, dense hair ornaments, dense embroidery, dense tableware. No direct Makoto Shinkai, Your Name, Doraemon, Cardcaptor Sakura, existing anime, borrowed copyrighted characters, existing actor faces, signature costumes, signature shots, or IP props.
+```
+
+## 红楼梦真人转绘感视频关键帧模板
+
+Tags: video / literary / honglou / period-drama / painterly
+
+```text
+Generate one 16:9 full-bleed Hongloumeng / 红楼梦 literary video keyframe in the honglou-period-drama-painterly style.
+
+Video / series context:
+{视频主题与段落位置，例如 贾政父子 / 秦可卿托梦 / 贾雨村官场 / 贾府衰败 / 王熙凤理家。If this belongs to a multi-image video, specify previous and next beats so this frame is visually distinct.}
+
+Story beat:
+{一个具体情节或评论判断。Use one clear dramatic action or emotional beat only, not a general poster.}
+
+Character bible:
+{本视频连续人物设定。For each recurring character, define age, mature face shape, eye shape, brow/nose/mouth, beard or hair silhouette, robe color family, posture, temperament, and emotional role. Keep this consistent across frames. Do not copy any existing actor.}
+
+Characters in this frame:
+{本镜头人物和主次。State who is the main face. Use original Hongloumeng characters rendered like Chinese period-drama actors translated into painterly illustration: mature adult facial structure, natural-sized almond eyes, readable nose and mouth, restrained acting, specific but original features, dignified posture, Qing-era-inspired robes.}
+
+Environment:
+{ancestral hall / study / Rongguo mansion corridor / red-pillared courtyard / Grand View Garden threshold / yamen-like official room / moonlit chamber / family hall. Use props such as ledgers, carved screens, incense smoke, official hat stand, lantern, bamboo shadows, tablets without readable text, doors, account books, empty chair, garden rocks.}
+
+Mood:
+{家族压力 / 官场阴影 / 父子隔阂 / 盛极而衰 / 冷静悲剧 / 托梦寒意 / 体面下面的疲惫}
+
+Camera and motion readiness:
+{wide / medium / close。State intended motion: slow push-in / left-to-right pan / right-to-left pan / slight zoom-out / parallax-ready foreground-midground-background. Keep faces, hands and symbolic props away from edges with 8%-12% safe margin. Leave a clean lower subtitle area and a clean central area for dynamic text.}
+
+Composition:
+{具体画面。Use clear dramatic staging, not a crowded poster. For adjacent frames, change camera distance, posture, main prop, light direction, or setting so the same image does not repeat in the first 5-10 seconds.}
+
+Style:
+Refined Chinese period-drama painterly illustration for Hongloumeng video. Mature actor-like but original faces, restrained expressions, soft painterly brushwork, cinematic lantern and moonlight, deep red mansion shadows, aged wood, official dark blue, muted gold, bamboo and incense atmosphere. It should read as a high-quality illustrated drama keyframe, not a real photo, not a TV screenshot, not anime, not CGI. Full-bleed image, no border, no margins, no white slide canvas.
+
+Text policy:
+No in-image title text, no subtitles, no captions, no logos, no watermarks, no readable plaques or calligraphy. Final video subtitles, opening burn text, and yellow/red cover typography are added by the render stage, not inside the generated source image.
+
+Hard negatives:
+No real actor likeness, no TV adaptation still, no copied costume, no direct film frame, no photorealistic photo skin, no camera grain, no pores, no modern guofeng game splash art, no fantasy armor, no xianxia magic light, no 3D/CGI/Pixar/toy/clay/glossy render, no chibi, no childlike round face, no giant anime eyes, no modern clothing, electric lights, microphones, cameras, UI, dense hair ornaments, dense embroidery, dense tableware, readable Chinese characters, calligraphy, or false text.
 ```
 
 ## 曼波抽象梗短视频画面模板

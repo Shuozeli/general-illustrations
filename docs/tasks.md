@@ -1,4 +1,4 @@
-<!-- agent-updated: 2026-06-12T07:05:00Z -->
+<!-- agent-updated: 2026-06-30T04:25:00Z -->
 # Tasks
 
 ## Done
@@ -13,6 +13,7 @@
 - Add coupon-worker-comic recipe for action-first coupon and app-deal video frames.
 - Add mambo-meme-comic recipe for original Chinese short-video meme hooks in technical explainers.
 - Add honglou-retro-flat-anime recipe for Hongloumeng retro TV anime video keyframes.
+- Add honglou-period-drama-painterly recipe for Hongloumeng period-drama painterly video keyframes.
 - Document that all image recipes should be authored in `specs/general-illustrations.json` first.
 
 ## Next
