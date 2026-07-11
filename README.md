@@ -12,12 +12,14 @@ https://shuozeli.github.io/general-illustrations/
 
 - Recipes: what kind of image should be made.
 - Prompt adapters: how a recipe becomes a provider-specific prompt.
-- Providers: how an image request is sent to MiniMax, Codex/CodeIce, Gemini, or
+- Providers: how an image request is sent to MiniMax, Ark/Seedream, Codex/CodeIce, Gemini, or
   another backend.
 
-The first implemented provider adapter is MiniMax. Codex/CodeIce currently
-remains a tool-backed provider used by Codex itself, so the Rust API treats it
-as a provider target to support without pretending it has the same HTTP API.
+The first implemented provider adapter was MiniMax. Ark/Seedream is also
+available through the Volcengine Ark Agent Plan image endpoint. Codex/CodeIce
+currently remains a tool-backed provider used by Codex itself, so the Rust API
+treats it as a provider target to support without pretending it has the same
+HTTP API.
 
 ## What This Improves
 
@@ -71,6 +73,19 @@ cargo run --release -p general-illustrations-cli -- generate \
   --output-format jpeg \
   --output-dir out \
   --output-prefix lsm-tree
+```
+
+Generate an image with Ark / Seedream:
+
+```bash
+export DOUBAO_ARK_AGENT_PLAN_API_KEY=ark-...
+cargo run --release -p general-illustrations-cli -- generate \
+  --provider ark \
+  --prompt-file prompt.txt \
+  --aspect-ratio 16:9 \
+  --output-format png \
+  --output-dir out \
+  --output-prefix seedream-sample
 ```
 
 List provider adapters:
@@ -133,6 +148,10 @@ data in `specs/general-illustrations.json` rather than hand-written Markdown.
 The Rust API intentionally does not bake provider quirks into recipes.
 
 - MiniMax needs short prompts and uses `image_base64` responses.
+- Ark/Seedream works best with shorter, direct visual prompts. Long recipe
+  prompts can intermittently fail at the transport layer, so the adapter
+  requests URL responses and downloads the image bytes instead of moving large
+  base64 payloads through the JSON response.
 - Codex/CodeIce follows structured prompts well but is currently exposed as a
   Codex tool, not as this repo's HTTP provider.
 - Gemini Web can reuse recipe prompts manually today; a formal adapter should be

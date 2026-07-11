@@ -310,11 +310,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "general-illustrations-ark"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "general-illustrations-core",
+ "reqwest",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "general-illustrations-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
+ "general-illustrations-ark",
  "general-illustrations-core",
  "general-illustrations-minimax",
  "general-illustrations-skill-renderer",

@@ -15,6 +15,18 @@
       "image": "assets/clean-docs-overview/reference.png"
     },
     {
+      "id": "clean-docs-overview-ark",
+      "name": "Clean Docs Overview - Ark",
+      "description": "Ark / Seedream provider comparison sample for the clean-docs overview recipe.",
+      "style_id": "clean-docs",
+      "composition_pattern_id": "workflow",
+      "prompt_template_id": "single-image",
+      "provider": "ark",
+      "status": "comparison",
+      "tags": ["article", "docs", "minimal", "product", "ark"],
+      "image": "assets/clean-docs-overview/ark.png"
+    },
+    {
       "id": "technical-lsm-tree",
       "name": "Technical LSM Tree",
       "description": "Precise technical explainer diagram for database internals and systems docs.",
@@ -25,6 +37,18 @@
       "status": "sample",
       "tags": ["technical", "systems", "minimal", "diagram"],
       "image": "assets/technical-lsm-tree/codex.png"
+    },
+    {
+      "id": "technical-lsm-tree-ark",
+      "name": "Technical LSM Tree - Ark",
+      "description": "Ark / Seedream provider comparison sample for database technical diagrams.",
+      "style_id": "technical-minimal",
+      "composition_pattern_id": "system-slice",
+      "prompt_template_id": "technical-image",
+      "provider": "ark",
+      "status": "comparison",
+      "tags": ["technical", "systems", "minimal", "diagram", "ark"],
+      "image": "assets/technical-lsm-tree/ark.png"
     },
     {
       "id": "cartoon-lsm-tree",
@@ -61,6 +85,18 @@
       "status": "sample",
       "tags": ["video", "cartoon", "anime", "literary", "honglou"],
       "image": "assets/honglou-retro-banquet/codex.png"
+    },
+    {
+      "id": "honglou-retro-banquet-ark",
+      "name": "Honglou Retro Banquet - Ark",
+      "description": "Ark / Seedream provider comparison sample for Hongloumeng literary video keyframes.",
+      "style_id": "honglou-retro-flat-anime",
+      "composition_pattern_id": "state-scenes",
+      "prompt_template_id": "honglou-anime-video-frame",
+      "provider": "ark",
+      "status": "comparison",
+      "tags": ["video", "cartoon", "anime", "literary", "honglou", "ark"],
+      "image": "assets/honglou-retro-banquet/ark.png"
     },
     {
       "id": "whiteboard-lsm-tree",
@@ -133,6 +169,18 @@
       "status": "sample",
       "tags": ["video", "business", "finance", "tech-news", "comic"],
       "image": "assets/yellow-worker-finance-video/reference.png"
+    },
+    {
+      "id": "yellow-worker-finance-video-ark",
+      "name": "Yellow Worker Finance Video - Ark",
+      "description": "Ark / Seedream provider comparison sample for yellow-worker business video frames.",
+      "style_id": "yellow-worker-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "yellow-worker-video-frame",
+      "provider": "ark",
+      "status": "comparison",
+      "tags": ["video", "business", "finance", "tech-news", "comic", "ark"],
+      "image": "assets/yellow-worker-finance-video/ark.png"
     },
     {
       "id": "mambo-meme-kafka",

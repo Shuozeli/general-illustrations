@@ -8,6 +8,7 @@ use thiserror::Error;
 pub enum ImageProviderId {
     Codex,
     Minimax,
+    Ark,
     Gemini,
     Custom,
 }
@@ -17,6 +18,7 @@ impl fmt::Display for ImageProviderId {
         let value = match self {
             ImageProviderId::Codex => "codex",
             ImageProviderId::Minimax => "minimax",
+            ImageProviderId::Ark => "ark",
             ImageProviderId::Gemini => "gemini",
             ImageProviderId::Custom => "custom",
         };

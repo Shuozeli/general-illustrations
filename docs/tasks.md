@@ -1,5 +1,7 @@
-<!-- agent-updated: 2026-06-30T04:25:00Z -->
+<!-- agent-updated: 2026-07-11T17:27:00Z -->
 # Tasks
+
+- [x] Add Ark / Seedream provider adapter and Gallery comparison samples (2026-07-11)
 
 ## Done
 

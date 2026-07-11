@@ -49,6 +49,16 @@ Implements `ImageProvider` for MiniMax:
 - decodes `data.image_base64`
 - normalizes `base_resp.status_code` errors
 
+### `general-illustrations-ark`
+
+Implements `ImageProvider` for Volcengine Ark Agent Plan image generation:
+
+- sends requests to `/api/plan/v3/images/generations`
+- maps output format to `png` or `jpeg`
+- requests URL responses to avoid large base64 JSON transport failures
+- downloads returned image URLs into normalized `GeneratedImage` bytes
+- supports `DOUBAO_ARK_AGENT_PLAN_API_KEY` and `ARK_AGENT_PLAN_API_KEY`
+
 ### `general-illustrations-cli`
 
 Provides a small CLI for testing provider adapters and generating images from

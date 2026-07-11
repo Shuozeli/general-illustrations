@@ -5,6 +5,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 
 use anyhow::{Context, Result, bail};
 use clap::{Parser, Subcommand, ValueEnum};
+use general_illustrations_ark::ArkImageProvider;
 use general_illustrations_core::{
     AspectRatio, ImageGenerationRequest, ImageProvider, OutputFormat,
 };
@@ -75,6 +76,7 @@ struct SkillRenderArgs {
 #[derive(Debug, Clone, Copy, ValueEnum)]
 enum ProviderArg {
     Minimax,
+    Ark,
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -99,6 +101,7 @@ fn main() -> Result<()> {
         Command::Generate(args) => generate(args),
         Command::Providers => {
             println!("minimax");
+            println!("ark");
             Ok(())
         }
         Command::Skill(args) => skill(args),
@@ -162,6 +165,21 @@ fn generate(args: GenerateArgs) -> Result<()> {
         ProviderArg::Minimax => {
             let api_key = env::var("MINIMAX_API_KEY").context("MINIMAX_API_KEY must be set")?;
             Box::new(MinimaxImageProvider::new(api_key))
+        }
+        ProviderArg::Ark => {
+            let api_key = env::var("DOUBAO_ARK_AGENT_PLAN_API_KEY")
+                .or_else(|_| env::var("ARK_AGENT_PLAN_API_KEY"))
+                .context("DOUBAO_ARK_AGENT_PLAN_API_KEY or ARK_AGENT_PLAN_API_KEY must be set")?;
+            let provider = ArkImageProvider::new(api_key);
+            let provider = match env::var("ARK_AGENT_PLAN_IMAGE_ENDPOINT") {
+                Ok(endpoint) => provider.with_endpoint(endpoint),
+                Err(_) => provider,
+            };
+            let provider = match env::var("ARK_AGENT_PLAN_IMAGE_MODEL") {
+                Ok(model) => provider.with_model(model),
+                Err(_) => provider,
+            };
+            Box::new(provider)
         }
     };
 

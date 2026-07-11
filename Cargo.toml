@@ -3,6 +3,7 @@ resolver = "3"
 members = [
     "crates/general-illustrations-core",
     "crates/general-illustrations-minimax",
+    "crates/general-illustrations-ark",
     "crates/general-illustrations-cli",
     "crates/general-illustrations-skill-spec",
     "crates/general-illustrations-skill-renderer",
