@@ -94,6 +94,50 @@ List provider adapters:
 cargo run --release -p general-illustrations-cli -- providers
 ```
 
+### Recipe-driven prompt rendering
+
+Validate recipes and generate concrete prompts from JSON data:
+
+```bash
+cargo run --release -p general-illustrations-cli -- recipe prompt \
+  --spec specs/general-illustrations.json \
+  --recipe cartoon-explainer-lsm \
+  --data /tmp/cartoon-explainer-lsm-data.json
+```
+
+Generate a JSON Schema for a recipe's required template keys:
+
+```bash
+cargo run --release -p general-illustrations-cli -- recipe schema \
+  --spec specs/general-illustrations.json \
+  --recipe cartoon-explainer-lsm \
+  --out /tmp/cartoon-explainer-lsm.schema.json
+```
+
+The schema is derived from the selected recipe's prompt template placeholders
+(curly-brace keys), so you can safely validate your JSON payload before rendering.
+
+Example `/tmp/cartoon-explainer-lsm-data.json`:
+
+```json
+{
+  "选择的预置风格：clean-docs / technical-minimal / review-minimal / editorial-sketch / product-explainer / simple-doodle / cartoon-explainer / honglou-retro-flat-anime / honglou-period-drama-painterly / coupon-worker-comic / yellow-worker-comic / mambo-meme-comic / story-infra-kafka-mambo-technical / whiteboard-comic / sticker-layer / soft-clay-cartoon": "cartoon-explainer",
+  "正文配图主题": "LSM树的写入路径",
+  "Workflow / 系统局部 / 前后对比 / 角色状态 / 概念隐喻 / 方法分层 / 地图路线 / 小漫画分镜 / 动作循环场景": "概念隐喻",
+  "这张图要表达的核心意思": "先写入 MemTable，再 flush 到 L0，异步合并形成更稳健的查询路径",
+  "具体画面：主体在哪里、正在发生什么、主要物件是什么、信息如何流动": "左边角色把新记录塞进圆筒，箭头引导到内存层与磁盘层",
+  "元素1": "MemTable",
+  "元素2": "SSTable",
+  "元素3": "Compaction",
+  "元素4": "读路径",
+  "标注词1": "flush",
+  "标注词2": "compact",
+  "标注词3": "SSTable",
+  "标注词4": "write path",
+  "可选标注词5": ""
+}
+```
+
 ## Skill
 
 The skill authoring format is JSON:

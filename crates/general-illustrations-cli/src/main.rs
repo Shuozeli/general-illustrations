@@ -1,9 +1,10 @@
+use std::collections::HashMap;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use anyhow::{Context, Result, bail};
+use anyhow::{Context, Result, anyhow, bail};
 use clap::{Parser, Subcommand, ValueEnum};
 use general_illustrations_ark::ArkImageProvider;
 use general_illustrations_core::{
@@ -25,6 +26,7 @@ enum Command {
     Generate(GenerateArgs),
     Providers,
     Skill(SkillArgs),
+    Recipe(RecipeArgs),
 }
 
 #[derive(Debug, Parser)]
@@ -49,6 +51,38 @@ struct GenerateArgs {
 struct SkillArgs {
     #[command(subcommand)]
     command: SkillCommand,
+}
+
+#[derive(Debug, Parser)]
+struct RecipeArgs {
+    #[command(subcommand)]
+    command: RecipeCommand,
+}
+
+#[derive(Debug, Subcommand)]
+enum RecipeCommand {
+    Prompt(RecipePromptArgs),
+    Schema(RecipeSchemaArgs),
+}
+
+#[derive(Debug, Parser)]
+struct RecipePromptArgs {
+    #[arg(long)]
+    spec: PathBuf,
+    #[arg(long)]
+    recipe: String,
+    #[arg(long)]
+    data: PathBuf,
+}
+
+#[derive(Debug, Parser)]
+struct RecipeSchemaArgs {
+    #[arg(long)]
+    spec: PathBuf,
+    #[arg(long)]
+    recipe: String,
+    #[arg(long)]
+    out: Option<PathBuf>,
 }
 
 #[derive(Debug, Subcommand)]
@@ -105,6 +139,7 @@ fn main() -> Result<()> {
             Ok(())
         }
         Command::Skill(args) => skill(args),
+        Command::Recipe(args) => recipe(args),
     }
 }
 
@@ -112,6 +147,259 @@ fn skill(args: SkillArgs) -> Result<()> {
     match args.command {
         SkillCommand::Validate(args) => validate_skill(args),
         SkillCommand::Render(args) => render_skill(args),
+    }
+}
+
+fn recipe(args: RecipeArgs) -> Result<()> {
+    match args.command {
+        RecipeCommand::Prompt(args) => recipe_prompt(args),
+        RecipeCommand::Schema(args) => recipe_schema(args),
+    }
+}
+
+fn recipe_schema(args: RecipeSchemaArgs) -> Result<()> {
+    let spec = read_skill_spec(&args.spec)?;
+    let (recipe, _style, _composition_pattern, template) =
+        find_recipe_components(&spec, &args.recipe)?;
+    let variable_names = general_illustrations_skill_spec::template_variables(&template.body);
+
+    let mut properties = serde_json::Map::new();
+    for variable in &variable_names {
+        properties.insert(
+            variable.clone(),
+            serde_json::Value::Object(
+                [(
+                    "type".to_string(),
+                    serde_json::Value::String("string".to_string()),
+                )]
+                .into_iter()
+                .collect(),
+            ),
+        );
+    }
+
+    let schema = serde_json::Value::Object(
+        [
+            (
+                "$schema".to_string(),
+                serde_json::Value::String(
+                    "https://json-schema.org/draft/2020-12/schema".to_string(),
+                ),
+            ),
+            (
+                "title".to_string(),
+                serde_json::Value::String(format!("{} recipe data schema", recipe.id)),
+            ),
+            (
+                "description".to_string(),
+                serde_json::Value::String(format!("{}. {}", recipe.name, recipe.description)),
+            ),
+            (
+                "type".to_string(),
+                serde_json::Value::String("object".to_string()),
+            ),
+            (
+                "additionalProperties".to_string(),
+                serde_json::Value::Bool(true),
+            ),
+            (
+                "required".to_string(),
+                serde_json::Value::Array(
+                    variable_names
+                        .iter()
+                        .map(|name| serde_json::Value::String(name.clone()))
+                        .collect(),
+                ),
+            ),
+            (
+                "properties".to_string(),
+                serde_json::Value::Object(properties),
+            ),
+        ]
+        .into_iter()
+        .collect(),
+    );
+
+    let schema_text =
+        serde_json::to_string_pretty(&schema).context("failed to serialize schema to JSON")?;
+
+    match args.out {
+        Some(path) => {
+            fs::write(&path, schema_text)
+                .with_context(|| format!("failed to write {}", path.display()))?;
+            println!("wrote {}", path.display());
+        }
+        None => println!("{schema_text}"),
+    }
+
+    Ok(())
+}
+
+fn recipe_prompt(args: RecipePromptArgs) -> Result<()> {
+    let spec = read_skill_spec(&args.spec)?;
+    let (recipe, style, composition_pattern, template) =
+        find_recipe_components(&spec, &args.recipe)?;
+
+    let mut values = read_prompt_data(&args.data)?;
+
+    values
+        .entry("recipe_id".to_string())
+        .or_insert(recipe.id.clone());
+    values
+        .entry("recipe_name".to_string())
+        .or_insert(recipe.name.clone());
+    values
+        .entry("recipe_description".to_string())
+        .or_insert(recipe.description.clone());
+    values
+        .entry("style_id".to_string())
+        .or_insert(recipe.style_id.clone());
+    values
+        .entry("style_name".to_string())
+        .or_insert(style.name.clone());
+    values
+        .entry("style_use_when".to_string())
+        .or_insert(style.use_when.clone());
+    values
+        .entry("style_drawing_rule".to_string())
+        .or_insert(style.drawing_rule.clone());
+    values
+        .entry("style_avoid".to_string())
+        .or_insert(style.avoid.clone());
+    values
+        .entry("style_tags".to_string())
+        .or_insert(style.tags.join(" / "));
+    values
+        .entry("composition_pattern_id".to_string())
+        .or_insert(recipe.composition_pattern_id.clone());
+    values
+        .entry("composition_pattern_name".to_string())
+        .or_insert(composition_pattern.name.clone());
+    values
+        .entry("composition_pattern_use_when".to_string())
+        .or_insert(composition_pattern.use_when.clone());
+    values
+        .entry("composition_pattern_drawing_rule".to_string())
+        .or_insert(composition_pattern.drawing_rule.clone());
+    values
+        .entry("composition_pattern_tags".to_string())
+        .or_insert(composition_pattern.tags.join(" / "));
+    values
+        .entry("prompt_template_id".to_string())
+        .or_insert(recipe.prompt_template_id.clone());
+    values
+        .entry("prompt_template_name".to_string())
+        .or_insert(template.name.clone());
+
+    for (key, value) in &recipe.default_variables {
+        values.entry(key.clone()).or_insert_with(|| value.clone());
+    }
+
+    let prompt = general_illustrations_skill_spec::render_prompt(&template.body, &values)
+        .map_err(|error| anyhow!("failed to render prompt template: {error}"))?;
+
+    println!("{}", prompt);
+    Ok(())
+}
+
+fn find_recipe_components<'a>(
+    spec: &'a SkillSpec,
+    recipe_id: &'a str,
+) -> Result<(
+    &'a general_illustrations_skill_spec::RecipeSpec,
+    &'a general_illustrations_skill_spec::StyleSpec,
+    &'a general_illustrations_skill_spec::CompositionPatternSpec,
+    &'a general_illustrations_skill_spec::PromptTemplateSpec,
+)> {
+    let recipe = spec
+        .recipes
+        .iter()
+        .find(|recipe| recipe.id == recipe_id)
+        .ok_or_else(|| anyhow!("missing recipe: {}", recipe_id))?;
+
+    let style = spec
+        .styles
+        .iter()
+        .find(|style| style.id == recipe.style_id)
+        .ok_or_else(|| {
+            anyhow!(
+                "recipe {} references unknown style {}",
+                recipe.id,
+                recipe.style_id
+            )
+        })?;
+
+    let composition_pattern = spec
+        .composition_patterns
+        .iter()
+        .find(|pattern| pattern.id == recipe.composition_pattern_id)
+        .ok_or_else(|| {
+            anyhow!(
+                "recipe {} references unknown composition pattern {}",
+                recipe.id,
+                recipe.composition_pattern_id
+            )
+        })?;
+
+    let template = spec
+        .prompt_templates
+        .iter()
+        .find(|template| template.id == recipe.prompt_template_id)
+        .ok_or_else(|| {
+            anyhow!(
+                "recipe {} references unknown prompt template {}",
+                recipe.id,
+                recipe.prompt_template_id
+            )
+        })?;
+
+    Ok((recipe, style, composition_pattern, template))
+}
+
+fn read_prompt_data(path: &Path) -> Result<HashMap<String, String>> {
+    let contents =
+        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?;
+
+    let value: serde_json::Value = serde_json::from_str(&contents)
+        .with_context(|| format!("failed to parse {} as JSON", path.display()))?;
+
+    let obj = value.as_object().ok_or_else(|| {
+        anyhow!("prompt data must be a JSON object (a map of template variables to values)")
+    })?;
+
+    let mut values = HashMap::new();
+
+    for (key, value) in obj {
+        let rendered = match value {
+            serde_json::Value::String(text) => text.clone(),
+            serde_json::Value::Array(values) => values
+                .iter()
+                .map(render_prompt_value)
+                .collect::<Result<Vec<_>, _>>()?
+                .join(" / "),
+            other => other.to_string(),
+        };
+
+        values.insert(key.clone(), rendered);
+    }
+
+    Ok(values)
+}
+
+fn render_prompt_value(value: &serde_json::Value) -> Result<String> {
+    match value {
+        serde_json::Value::String(text) => Ok(text.clone()),
+        serde_json::Value::Null => Ok(String::new()),
+        serde_json::Value::Bool(boolean) => Ok(boolean.to_string()),
+        serde_json::Value::Number(number) => Ok(number.to_string()),
+        serde_json::Value::Array(values) => values
+            .iter()
+            .map(render_prompt_value)
+            .collect::<Result<Vec<_>, _>>()
+            .map(|parts| parts.join(" / ")),
+        _ => Err(anyhow!(
+            "prompt value must be string, bool, number, null, or a list of these values"
+        )),
     }
 }
 

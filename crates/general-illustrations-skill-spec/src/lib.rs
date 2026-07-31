@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::collections::HashSet;
 
 use serde::{Deserialize, Serialize};
@@ -18,6 +19,8 @@ pub struct SkillSpec {
     pub styles: Vec<StyleSpec>,
     pub composition_patterns: Vec<CompositionPatternSpec>,
     pub prompt_templates: Vec<PromptTemplateSpec>,
+    #[serde(default)]
+    pub recipes: Vec<RecipeSpec>,
     pub qa: QaSpec,
     #[serde(default)]
     pub examples: Vec<ExampleAssetSpec>,
@@ -90,6 +93,22 @@ pub struct PromptTemplateSpec {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct RecipeSpec {
+    pub id: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
+    pub name: String,
+    pub description: String,
+    pub style_id: String,
+    pub composition_pattern_id: String,
+    pub prompt_template_id: String,
+    #[serde(default)]
+    pub recommended_providers: Vec<String>,
+    #[serde(default)]
+    pub default_variables: HashMap<String, String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct QaSpec {
     pub must_pass: Vec<String>,
     pub failure_signals: Vec<String>,
@@ -121,6 +140,12 @@ impl ValidationError {
     pub fn problems(&self) -> &[String] {
         self.problems.as_slice()
     }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Error)]
+#[error("prompt template rendering failed: {missing:?}")]
+pub struct PromptRenderError {
+    pub missing: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -240,6 +265,55 @@ impl SkillSpec {
             problems.push("qa.failure_signals must contain at least one item".to_string());
         }
 
+        let style_ids: HashSet<&str> = self.styles.iter().map(|style| style.id.as_str()).collect();
+        let composition_ids: HashSet<&str> = self
+            .composition_patterns
+            .iter()
+            .map(|pattern| pattern.id.as_str())
+            .collect();
+        let template_ids: HashSet<&str> = self
+            .prompt_templates
+            .iter()
+            .map(|template| template.id.as_str())
+            .collect();
+
+        validate_unique_ids(
+            "recipes",
+            self.recipes.iter().map(|recipe| &recipe.id),
+            &mut problems,
+        );
+        for recipe in &self.recipes {
+            if !style_ids.contains(recipe.style_id.as_str()) {
+                problems.push(format!(
+                    "recipes.{} references unknown style_id {}",
+                    recipe.id, recipe.style_id
+                ));
+            }
+
+            if !composition_ids.contains(recipe.composition_pattern_id.as_str()) {
+                problems.push(format!(
+                    "recipes.{} references unknown composition_pattern_id {}",
+                    recipe.id, recipe.composition_pattern_id
+                ));
+            }
+
+            if !template_ids.contains(recipe.prompt_template_id.as_str()) {
+                problems.push(format!(
+                    "recipes.{} references unknown prompt_template_id {}",
+                    recipe.id, recipe.prompt_template_id
+                ));
+            }
+
+            for tag in &recipe.tags {
+                if !is_kebab_case(tag) {
+                    problems.push(format!(
+                        "recipes.{}.tags.{tag} must be lowercase kebab-case",
+                        recipe.id
+                    ));
+                }
+            }
+        }
+
         validate_unique_ids(
             "examples",
             self.examples.iter().map(|example| &example.id),
@@ -254,6 +328,69 @@ impl SkillSpec {
             })
         }
     }
+}
+
+pub fn render_prompt(
+    template: &str,
+    variables: &HashMap<String, String>,
+) -> Result<String, PromptRenderError> {
+    let mut result = String::with_capacity(template.len());
+    let mut missing = Vec::new();
+    let mut index = 0;
+
+    while let Some(open) = template[index..].find('{') {
+        let open_idx = index + open;
+        if let Some(close_rel) = template[open_idx + 1..].find('}') {
+            let close_idx = open_idx + 1 + close_rel;
+            result.push_str(&template[index..open_idx]);
+            let key = template[open_idx + 1..close_idx].trim();
+
+            match variables.get(key) {
+                Some(value) => {
+                    result.push_str(value);
+                }
+                None => {
+                    missing.push(key.to_string());
+                    result.push_str(&template[open_idx..=close_idx]);
+                }
+            }
+
+            index = close_idx + 1;
+        } else {
+            break;
+        }
+    }
+
+    result.push_str(&template[index..]);
+
+    if !missing.is_empty() {
+        return Err(PromptRenderError { missing });
+    }
+
+    Ok(result)
+}
+
+pub fn template_variables(template: &str) -> Vec<String> {
+    let mut names = Vec::new();
+    let mut seen = HashSet::new();
+    let mut index = 0;
+
+    while let Some(open) = template[index..].find('{') {
+        let open_idx = index + open;
+        if let Some(close_rel) = template[open_idx + 1..].find('}') {
+            let close_idx = open_idx + 1 + close_rel;
+            let key = template[open_idx + 1..close_idx].trim().to_string();
+
+            if !key.is_empty() && seen.insert(key.clone()) {
+                names.push(key);
+            }
+            index = close_idx + 1;
+        } else {
+            break;
+        }
+    }
+
+    names
 }
 
 fn validate_tags(label: &str, tags: &[String], problems: &mut Vec<String>) {
@@ -374,6 +511,31 @@ mod tests {
         );
     }
 
+    #[test]
+    fn rejects_missing_recipe_references() {
+        // Arrange
+        let mut spec = valid_spec();
+        spec.recipes[0].style_id = "missing-style".to_string();
+        spec.recipes[0].composition_pattern_id = "missing-pattern".to_string();
+        spec.recipes[0].prompt_template_id = "missing-template".to_string();
+
+        // Act
+        let error = spec.validate().unwrap_err();
+
+        // Assert
+        assert!(
+            error
+                .problems()
+                .contains(&"recipes.sample references unknown style_id missing-style".to_string())
+        );
+        assert!(error.problems().contains(
+            &"recipes.sample references unknown composition_pattern_id missing-pattern".to_string()
+        ));
+        assert!(error.problems().contains(
+            &"recipes.sample references unknown prompt_template_id missing-template".to_string()
+        ));
+    }
+
     fn valid_spec() -> SkillSpec {
         SkillSpec {
             schema_version: 1,
@@ -426,6 +588,17 @@ mod tests {
                 tags: vec!["image".to_string()],
                 name: "生图提示词模板".to_string(),
                 body: "Generate one image.".to_string(),
+            }],
+            recipes: vec![RecipeSpec {
+                id: "sample".to_string(),
+                tags: vec!["video".to_string()],
+                name: "Sample recipe".to_string(),
+                description: "Sample fixture recipe".to_string(),
+                style_id: "clean-docs".to_string(),
+                composition_pattern_id: "workflow".to_string(),
+                prompt_template_id: "single-image".to_string(),
+                recommended_providers: vec!["codex".to_string()],
+                default_variables: HashMap::new(),
             }],
             qa: QaSpec {
                 must_pass: vec!["是 16:9 横版。".to_string()],

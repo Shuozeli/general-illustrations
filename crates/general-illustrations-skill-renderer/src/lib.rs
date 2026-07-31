@@ -383,9 +383,12 @@ fn normalize_contents(contents: String) -> String {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use general_illustrations_skill_spec::{
         CompositionPatternSpec, IterationRuleSpec, PositioningSpec, PromptTemplateSpec, QaSpec,
-        ReferenceItemSpec, ReferenceSpec, SkillSpec, StyleDnaSpec, StyleSpec, WorkflowStepSpec,
+        RecipeSpec, ReferenceItemSpec, ReferenceSpec, SkillSpec, StyleDnaSpec, StyleSpec,
+        WorkflowStepSpec,
     };
 
     use super::*;
@@ -482,6 +485,17 @@ mod tests {
                 tags: vec!["image".to_string()],
                 name: "生图提示词模板".to_string(),
                 body: "Generate one image.".to_string(),
+            }],
+            recipes: vec![RecipeSpec {
+                id: "sample".to_string(),
+                tags: vec!["video".to_string()],
+                name: "Sample recipe".to_string(),
+                description: "Sample fixture recipe".to_string(),
+                style_id: "clean-docs".to_string(),
+                composition_pattern_id: "workflow".to_string(),
+                prompt_template_id: "single-image".to_string(),
+                recommended_providers: vec!["codex".to_string()],
+                default_variables: HashMap::new(),
             }],
             qa: QaSpec {
                 must_pass: vec!["是 16:9 横版。".to_string()],
