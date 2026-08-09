@@ -1,3 +1,4 @@
+<!-- agent-updated: 2026-08-09T00:00:00Z -->
 # general-illustrations
 
 Provider-neutral illustration recipes and image generation adapters for agents.
@@ -8,12 +9,15 @@ Gallery:
 https://shuozeli.github.io/general-illustrations/
 ```
 
-`general-illustrations` separates three concerns:
+`general-illustrations` separates four concerns:
 
-- Recipes: what kind of image should be made.
+- Categories: which use-context a style/recipe belongs to (pick a category first,
+  then a concrete recipe inside it).
+- Recipes: a first-class, selectable unit that binds a category, a style, a default
+  composition, a prompt template, and a per-provider prompt set.
 - Prompt adapters: how a recipe becomes a provider-specific prompt.
-- Providers: how an image request is sent to MiniMax, Ark/Seedream, Codex/CodeIce, Gemini, or
-  another backend.
+- Providers: how an image request is sent to MiniMax, Ark/Seedream, Codex/CodeIce,
+  Gemini (web/CDP), ChatGPT (web/CDP), or another backend.
 
 The first implemented provider adapter was MiniMax. Ark/Seedream is also
 available through the Volcengine Ark Agent Plan image endpoint. Codex/CodeIce
@@ -30,12 +34,20 @@ The important improvement is that illustration knowledge is now broken into
 structured, reusable pieces:
 
 - `SkillSpec`: the skill definition, workflow, references, QA, and metadata.
+- `CategorySpec`: one use-context bucket (`article-docs`, `video-light`,
+  `video-character-comic`, `video-meme-motion`, `literary-period`). Every style
+  and recipe references a category so they are discoverable, not a flat list.
 - `StyleSpec`: one selectable visual style, such as `simple-doodle` or
   `technical-minimal`.
 - `CompositionPatternSpec`: one visual structure, such as workflow, system
   slice, before/after, or comic panels.
 - `PromptTemplateSpec`: reusable prompt shapes for generation and editing.
-- Provider adapters: MiniMax, Codex/CodeIce, Gemini, or future image backends.
+- `RecipeSpec`: a first-class recipe binding `category + style + composition +
+  prompt template`, plus `recommended_providers`, `default_variables`, and a
+  `providers` prompt set (recipe-faithful Gemini prompt + optional ChatGPT
+  override). Select one `recipe.id` instead of hand-pairing style/composition.
+- Provider adapters: MiniMax, Ark/Seedream, Codex/CodeIce, Gemini, ChatGPT, or
+  future image backends.
 
 So the project is no longer bound to one fixed image identity, one character, one
 composition, or one model. A user request can choose the right recipe, style,
@@ -52,11 +64,13 @@ general-illustrations/
 ├── crates/
 │   ├── general-illustrations-core/     Provider-neutral request/response API
 │   ├── general-illustrations-minimax/  MiniMax image_generation adapter
+│   ├── general-illustrations-ark/      Ark/Seedream image adapter
 │   ├── general-illustrations-skill-spec/      JSON skill schema and validation
-│   ├── general-illustrations-skill-renderer/  JSON-to-skill renderer
+│   ├── general-illustrations-skill-renderer/  JSON-to-skill renderer (+ golden test)
 │   └── general-illustrations-cli/             CLI for generation and skills
-├── specs/general-illustrations.json    Source of truth for the Codex skill
-├── skill/general-illustrations/        Generated Codex skill and references
+├── specs/general-illustrations.json    Source of truth (categories, styles, recipes)
+├── skill/general-illustrations/        Generated Codex skill, references, provider sets
+├── gallery/                            Data-driven demo page (build_gallery.py + gallery.json)
 └── docs/                               Design notes and roadmap
 ```
 
@@ -174,10 +188,16 @@ The skill intentionally mirrors the structure of `ian-xiaohei-illustrations`:
 
 - `SKILL.md`: activation, workflow, shot list, generation, QA, delivery.
 - `references/style-dna.md`: shared visual DNA.
-- `references/styles.md`: prebuilt visual styles.
+- `references/styles.md`: prebuilt visual styles, grouped by category.
 - `references/composition-patterns.md`: structure types and originality rules.
 - `references/prompt-template.md`: prompt templates.
+- `references/recipes.md`: the recipe catalog (category -> style + composition +
+  template + provider prompts).
+- `references/providers/gemini.md`, `references/providers/chatgpt.md`: per-recipe
+  provider prompt sets and CDP usage contracts.
 - `references/qa-checklist.md`: generation QA and iteration rules.
+- `agents/openai.yaml`, `agents/gemini.yaml`, `agents/chatgpt.yaml`: per-agent
+  interface metadata.
 - `assets/examples/`: calibration images only, not templates to copy.
 
 The main difference from the Xiaohei skill is that this skill does not bind to a
@@ -198,11 +218,33 @@ The Rust API intentionally does not bake provider quirks into recipes.
   base64 payloads through the JSON response.
 - Codex/CodeIce follows structured prompts well but is currently exposed as a
   Codex tool, not as this repo's HTTP provider.
-- Gemini Web can reuse recipe prompts manually today; a formal adapter should be
-  added only when there is a stable API path.
+- Gemini Web and ChatGPT Web are driven over Chrome DevTools Protocol (CDP) today
+  rather than an HTTP adapter. Each recipe ships a recipe-faithful prompt in its
+  `providers` set (Gemini required, ChatGPT optional override falling back to
+  Gemini) with a `{scene}` placeholder. These prompts MUST NOT reintroduce a
+  global `photorealistic, cinematic` wrapper -- that overrides the recipe style
+  and produces wrong-style output. See `references/providers/{gemini,chatgpt}.md`.
+  Reference CDP drivers live in the dragb monorepo at
+  `playground/yuanchenxi/meitou_weekly/scripts/{gemini,chatgpt}_image_gen_cdp.*`
+  (`--recipe <id>` reads the recipe prompt from this spec).
 
 Recipes should stay provider-neutral. Provider adapters should translate request
 shape, prompt length, response format, auth, and errors.
+
+## Gallery
+
+The demo gallery is generated from the spec, not hand-authored, so it cannot
+drift from the canonical recipes:
+
+```bash
+python3 gallery/build_gallery.py          # spec -> gallery/gallery.json
+```
+
+`gallery/index.html` fetches `gallery.json` at runtime and renders one card per
+recipe, grouped by category, with a per-provider example strip
+(Codex / Ark / Gemini / ChatGPT) so provider outputs can be compared in place.
+Do not hand-edit `index.html`/`gallery.json`; edit the spec and re-run
+`build_gallery.py`.
 
 ## Docs
 
