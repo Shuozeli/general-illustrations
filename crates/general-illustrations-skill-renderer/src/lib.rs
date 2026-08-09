@@ -46,12 +46,32 @@ pub fn render_skill(spec: &SkillSpec) -> Result<RenderedSkill, RenderError> {
                 contents: normalize_contents(render_openai_yaml(spec)),
             },
             RenderedFile {
+                path: PathBuf::from("agents/gemini.yaml"),
+                contents: normalize_contents(render_gemini_yaml(spec)),
+            },
+            RenderedFile {
+                path: PathBuf::from("agents/chatgpt.yaml"),
+                contents: normalize_contents(render_chatgpt_yaml(spec)),
+            },
+            RenderedFile {
                 path: PathBuf::from("references/style-dna.md"),
                 contents: normalize_contents(render_style_dna(spec)),
             },
             RenderedFile {
                 path: PathBuf::from("references/styles.md"),
                 contents: normalize_contents(render_styles(spec)),
+            },
+            RenderedFile {
+                path: PathBuf::from("references/recipes.md"),
+                contents: normalize_contents(render_recipes(spec)),
+            },
+            RenderedFile {
+                path: PathBuf::from("references/providers/gemini.md"),
+                contents: normalize_contents(render_gemini_provider(spec)),
+            },
+            RenderedFile {
+                path: PathBuf::from("references/providers/chatgpt.md"),
+                contents: normalize_contents(render_chatgpt_provider(spec)),
             },
             RenderedFile {
                 path: PathBuf::from("references/composition-patterns.md"),
@@ -209,19 +229,266 @@ fn render_styles(spec: &SkillSpec) -> String {
     let mut output = String::new();
     push_line(&mut output, "# 预置风格");
     push_line(&mut output, "");
-    push_line(&mut output, "选择一个风格即可，不要在一张图里混太多风格。");
+    push_line(
+        &mut output,
+        "先按类别定位，再在类别内选一个具体风格；不要在一张图里混太多风格。",
+    );
     push_line(&mut output, "");
 
-    for style in &spec.styles {
-        push_line(&mut output, &format!("## {}", style.name));
+    // Group styles under their category, preserving category and style order.
+    for category in &spec.categories {
+        let styles: Vec<&general_illustrations_skill_spec::StyleSpec> = spec
+            .styles
+            .iter()
+            .filter(|style| style.category == category.id)
+            .collect();
+        if styles.is_empty() {
+            continue;
+        }
+        push_line(&mut output, &format!("## {} (`{}`)", category.name, category.id));
         push_line(&mut output, "");
-        push_tags(&mut output, &style.tags);
-        push_line(&mut output, &format!("适合：{}", style.use_when));
+        push_paragraph(&mut output, &category.summary);
+        for style in styles {
+            push_line(&mut output, &format!("### {}", style.name));
+            push_line(&mut output, "");
+            push_tags(&mut output, &style.tags);
+            push_line(&mut output, &format!("适合：{}", style.use_when));
+            push_line(&mut output, "");
+            push_line(&mut output, &format!("画法：{}", style.drawing_rule));
+            push_line(&mut output, "");
+            push_line(&mut output, &format!("避免：{}", style.avoid));
+            push_line(&mut output, "");
+        }
+    }
+
+    output
+}
+
+fn render_recipes(spec: &SkillSpec) -> String {
+    let mut output = String::new();
+    push_line(&mut output, "# 配方目录");
+    push_line(&mut output, "");
+    push_line(
+        &mut output,
+        "配方把类别、风格、默认构图、提示词模板和 provider 提示词绑成一个可选单元。选一个配方 id，即可拿到风格 + 构图 + 模板 + Gemini 提示词，不必手动配对。",
+    );
+    push_line(&mut output, "");
+
+    for category in &spec.categories {
+        let recipes: Vec<&general_illustrations_skill_spec::RecipeSpec> = spec
+            .recipes
+            .iter()
+            .filter(|recipe| recipe.category == category.id)
+            .collect();
+        if recipes.is_empty() {
+            continue;
+        }
+        push_line(&mut output, &format!("## {} (`{}`)", category.name, category.id));
         push_line(&mut output, "");
-        push_line(&mut output, &format!("画法：{}", style.drawing_rule));
+        for recipe in recipes {
+            push_line(&mut output, &format!("### {} (`{}`)", recipe.name, recipe.id));
+            push_line(&mut output, "");
+            push_tags(&mut output, &recipe.tags);
+            push_line(&mut output, &format!("适合：{}", recipe.description));
+            push_line(&mut output, "");
+            push_line(&mut output, &format!("- 风格 style：`{}`", recipe.style_id));
+            push_line(
+                &mut output,
+                &format!("- 默认构图 composition：`{}`", recipe.composition_pattern_id),
+            );
+            push_line(
+                &mut output,
+                &format!("- 提示词模板 template：`{}`", recipe.prompt_template_id),
+            );
+            push_line(&mut output, "");
+            push_line(&mut output, "Gemini 提示词（把 `{scene}` 换成当前画面）：");
+            push_line(&mut output, "");
+            push_line(&mut output, "```text");
+            push_line(&mut output, recipe.providers.gemini.prompt.trim());
+            push_line(&mut output, "```");
+            push_line(&mut output, "");
+            for note in &recipe.providers.gemini.notes {
+                push_line(&mut output, &format!("- {note}"));
+            }
+            if !recipe.providers.gemini.notes.is_empty() {
+                push_line(&mut output, "");
+            }
+        }
+    }
+
+    output
+}
+
+fn render_gemini_yaml(spec: &SkillSpec) -> String {
+    let mut output = String::new();
+    push_line(&mut output, "interface:");
+    push_line(
+        &mut output,
+        &format!("  display_name: {}", yaml_string(&spec.display_name)),
+    );
+    push_line(
+        &mut output,
+        &format!(
+            "  short_description: {}",
+            yaml_string(&spec.short_description)
+        ),
+    );
+    push_line(
+        &mut output,
+        &format!("  default_prompt: {}", yaml_string(&spec.default_prompt)),
+    );
+    push_line(&mut output, "provider:");
+    push_line(&mut output, "  id: gemini");
+    push_line(
+        &mut output,
+        "  surface: gemini-web-imagen-cdp",
+    );
+    push_line(
+        &mut output,
+        &format!(
+            "  prompt_reference: {}",
+            yaml_string("references/providers/gemini.md")
+        ),
+    );
+    output
+}
+
+fn render_chatgpt_yaml(spec: &SkillSpec) -> String {
+    let mut output = String::new();
+    push_line(&mut output, "interface:");
+    push_line(
+        &mut output,
+        &format!("  display_name: {}", yaml_string(&spec.display_name)),
+    );
+    push_line(
+        &mut output,
+        &format!(
+            "  short_description: {}",
+            yaml_string(&spec.short_description)
+        ),
+    );
+    push_line(
+        &mut output,
+        &format!("  default_prompt: {}", yaml_string(&spec.default_prompt)),
+    );
+    push_line(&mut output, "provider:");
+    push_line(&mut output, "  id: chatgpt");
+    push_line(&mut output, "  surface: chatgpt-web-imagegen-cdp");
+    push_line(
+        &mut output,
+        &format!(
+            "  prompt_reference: {}",
+            yaml_string("references/providers/chatgpt.md")
+        ),
+    );
+    output
+}
+
+fn render_chatgpt_provider(spec: &SkillSpec) -> String {
+    let mut output = String::new();
+    push_line(&mut output, "# ChatGPT Provider 集");
+    push_line(&mut output, "");
+    push_line(
+        &mut output,
+        "通过 CDP 驱动已登录的 ChatGPT（GPT 图像生成）网页生成图片，与 Gemini 共用同一台浏览器。每个配方复用其**忠于风格**的图像提示词（有 `chatgpt` 覆盖则用覆盖，否则用 `gemini` 提示词）。",
+    );
+    push_line(&mut output, "");
+    push_line(&mut output, "## 使用契约");
+    push_line(&mut output, "");
+    push_line(
+        &mut output,
+        "- 需要一个已登录、开启图像生成的 ChatGPT 会话（Plus/Go）在 CDP Chrome 上。",
+    );
+    push_line(
+        &mut output,
+        "- 选定配方后，用该配方的提示词，把 `{scene}` 替换成当前画面描述。",
+    );
+    push_line(
+        &mut output,
+        "- **禁止**再套一层全局 `photorealistic, cinematic` 包装；那会覆盖风格（Berkshire 事故根因）。",
+    );
+    push_line(
+        &mut output,
+        "- ChatGPT 图片来自 oaiusercontent.com（跨域），canvas 抓取常被 CORS 污染；抓不到时用元素截图兜底。",
+    );
+    push_line(
+        &mut output,
+        "- 提示词保持 text-free；中文标题/字幕在后期用 PIL/ffmpeg 叠加。",
+    );
+    push_line(&mut output, "");
+    push_line(&mut output, "## 每个配方的 ChatGPT 提示词");
+    push_line(&mut output, "");
+
+    for recipe in &spec.recipes {
+        let source = if recipe.providers.chatgpt.is_some() {
+            "chatgpt override"
+        } else {
+            "gemini fallback"
+        };
+        push_line(
+            &mut output,
+            &format!(
+                "### `{}` -> style `{}` ({source})",
+                recipe.id, recipe.style_id
+            ),
+        );
         push_line(&mut output, "");
-        push_line(&mut output, &format!("避免：{}", style.avoid));
+        push_line(&mut output, "```text");
+        push_line(&mut output, recipe.chatgpt_prompt().trim());
+        push_line(&mut output, "```");
         push_line(&mut output, "");
+    }
+
+    output
+}
+
+fn render_gemini_provider(spec: &SkillSpec) -> String {
+    let mut output = String::new();
+    push_line(&mut output, "# Gemini Provider 集");
+    push_line(&mut output, "");
+    push_line(
+        &mut output,
+        "通过 CDP 驱动已登录的 Gemini（Imagen）网页生成图片。每个配方在下面给出**忠于风格**的 Gemini 提示词。",
+    );
+    push_line(&mut output, "");
+    push_line(&mut output, "## 使用契约");
+    push_line(&mut output, "");
+    push_line(
+        &mut output,
+        "- 选定配方后，用该配方的 Gemini 提示词，把 `{scene}` 替换成当前画面描述。",
+    );
+    push_line(
+        &mut output,
+        "- **禁止**再套一层全局 `photorealistic, cinematic` 包装；那会覆盖风格，产出错误画风（Berkshire 事故根因）。",
+    );
+    push_line(
+        &mut output,
+        "- 提示词保持 text-free；中文标题/字幕在后期用 PIL/ffmpeg 叠加。",
+    );
+    push_line(
+        &mut output,
+        "- 生成后按 `references/qa-checklist.md` 检查画风是否匹配配方。",
+    );
+    push_line(&mut output, "");
+    push_line(&mut output, "## 每个配方的 Gemini 提示词");
+    push_line(&mut output, "");
+
+    for recipe in &spec.recipes {
+        push_line(
+            &mut output,
+            &format!("### `{}` -> style `{}`", recipe.id, recipe.style_id),
+        );
+        push_line(&mut output, "");
+        push_line(&mut output, "```text");
+        push_line(&mut output, recipe.providers.gemini.prompt.trim());
+        push_line(&mut output, "```");
+        push_line(&mut output, "");
+        for note in &recipe.providers.gemini.notes {
+            push_line(&mut output, &format!("- {note}"));
+        }
+        if !recipe.providers.gemini.notes.is_empty() {
+            push_line(&mut output, "");
+        }
     }
 
     output
@@ -386,9 +653,9 @@ mod tests {
     use std::collections::HashMap;
 
     use general_illustrations_skill_spec::{
-        CompositionPatternSpec, IterationRuleSpec, PositioningSpec, PromptTemplateSpec, QaSpec,
-        RecipeSpec, ReferenceItemSpec, ReferenceSpec, SkillSpec, StyleDnaSpec, StyleSpec,
-        WorkflowStepSpec,
+        CategorySpec, CompositionPatternSpec, IterationRuleSpec, PositioningSpec,
+        ProviderPromptSpec, PromptTemplateSpec, QaSpec, RecipeProvidersSpec, RecipeSpec,
+        ReferenceItemSpec, ReferenceSpec, SkillSpec, StyleDnaSpec, StyleSpec, WorkflowStepSpec,
     };
 
     use super::*;
@@ -402,7 +669,7 @@ mod tests {
         let rendered = render_skill(&spec).unwrap();
 
         // Assert
-        assert_eq!(rendered.files.len(), 7);
+        assert_eq!(rendered.files.len(), 12);
         assert_eq!(rendered.files[0].path, PathBuf::from("SKILL.md"));
         assert!(rendered.files[0].contents.contains("name: example-skill"));
         assert!(
@@ -465,8 +732,14 @@ mod tests {
                 body: vec!["先理解内容。".to_string()],
                 bullets: vec!["核心观点是什么".to_string()],
             }],
+            categories: vec![CategorySpec {
+                id: "article-docs".to_string(),
+                name: "文章 / 技术文档".to_string(),
+                summary: "静态正文配图。".to_string(),
+            }],
             styles: vec![StyleSpec {
                 id: "clean-docs".to_string(),
+                category: "article-docs".to_string(),
                 tags: vec!["article".to_string(), "docs".to_string()],
                 name: "clean-docs".to_string(),
                 use_when: "文档配图。".to_string(),
@@ -488,6 +761,7 @@ mod tests {
             }],
             recipes: vec![RecipeSpec {
                 id: "sample".to_string(),
+                category: "article-docs".to_string(),
                 tags: vec!["video".to_string()],
                 name: "Sample recipe".to_string(),
                 description: "Sample fixture recipe".to_string(),
@@ -496,6 +770,14 @@ mod tests {
                 prompt_template_id: "single-image".to_string(),
                 recommended_providers: vec!["codex".to_string()],
                 default_variables: HashMap::new(),
+                providers: RecipeProvidersSpec {
+                    gemini: ProviderPromptSpec {
+                        prompt: "Generate one clean 16:9 image. No text. Scene: {scene}"
+                            .to_string(),
+                        notes: Vec::new(),
+                    },
+                    chatgpt: None,
+                },
             }],
             qa: QaSpec {
                 must_pass: vec!["是 16:9 横版。".to_string()],

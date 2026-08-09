@@ -270,6 +270,130 @@ dd {
   color: var(--accent-2);
   font-size: 0.8rem;
   font-weight: 650;
+  margin-top: 10px;
+}
+
+.category {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 8px 24px 0;
+}
+
+.category-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.category-head h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.category-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.category-id {
+  color: var(--accent-2);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.category .recipe-grid {
+  padding-top: 18px;
+}
+
+.img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: repeating-linear-gradient(
+    45deg,
+    #f2eee6,
+    #f2eee6 10px,
+    #ece7dd 10px,
+    #ece7dd 20px
+  );
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+  border-bottom: 1px solid var(--line);
+}
+
+.provider-strip {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--line);
+  background: #eeeae0;
+}
+
+.provider-shot {
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
+.provider-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #eeeae0;
+}
+
+.provider-shot figcaption {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--ink) 78%, transparent);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.providers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--surface);
+}
+
+.loading {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  color: var(--muted);
+}
+
+.site-footer {
+  max-width: 1240px;
+  margin: 24px auto 0;
+  padding: 24px 24px 40px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 footer {

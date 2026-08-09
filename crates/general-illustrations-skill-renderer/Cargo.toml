@@ -8,3 +8,6 @@ repository.workspace = true
 [dependencies]
 general-illustrations-skill-spec = { path = "../general-illustrations-skill-spec" }
 thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

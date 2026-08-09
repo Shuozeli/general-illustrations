@@ -16,6 +16,8 @@ pub struct SkillSpec {
     pub style_dna: StyleDnaSpec,
     pub references: ReferenceSpec,
     pub workflow: Vec<WorkflowStepSpec>,
+    #[serde(default)]
+    pub categories: Vec<CategorySpec>,
     pub styles: Vec<StyleSpec>,
     pub composition_patterns: Vec<CompositionPatternSpec>,
     pub prompt_templates: Vec<PromptTemplateSpec>,
@@ -24,6 +26,16 @@ pub struct SkillSpec {
     pub qa: QaSpec,
     #[serde(default)]
     pub examples: Vec<ExampleAssetSpec>,
+}
+
+/// A top-level bucket that groups styles and recipes by use-context, so callers
+/// pick a category first and then a concrete style/recipe inside it, instead of
+/// scanning a flat 14-style list.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct CategorySpec {
+    pub id: String,
+    pub name: String,
+    pub summary: String,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -65,6 +77,8 @@ pub struct WorkflowStepSpec {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StyleSpec {
     pub id: String,
+    /// The category this style belongs to; must reference a `CategorySpec.id`.
+    pub category: String,
     #[serde(default)]
     pub tags: Vec<String>,
     pub name: String,
@@ -92,20 +106,68 @@ pub struct PromptTemplateSpec {
     pub body: String,
 }
 
+/// A first-class, selectable illustration recipe. A recipe binds one category,
+/// one style, one default composition, and one prompt template together, carries
+/// the provider-specific prompt set (Gemini, optional ChatGPT override), and lists
+/// recommended providers plus default template variables. Callers select a single
+/// `recipe.id` instead of manually pairing style + composition + template.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RecipeSpec {
     pub id: String,
+    /// Must reference a `CategorySpec.id`.
+    pub category: String,
     #[serde(default)]
     pub tags: Vec<String>,
     pub name: String,
     pub description: String,
+    /// Must reference a `StyleSpec.id`.
     pub style_id: String,
+    /// Must reference a `CompositionPatternSpec.id`.
     pub composition_pattern_id: String,
+    /// Must reference a `PromptTemplateSpec.id`.
     pub prompt_template_id: String,
+    /// Provider ids that suit this recipe (e.g. gemini, chatgpt, codex, ark).
     #[serde(default)]
     pub recommended_providers: Vec<String>,
+    /// Default variable substitutions for the prompt template.
     #[serde(default)]
     pub default_variables: HashMap<String, String>,
+    /// Per-provider prompt set (recipe-faithful; no global photoreal wrapper).
+    pub providers: RecipeProvidersSpec,
+}
+
+impl RecipeSpec {
+    /// The prompt the ChatGPT web provider should use: the ChatGPT override if
+    /// present, otherwise the recipe-faithful Gemini/image prompt.
+    pub fn chatgpt_prompt(&self) -> &str {
+        self.providers
+            .chatgpt
+            .as_ref()
+            .map(|chatgpt| chatgpt.prompt.as_str())
+            .unwrap_or(self.providers.gemini.prompt.as_str())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct RecipeProvidersSpec {
+    /// The Gemini (Imagen web) prompt set for this recipe. This is the correct,
+    /// recipe-faithful wrapper to send over CDP -- it MUST NOT reintroduce a
+    /// global "photorealistic, cinematic" instruction that overrides the style.
+    /// It also serves as the default image prompt for other web providers.
+    pub gemini: ProviderPromptSpec,
+    /// Optional ChatGPT (GPT image gen web) override. When absent, the ChatGPT
+    /// CDP driver reuses `gemini` (the recipe-faithful image prompt).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub chatgpt: Option<ProviderPromptSpec>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ProviderPromptSpec {
+    /// The lead instruction / wrapper sent to the provider. Use `{scene}` as the
+    /// placeholder for the per-image scene description.
+    pub prompt: String,
+    #[serde(default)]
+    pub notes: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -213,6 +275,17 @@ impl SkillSpec {
             problems.push("workflow must contain at least one step".to_string());
         }
 
+        if self.categories.is_empty() {
+            problems.push("categories must contain at least one category".to_string());
+        }
+        validate_unique_ids(
+            "categories",
+            self.categories.iter().map(|category| &category.id),
+            &mut problems,
+        );
+        let category_ids: HashSet<&String> =
+            self.categories.iter().map(|category| &category.id).collect();
+
         if self.styles.is_empty() {
             problems.push("styles must contain at least one style".to_string());
         }
@@ -223,6 +296,12 @@ impl SkillSpec {
         );
         for style in &self.styles {
             validate_tags(&format!("styles.{}", style.id), &style.tags, &mut problems);
+            if !category_ids.contains(&style.category) {
+                problems.push(format!(
+                    "styles.{}.category references unknown category {:?}",
+                    style.id, style.category
+                ));
+            }
         }
 
         if self.composition_patterns.is_empty() {
@@ -257,61 +336,73 @@ impl SkillSpec {
             );
         }
 
-        if self.qa.must_pass.is_empty() {
-            problems.push("qa.must_pass must contain at least one item".to_string());
-        }
-
-        if self.qa.failure_signals.is_empty() {
-            problems.push("qa.failure_signals must contain at least one item".to_string());
-        }
-
-        let style_ids: HashSet<&str> = self.styles.iter().map(|style| style.id.as_str()).collect();
-        let composition_ids: HashSet<&str> = self
+        let style_ids: HashSet<&String> = self.styles.iter().map(|style| &style.id).collect();
+        let composition_ids: HashSet<&String> = self
             .composition_patterns
             .iter()
-            .map(|pattern| pattern.id.as_str())
+            .map(|pattern| &pattern.id)
             .collect();
-        let template_ids: HashSet<&str> = self
+        let template_ids: HashSet<&String> = self
             .prompt_templates
             .iter()
-            .map(|template| template.id.as_str())
+            .map(|template| &template.id)
             .collect();
-
         validate_unique_ids(
             "recipes",
             self.recipes.iter().map(|recipe| &recipe.id),
             &mut problems,
         );
         for recipe in &self.recipes {
-            if !style_ids.contains(recipe.style_id.as_str()) {
+            let label = format!("recipes.{}", recipe.id);
+            validate_tags(&label, &recipe.tags, &mut problems);
+            if !category_ids.contains(&recipe.category) {
+                problems.push(format!(
+                    "{label}.category references unknown category {:?}",
+                    recipe.category
+                ));
+            }
+            if !style_ids.contains(&recipe.style_id) {
                 problems.push(format!(
                     "recipes.{} references unknown style_id {}",
                     recipe.id, recipe.style_id
                 ));
             }
-
-            if !composition_ids.contains(recipe.composition_pattern_id.as_str()) {
+            if !composition_ids.contains(&recipe.composition_pattern_id) {
                 problems.push(format!(
                     "recipes.{} references unknown composition_pattern_id {}",
                     recipe.id, recipe.composition_pattern_id
                 ));
             }
-
-            if !template_ids.contains(recipe.prompt_template_id.as_str()) {
+            if !template_ids.contains(&recipe.prompt_template_id) {
                 problems.push(format!(
                     "recipes.{} references unknown prompt_template_id {}",
                     recipe.id, recipe.prompt_template_id
                 ));
             }
-
-            for tag in &recipe.tags {
-                if !is_kebab_case(tag) {
+            if recipe.providers.gemini.prompt.trim().is_empty() {
+                problems.push(format!("{label}.providers.gemini.prompt must not be empty"));
+            } else if !recipe.providers.gemini.prompt.contains("{scene}") {
+                problems.push(format!(
+                    "{label}.providers.gemini.prompt must contain the {{scene}} placeholder"
+                ));
+            }
+            if let Some(chatgpt) = &recipe.providers.chatgpt {
+                if chatgpt.prompt.trim().is_empty() {
+                    problems.push(format!("{label}.providers.chatgpt.prompt must not be empty"));
+                } else if !chatgpt.prompt.contains("{scene}") {
                     problems.push(format!(
-                        "recipes.{}.tags.{tag} must be lowercase kebab-case",
-                        recipe.id
+                        "{label}.providers.chatgpt.prompt must contain the {{scene}} placeholder"
                     ));
                 }
             }
+        }
+
+        if self.qa.must_pass.is_empty() {
+            problems.push("qa.must_pass must contain at least one item".to_string());
+        }
+
+        if self.qa.failure_signals.is_empty() {
+            problems.push("qa.failure_signals must contain at least one item".to_string());
         }
 
         validate_unique_ids(
@@ -568,8 +659,14 @@ mod tests {
                 body: vec!["先理解内容。".to_string()],
                 bullets: vec!["核心观点是什么".to_string()],
             }],
+            categories: vec![CategorySpec {
+                id: "article-docs".to_string(),
+                name: "文章 / 技术文档".to_string(),
+                summary: "静态正文配图。".to_string(),
+            }],
             styles: vec![StyleSpec {
                 id: "clean-docs".to_string(),
+                category: "article-docs".to_string(),
                 tags: vec!["article".to_string(), "docs".to_string()],
                 name: "clean-docs".to_string(),
                 use_when: "文档配图。".to_string(),
@@ -591,6 +688,7 @@ mod tests {
             }],
             recipes: vec![RecipeSpec {
                 id: "sample".to_string(),
+                category: "article-docs".to_string(),
                 tags: vec!["video".to_string()],
                 name: "Sample recipe".to_string(),
                 description: "Sample fixture recipe".to_string(),
@@ -599,6 +697,14 @@ mod tests {
                 prompt_template_id: "single-image".to_string(),
                 recommended_providers: vec!["codex".to_string()],
                 default_variables: HashMap::new(),
+                providers: RecipeProvidersSpec {
+                    gemini: ProviderPromptSpec {
+                        prompt: "Generate one clean 16:9 image. No text. Scene: {scene}"
+                            .to_string(),
+                        notes: Vec::new(),
+                    },
+                    chatgpt: None,
+                },
             }],
             qa: QaSpec {
                 must_pass: vec!["是 16:9 横版。".to_string()],

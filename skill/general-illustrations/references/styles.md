@@ -1,8 +1,12 @@
 # 预置风格
 
-选择一个风格即可，不要在一张图里混太多风格。
+先按类别定位，再在类别内选一个具体风格；不要在一张图里混太多风格。
 
-## clean-docs
+## 文章 / 技术文档 (`article-docs`)
+
+文章、README、技术博客、文档的静态解释配图。
+
+### clean-docs
 
 Tags: article / docs / minimal / product
 
@@ -12,7 +16,7 @@ Tags: article / docs / minimal / product
 
 避免：营销海报、复杂 UI、装饰性渐变。
 
-## technical-minimal
+### technical-minimal
 
 Tags: technical / systems / minimal / docs
 
@@ -22,7 +26,7 @@ Tags: technical / systems / minimal / docs
 
 避免：假组件、过多节点、营销风。
 
-## review-minimal
+### review-minimal
 
 Tags: code-review / risk / minimal / engineering
 
@@ -32,7 +36,7 @@ Tags: code-review / risk / minimal / engineering
 
 避免：泛泛的警告图标、夸大严重性、放大段代码。
 
-## editorial-sketch
+### editorial-sketch
 
 Tags: article / editorial / sketch / metaphor
 
@@ -42,7 +46,7 @@ Tags: article / editorial / sketch / metaphor
 
 避免：纯装饰图、PPT 图、复制旧案例。
 
-## product-explainer
+### product-explainer
 
 Tags: product / docs / saas / explainer
 
@@ -52,87 +56,7 @@ Tags: product / docs / saas / explainer
 
 避免：landing page hero、假 UI 细节、过度商业插画。
 
-## simple-doodle
-
-Tags: video / doodle / cartoon / lightweight
-
-适合：短视频知识图、轻量技术解释、儿童感不能太强的简笔画。
-
-画法：白底，马克笔线条，简单物件，大留白，1-2 个强调色。
-
-避免：画得太乱、太幼稚、太像课堂涂鸦。
-
-## cartoon-explainer
-
-Tags: video / cartoon / character / humor
-
-适合：需要角色、反应、冲突、轻幽默的解释图。
-
-画法：圆润简化物件，可以有人物或小角色，但不要固定 IP，不要卖萌。
-
-避免：表情包、二次元、儿童卡通、可爱吉祥物海报。
-
-## honglou-retro-flat-anime
-
-Tags: video / cartoon / anime / literary / honglou
-
-适合：红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、诗词历史文学视频。优先用于需要“红楼梦人物 + 现代日本电影感动漫”的连续分镜：晴雯、宝黛钗、秦可卿、中秋夜宴、凹晶馆联诗、咏絮词等。目标是清爽、精致、纤细、电影光影感的日系动漫，而不是哆啦A梦式圆脸儿童向、中国传统动画电影、国风概念海报或写实电视剧剧照。
-
-画法：16:9 full-bleed Hongloumeng 2D hand-drawn Japanese cinematic anime keyframe, no border, no margins, no white slide canvas. First priority is elegant two-dimensional anime character design, not CGI: slender oval faces, delicate jawline, natural expressive eyes that are not oversized, small readable nose and mouth, clean hair silhouette, youthful but not childlike proportions, restrained acting, visible crisp thin line art, flat cel shading, soft luminous cinematic light, and airy background depth. Avoid smooth doll skin or painterly 3D rendering; the image should read as a clean hand-drawn animation frame. Use Red Chamber / Qing-era-inspired robes, hair ornaments, mansion rooms, garden corridors, courtyards, fans, lanterns, curtains, medicine bowls, ponds and moonlight as the story world, but simplify them like a contemporary Japanese animated film background. All main Hongloumeng characters should keep black or dark brown hair; do not use red, pink, blue, purple, or fantasy-colored hair. Characters should be original anime versions of Hongloumeng roles: Qingwen is pretty, sharp, proud, lively-eyed, and slightly mischievous; Baoyu soft and slightly spoiled; Xiren gentle; Sheyue practical; Daiyu delicate; Baochai composed. For a multi-image video, keep character continuity with a written character bible: same face shape, eye shape, hair silhouette, robe color family, age, posture, and emotional role, while changing pose, camera distance, prop, light, and setting for each story beat. Compose for Editly/Ken Burns motion: leave 8%-12% clean motion margin around faces, hands, fans, and symbolic props; keep the lower third clean for subtitles; use foreground/midground/background when possible. Adjacent frames must be visually distinct and must not repeat the same composition within the first 5-10 seconds.
-
-避免：不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印。不要哆啦A梦式圆脸儿童向、婴儿脸、过圆脸、低龄配角脸、恐怖大眼、粗糙廉价动画脸。不要中国传统动画电影感、宝莲灯/大闹天宫式厚重民族动画脸、写实电视剧剧照、真人照片感、现代国风海报、游戏 splash art、水墨插画。不要 3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染，不要油画皮肤、真实皮肤纹理、过度体积光、过度写实鼻梁。不要红发、粉发、蓝发、紫发或奇幻发色，不要现代服装、电灯、麦克风、相机、UI 或游戏界面。不要密集头饰、密集刺绣、密集餐具和园林细节。不要借用或复刻新海诚、你的名字、哆啦A梦、魔卡少女樱、现成动漫、影视演员、IP 角色、脸、轮廓、服装、标志性道具或镜头；只借鉴“现代日本电影感动漫的清爽、纤细、明亮光影、空气感、二维手绘线稿”这类通用视觉特征。不要让源图承担封面大字、底部字幕或平台标题；封面黄红大字、字幕、BGM、TTS、镜头运动都属于视频 render 阶段。
-
-## honglou-period-drama-painterly
-
-Tags: video / literary / honglou / period-drama / painterly
-
-适合：红楼梦 / Hongloumeng 文学视频需要更接近真人演员转绘、电视剧剧照感、成熟人物肖像和严肃家族叙事时使用。适合贾政、王夫人、贾母、贾赦、贾雨村、秦可卿托梦、家族衰败、官场压力、祠堂书房、父子冲突等偏成人戏剧和命运感的镜头。这个风格不是默认红楼梦动漫风格；当用户明确说第一张图那种“比较像真人画风”或需要大人脸、演员感、厚重戏剧感时才选。
-
-画法：16:9 full-bleed Hongloumeng period-drama painterly keyframe, no border, no margins, no white slide canvas. Draw original Qing-era-inspired characters as if real Chinese period-drama actors were translated into refined digital illustration: mature adult face structure, rectangular or slender oval jaw according to role, natural-sized almond eyes, readable nose bridge and mouth, restrained acting, specific but original facial features, tired eyes, subtle cheek and brow planes, and dignified posture. Use soft painterly brushwork, cinematic lantern and moonlight, deep red mansion shadows, aged wood, official dark blue robes, restrained gold, bamboo shadows, incense smoke, ancestral halls, carved screens, ledgers, study rooms, corridors and Grand View Garden thresholds. Keep skin illustrated, not photographic: painterly planes and controlled texture, no pores, no camera grain. Compose for video motion with strong foreground/midground/background depth, 8%-12% safe margin around faces and hands, clean lower subtitle area, and clean central area for later dynamic text. For continuous videos, keep a character bible with age, face shape, robe color, beard/hair silhouette, posture and emotional role, while changing camera distance, light direction, setting and action for each story beat.
-
-避免：不要真人照片、电视剧截图、影视演员复刻、具体演员脸、现成影视服装复刻或 IP 镜头。不要现代国风游戏海报、仙侠概念图、战斗盔甲、魔法光效、3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染。不要幼态动漫脸、Q版、圆脸儿童向、巨大眼睛、哆啦A梦式可爱脸。不要油腻写实皮肤、毛孔、照片噪点、真实镜头景深过强、过度体积光。不要图片内标题、字幕、可读匾额、书法、logo、水印、UI、现代物品、麦克风、相机、电灯。不要密集头饰、密集刺绣和堆满餐具的繁复画面；红楼梦叙事要靠表情、姿态、光线、建筑压力和道具关系，而不是堆装饰。
-
-## coupon-worker-comic
-
-Tags: video / business / consumer / comic / character / coupon
-
-适合：优惠券、订阅、外卖平台、会员价、动态定价、消费心理和商业模式短视频，需要用角色动作解释机制。
-
-画法：白底或极浅底，黑色手绘线条，原创黄色票券/收据/豆形小工人角色，扁平 2D，短腿短手，动作夸张但不卖萌。每张图只放一个核心动作：锤价格、搬优惠券、追倒计时、分拣顾客、把数据装袋、锁住未来选择。文字只用 1-4 个短标签，角色和道具承担主要叙事。
-
-避免：不要小黄人元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、3D 玩具质感都不要。不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。
-
-## yellow-worker-comic
-
-Tags: video / business / finance / tech-news / comic / character
-
-适合：财经、商业、消费、科技、公司新闻或知识短视频，需要一种接近“小黄人式群体动作感”但完全原创、可泛化的黄色小人动作漫画风格。
-
-画法：白底或极浅底，黑色粗手绘线条，原创黄色小工人角色，扁平 2D，短手短腿，点状眼睛，表情简单，动作夸张。角色可以是票券形、豆形、方块形或圆角小人，但不能固定成优惠券道具。每张图只讲一个核心动作：搬运资金、搭建服务器、拉光纤、举价格表、筛选公司、推开噪音纸张、围观火箭、追逐风险信号。道具承担主要叙事，文字只用 0-4 个短标签，并给后期标题/字幕留出干净空间。
-
-避免：不要真实小黄人 IP 元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、Gru/Minions 式造型、3D 玩具质感都不要。不要优惠券专属场景绑死，不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。
-
-## mambo-meme-comic
-
-Tags: video / tech / meme / comic / infrastructure
-
-适合：中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。
-
-画法：白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。
-
-避免：不要复刻赛马娘、哈基米、翻车鱼之歌、现成猫猫梗、已有表情包、歌词、角色或音频视觉。不要夜店风、真实舞蹈人物、二次元 IP、满屏弹幕、鬼畜糊图、低清 meme 截图。不要为了搞笑牺牲技术可读性，也不要把 Kafka、Redis、数据库等组件画成错误机制。
-
-## story-infra-kafka-mambo-technical
-
-Tags: video / tech / kafka / infrastructure / comic / series
-
-适合：Kafka / 消息队列 / 分布式系统中文短视频系列，需要把事故开场、消息流、日志、分区、副本、offset、consumer group、重试、幂等、ISR 等机制画成可读的故事化基础设施漫画。它比通用 mambo-meme-comic 更重视机制准确性和系列一致性，是 Kafka story-infra 系列的默认风格。
-
-画法：16:9 横版，白底或极浅底，flat hand-drawn infrastructure comic。使用粗黑描边、简单扁平填色和大量留白，把 Kafka 概念画成 story objects：order blocks、blue envelopes/tokens、append-only log conveyor、partition lanes、offset markers、consumer workers、broker/service boxes、replica ledgers、risk checks、stuck workers、dedupe gates。红/橙只用于压力、告警、失败、裂缝或危险路径；蓝色点、信封和 token 表示事件流动或系统状态。每张图只解释一个 story beat，主体占 50%-70%，必须给后期封面大字和底部字幕留干净空间。图片内文字保持 0-4 个短标签，优先不用真实文字；标题、字幕和口播解释由视频后期添加。
-
-避免：不要泛化成可爱小黑正文配图，不要让小角色变成装饰主角；核心必须是 Kafka 消息流和故障窗口。不要 PPT、正式架构图、复杂 dashboard、密集节点、长文字、左上角标题、营销海报、3D/Pixar/玩具/黏土/光滑渲染、深色科技背景、渐变或抽象装饰。不要把 Kafka 画成错误机制：不能把 partition 画成全局顺序队列，不能让 offset 像消息本体一样被消费掉，不能让 follower 主动抢写，不能把 exactly-once 画成业务全链路绝不重复。
-
-## whiteboard-comic
+### whiteboard-comic
 
 Tags: engineering / teaching / comic / whiteboard / before-after
 
@@ -142,7 +66,21 @@ Tags: engineering / teaching / comic / whiteboard / before-after
 
 避免：长段手写字、太多格、太可爱。
 
-## sticker-layer
+## 轻量短视频 (`video-light`)
+
+简笔、贴纸、软黏土等轻量短视频知识画面。
+
+### simple-doodle
+
+Tags: video / doodle / cartoon / lightweight
+
+适合：短视频知识图、轻量技术解释、儿童感不能太强的简笔画。
+
+画法：白底，马克笔线条，简单物件，大留白，1-2 个强调色。
+
+避免：画得太乱、太幼稚、太像课堂涂鸦。
+
+### sticker-layer
 
 Tags: video / product / sticker / layered / animation
 
@@ -152,7 +90,7 @@ Tags: video / product / sticker / layered / animation
 
 避免：花哨拼贴、亮面 3D、过多小细节。
 
-## soft-clay-cartoon
+### soft-clay-cartoon
 
 Tags: video / cartoon / clay / metaphor
 
@@ -161,3 +99,85 @@ Tags: video / cartoon / clay / metaphor
 画法：柔软圆润的 clay/toy-like 物件，简单光照，少文字，大形状。
 
 避免：儿童玩具感、真实摄影、复杂场景、太糖果色。
+
+## 角色动作漫画 (`video-character-comic`)
+
+财经、商业、消费、科技、软件新闻的黄/蓝小人角色动作漫画。
+
+### cartoon-explainer
+
+Tags: video / cartoon / character / humor
+
+适合：需要角色、反应、冲突、轻幽默的解释图。
+
+画法：圆润简化物件，可以有人物或小角色，但不要固定 IP，不要卖萌。
+
+避免：表情包、二次元、儿童卡通、可爱吉祥物海报。
+
+### coupon-worker-comic
+
+Tags: video / business / consumer / comic / character / coupon
+
+适合：优惠券、订阅、外卖平台、会员价、动态定价、消费心理和商业模式短视频，需要用角色动作解释机制。
+
+画法：白底或极浅底，黑色手绘线条，原创黄色票券/收据/豆形小工人角色，扁平 2D，短腿短手，动作夸张但不卖萌。每张图只放一个核心动作：锤价格、搬优惠券、追倒计时、分拣顾客、把数据装袋、锁住未来选择。文字只用 1-4 个短标签，角色和道具承担主要叙事。
+
+避免：不要小黄人元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、3D 玩具质感都不要。不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。
+
+### yellow-worker-comic
+
+Tags: video / business / finance / tech-news / comic / character
+
+适合：财经、商业、消费、科技、公司新闻或知识短视频，需要一种接近“小黄人式群体动作感”但完全原创、可泛化的黄色小人动作漫画风格。
+
+画法：白底或极浅底，黑色粗手绘线条，原创黄色小工人角色，扁平 2D，短手短腿，点状眼睛，表情简单，动作夸张。角色可以是票券形、豆形、方块形或圆角小人，但不能固定成优惠券道具。每张图只讲一个核心动作：搬运资金、搭建服务器、拉光纤、举价格表、筛选公司、推开噪音纸张、围观火箭、追逐风险信号。道具承担主要叙事，文字只用 0-4 个短标签，并给后期标题/字幕留出干净空间。
+
+避免：不要真实小黄人 IP 元素：护目镜、蓝色背带裤、胶囊身体、单眼大眼、牛仔布、Gru/Minions 式造型、3D 玩具质感都不要。不要优惠券专属场景绑死，不要左侧大段文字覆盖，不要海报式标题，不要让文字解释替代动作。
+
+## 梗感节奏动画 (`video-meme-motion`)
+
+系统机制、工程故事的梗感循环节奏画面。
+
+### mambo-meme-comic
+
+Tags: video / tech / meme / comic / infrastructure
+
+适合：中文短视频知识图、故事化技术解释、系统排队/卡死/调用链打结/事件流动等需要抽象梗感、魔性循环和强节奏钩子的场景。适合片头 5-10 秒、段落转场、错误状态和压力突然爆发，不适合作为严肃机制图的唯一表达。
+
+画法：白底或极浅底，扁平 2D，粗黑描边，原创抽象小角色或系统组件做重复节拍动作。画面像一段可循环的短视频梗：请求排队摇摆、服务左右晃动、数据包跳拍、Kafka 日志像传送带一样把事件一格格送走。构图保留大留白，主体动作占 50%-70%，用少量高饱和红/黄/蓝作为节拍点。文字 0-4 个短标签，优先让动作、箭头、队列和组件状态承担叙事；技术机制必须仍然可读。
+
+避免：不要复刻赛马娘、哈基米、翻车鱼之歌、现成猫猫梗、已有表情包、歌词、角色或音频视觉。不要夜店风、真实舞蹈人物、二次元 IP、满屏弹幕、鬼畜糊图、低清 meme 截图。不要为了搞笑牺牲技术可读性，也不要把 Kafka、Redis、数据库等组件画成错误机制。
+
+### story-infra-kafka-mambo-technical
+
+Tags: video / tech / kafka / infrastructure / comic / series
+
+适合：Kafka / 消息队列 / 分布式系统中文短视频系列，需要把事故开场、消息流、日志、分区、副本、offset、consumer group、重试、幂等、ISR 等机制画成可读的故事化基础设施漫画。它比通用 mambo-meme-comic 更重视机制准确性和系列一致性，是 Kafka story-infra 系列的默认风格。
+
+画法：16:9 横版，白底或极浅底，flat hand-drawn infrastructure comic。使用粗黑描边、简单扁平填色和大量留白，把 Kafka 概念画成 story objects：order blocks、blue envelopes/tokens、append-only log conveyor、partition lanes、offset markers、consumer workers、broker/service boxes、replica ledgers、risk checks、stuck workers、dedupe gates。红/橙只用于压力、告警、失败、裂缝或危险路径；蓝色点、信封和 token 表示事件流动或系统状态。每张图只解释一个 story beat，主体占 50%-70%，必须给后期封面大字和底部字幕留干净空间。图片内文字保持 0-4 个短标签，优先不用真实文字；标题、字幕和口播解释由视频后期添加。
+
+避免：不要泛化成可爱小黑正文配图，不要让小角色变成装饰主角；核心必须是 Kafka 消息流和故障窗口。不要 PPT、正式架构图、复杂 dashboard、密集节点、长文字、左上角标题、营销海报、3D/Pixar/玩具/黏土/光滑渲染、深色科技背景、渐变或抽象装饰。不要把 Kafka 画成错误机制：不能把 partition 画成全局顺序队列，不能让 offset 像消息本体一样被消费掉，不能让 follower 主动抢写，不能把 exactly-once 画成业务全链路绝不重复。
+
+## 古典文学关键帧 (`literary-period`)
+
+红楼梦 / 古典文学复古电视动画或电视剧转绘关键帧。
+
+### honglou-retro-flat-anime
+
+Tags: video / cartoon / anime / literary / honglou
+
+适合：红楼梦 / Hongloumeng 视频关键帧、古典文学短视频、诗词历史文学视频。优先用于需要“红楼梦人物 + 现代日本电影感动漫”的连续分镜：晴雯、宝黛钗、秦可卿、中秋夜宴、凹晶馆联诗、咏絮词等。目标是清爽、精致、纤细、电影光影感的日系动漫，而不是哆啦A梦式圆脸儿童向、中国传统动画电影、国风概念海报或写实电视剧剧照。
+
+画法：16:9 full-bleed Hongloumeng 2D hand-drawn Japanese cinematic anime keyframe, no border, no margins, no white slide canvas. First priority is elegant two-dimensional anime character design, not CGI: slender oval faces, delicate jawline, natural expressive eyes that are not oversized, small readable nose and mouth, clean hair silhouette, youthful but not childlike proportions, restrained acting, visible crisp thin line art, flat cel shading, soft luminous cinematic light, and airy background depth. Avoid smooth doll skin or painterly 3D rendering; the image should read as a clean hand-drawn animation frame. Use Red Chamber / Qing-era-inspired robes, hair ornaments, mansion rooms, garden corridors, courtyards, fans, lanterns, curtains, medicine bowls, ponds and moonlight as the story world, but simplify them like a contemporary Japanese animated film background. All main Hongloumeng characters should keep black or dark brown hair; do not use red, pink, blue, purple, or fantasy-colored hair. Characters should be original anime versions of Hongloumeng roles: Qingwen is pretty, sharp, proud, lively-eyed, and slightly mischievous; Baoyu soft and slightly spoiled; Xiren gentle; Sheyue practical; Daiyu delicate; Baochai composed. For a multi-image video, keep character continuity with a written character bible: same face shape, eye shape, hair silhouette, robe color family, age, posture, and emotional role, while changing pose, camera distance, prop, light, and setting for each story beat. Compose for Editly/Ken Burns motion: leave 8%-12% clean motion margin around faces, hands, fans, and symbolic props; keep the lower third clean for subtitles; use foreground/midground/background when possible. Adjacent frames must be visually distinct and must not repeat the same composition within the first 5-10 seconds.
+
+避免：不要小黑/黑色团子讲解 IP，不要白板/PPT/卡片布局，不要图片内大标题、字幕、logo 或水印。不要哆啦A梦式圆脸儿童向、婴儿脸、过圆脸、低龄配角脸、恐怖大眼、粗糙廉价动画脸。不要中国传统动画电影感、宝莲灯/大闹天宫式厚重民族动画脸、写实电视剧剧照、真人照片感、现代国风海报、游戏 splash art、水墨插画。不要 3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染，不要油画皮肤、真实皮肤纹理、过度体积光、过度写实鼻梁。不要红发、粉发、蓝发、紫发或奇幻发色，不要现代服装、电灯、麦克风、相机、UI 或游戏界面。不要密集头饰、密集刺绣、密集餐具和园林细节。不要借用或复刻新海诚、你的名字、哆啦A梦、魔卡少女樱、现成动漫、影视演员、IP 角色、脸、轮廓、服装、标志性道具或镜头；只借鉴“现代日本电影感动漫的清爽、纤细、明亮光影、空气感、二维手绘线稿”这类通用视觉特征。不要让源图承担封面大字、底部字幕或平台标题；封面黄红大字、字幕、BGM、TTS、镜头运动都属于视频 render 阶段。
+
+### honglou-period-drama-painterly
+
+Tags: video / literary / honglou / period-drama / painterly
+
+适合：红楼梦 / Hongloumeng 文学视频需要更接近真人演员转绘、电视剧剧照感、成熟人物肖像和严肃家族叙事时使用。适合贾政、王夫人、贾母、贾赦、贾雨村、秦可卿托梦、家族衰败、官场压力、祠堂书房、父子冲突等偏成人戏剧和命运感的镜头。这个风格不是默认红楼梦动漫风格；当用户明确说第一张图那种“比较像真人画风”或需要大人脸、演员感、厚重戏剧感时才选。
+
+画法：16:9 full-bleed Hongloumeng period-drama painterly keyframe, no border, no margins, no white slide canvas. Draw original Qing-era-inspired characters as if real Chinese period-drama actors were translated into refined digital illustration: mature adult face structure, rectangular or slender oval jaw according to role, natural-sized almond eyes, readable nose bridge and mouth, restrained acting, specific but original facial features, tired eyes, subtle cheek and brow planes, and dignified posture. Use soft painterly brushwork, cinematic lantern and moonlight, deep red mansion shadows, aged wood, official dark blue robes, restrained gold, bamboo shadows, incense smoke, ancestral halls, carved screens, ledgers, study rooms, corridors and Grand View Garden thresholds. Keep skin illustrated, not photographic: painterly planes and controlled texture, no pores, no camera grain. Compose for video motion with strong foreground/midground/background depth, 8%-12% safe margin around faces and hands, clean lower subtitle area, and clean central area for later dynamic text. For continuous videos, keep a character bible with age, face shape, robe color, beard/hair silhouette, posture and emotional role, while changing camera distance, light direction, setting and action for each story beat.
+
+避免：不要真人照片、电视剧截图、影视演员复刻、具体演员脸、现成影视服装复刻或 IP 镜头。不要现代国风游戏海报、仙侠概念图、战斗盔甲、魔法光效、3D/CGI/Pixar/玩具/瓷娃娃/黏土/光滑渲染。不要幼态动漫脸、Q版、圆脸儿童向、巨大眼睛、哆啦A梦式可爱脸。不要油腻写实皮肤、毛孔、照片噪点、真实镜头景深过强、过度体积光。不要图片内标题、字幕、可读匾额、书法、logo、水印、UI、现代物品、麦克风、相机、电灯。不要密集头饰、密集刺绣和堆满餐具的繁复画面；红楼梦叙事要靠表情、姿态、光线、建筑压力和道具关系，而不是堆装饰。

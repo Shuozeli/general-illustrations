@@ -358,6 +358,7 @@ name = "general-illustrations-skill-renderer"
 version = "0.1.0"
 dependencies = [
  "general-illustrations-skill-spec",
+ "serde_json",
  "thiserror",
 ]
 
