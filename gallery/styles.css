@@ -328,6 +328,24 @@ dd {
   border-bottom: 1px solid var(--line);
 }
 
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lang-toggle:hover {
+  filter: brightness(1.05);
+}
+
 .provider-strip {
   display: flex;
   gap: 2px;

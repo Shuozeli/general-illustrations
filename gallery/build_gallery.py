@@ -23,6 +23,46 @@ GALLERY = ROOT / "gallery"
 # Deterministic build stamp (no wall-clock time in generated files).
 UPDATED = "2026-08-09"
 
+# English translations for the i18n-friendly gallery. The spec (source of truth)
+# is authored in Chinese; these provide the `en` label. Missing entries fall back
+# to the Chinese text at render time, so the page never breaks on a gap.
+CATEGORY_EN = {
+    "article-docs": ("Article / Docs",
+                     "Static explainer art for articles, READMEs, tech blogs, and docs."),
+    "video-light": ("Light Video",
+                    "Lightweight short-video knowledge frames: doodle, sticker, soft clay."),
+    "video-character-comic": ("Character Comic",
+                              "Yellow/blue worker character action comics for finance, business, consumer, tech, and software news."),
+    "video-meme-motion": ("Meme Motion",
+                          "Meme-rhythm loop frames for system mechanics and engineering stories."),
+    "literary-period": ("Literary / Period",
+                        "Retro TV-anime or period-drama keyframes for Hongloumeng and classical literature."),
+}
+
+RECIPE_DESC_EN = {
+    "clean-doc": "Articles, READMEs, product explainers, general article art.",
+    "tech-diagram": "System structure, RPC, databases, LSM trees, architecture boundaries, data flow.",
+    "code-review": "Code review, bug paths, risk propagation, test gaps, before/after.",
+    "article-sketch": "Article arguments, methodology, abstract metaphors, cognitive turns.",
+    "product-explainer": "Product capabilities, feature intros, tool explainers, docs intros.",
+    "whiteboard-story": "Engineering stories, bug explanations, before/after, fail-to-fix, teaching panels.",
+    "doodle-light": "Short-video knowledge frames, lightweight tech explainers, doodles.",
+    "sticker-layers": "Short-video animation layers, component intros, process breakdowns.",
+    "clay-metaphor": "Concept metaphors, video illustrations, light tech explainers.",
+    "software-news": "Software news, AI engineering, platforms, developer-tool explainer videos.",
+    "consumer-coupon": "Coupons, subscriptions, delivery platforms, membership pricing, dynamic pricing, consumer-psychology shorts.",
+    "finance-news": "Finance, company news, earnings explainers, AI infrastructure, supply chain, regulation, valuation, business-model videos.",
+    "infra-meme": "System mechanics: Kafka backlog, stalled order paths, consumers chasing offset, Redis hot keys, slow queries.",
+    "story-infra": "Kafka / message-queue / distributed-systems series: incident openers, message flow, partitions, replicas, offset, consumer groups, retries, idempotency, ISR.",
+    "honglou-keyframe": "Hongloumeng / classical-literature retro TV-anime keyframes and sequential storyboards.",
+    "honglou-painterly": "For Hongloumeng videos needing live-actor-like repainting, a TV-drama-still feel, mature portraits, and serious family narratives.",
+}
+
+
+def i18n(zh: str, en: str | None) -> dict[str, str]:
+    """A localized label: Chinese source plus optional English."""
+    return {"zh": zh, "en": en or zh}
+
 # recipe id -> list of (provider, image path relative to gallery/). The first
 # existing image is the card's primary; the rest render as a comparison strip.
 # Existing example images are reused from the prior gallery (their Codex/Ark
@@ -53,10 +93,16 @@ PROVIDER_IMAGES = {
 
 def main() -> int:
     spec = json.loads(SPEC.read_text(encoding="utf-8"))
-    categories = [
-        {"id": c["id"], "name": c["name"], "summary": c["summary"]}
-        for c in spec.get("categories", [])
-    ]
+    categories = []
+    for c in spec.get("categories", []):
+        en_name, en_summary = CATEGORY_EN.get(c["id"], (None, None))
+        categories.append(
+            {
+                "id": c["id"],
+                "name": i18n(c["name"], en_name),
+                "summary": i18n(c["summary"], en_summary),
+            }
+        )
 
     recipes = []
     for r in spec.get("recipes", []):
@@ -69,7 +115,7 @@ def main() -> int:
                 "id": r["id"],
                 "category": r["category"],
                 "name": r["name"],
-                "description": r["description"],
+                "description": i18n(r["description"], RECIPE_DESC_EN.get(r["id"])),
                 "style_id": r["style_id"],
                 "composition_pattern_id": r["composition_pattern_id"],
                 "prompt_template_id": r["prompt_template_id"],
@@ -83,6 +129,7 @@ def main() -> int:
     gallery = {
         "title": "General Illustrations Gallery",
         "updated": UPDATED,
+        "languages": ["en", "zh"],
         "categories": categories,
         "recipes": recipes,
     }

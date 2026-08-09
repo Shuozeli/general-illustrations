@@ -1,31 +1,65 @@
 {
   "title": "General Illustrations Gallery",
   "updated": "2026-08-09",
+  "languages": [
+    "en",
+    "zh"
+  ],
   "categories": [
     {
       "id": "article-docs",
-      "name": "文章 / 技术文档",
-      "summary": "文章、README、技术博客、文档的静态解释配图。"
+      "name": {
+        "zh": "文章 / 技术文档",
+        "en": "Article / Docs"
+      },
+      "summary": {
+        "zh": "文章、README、技术博客、文档的静态解释配图。",
+        "en": "Static explainer art for articles, READMEs, tech blogs, and docs."
+      }
     },
     {
       "id": "video-light",
-      "name": "轻量短视频",
-      "summary": "简笔、贴纸、软黏土等轻量短视频知识画面。"
+      "name": {
+        "zh": "轻量短视频",
+        "en": "Light Video"
+      },
+      "summary": {
+        "zh": "简笔、贴纸、软黏土等轻量短视频知识画面。",
+        "en": "Lightweight short-video knowledge frames: doodle, sticker, soft clay."
+      }
     },
     {
       "id": "video-character-comic",
-      "name": "角色动作漫画",
-      "summary": "财经、商业、消费、科技、软件新闻的黄/蓝小人角色动作漫画。"
+      "name": {
+        "zh": "角色动作漫画",
+        "en": "Character Comic"
+      },
+      "summary": {
+        "zh": "财经、商业、消费、科技、软件新闻的黄/蓝小人角色动作漫画。",
+        "en": "Yellow/blue worker character action comics for finance, business, consumer, tech, and software news."
+      }
     },
     {
       "id": "video-meme-motion",
-      "name": "梗感节奏动画",
-      "summary": "系统机制、工程故事的梗感循环节奏画面。"
+      "name": {
+        "zh": "梗感节奏动画",
+        "en": "Meme Motion"
+      },
+      "summary": {
+        "zh": "系统机制、工程故事的梗感循环节奏画面。",
+        "en": "Meme-rhythm loop frames for system mechanics and engineering stories."
+      }
     },
     {
       "id": "literary-period",
-      "name": "古典文学关键帧",
-      "summary": "红楼梦 / 古典文学复古电视动画或电视剧转绘关键帧。"
+      "name": {
+        "zh": "古典文学关键帧",
+        "en": "Literary / Period"
+      },
+      "summary": {
+        "zh": "红楼梦 / 古典文学复古电视动画或电视剧转绘关键帧。",
+        "en": "Retro TV-anime or period-drama keyframes for Hongloumeng and classical literature."
+      }
     }
   ],
   "recipes": [
@@ -33,7 +67,10 @@
       "id": "clean-doc",
       "category": "article-docs",
       "name": "clean-doc",
-      "description": "文章、README、产品解释、普通文章配图。",
+      "description": {
+        "zh": "文章、README、产品解释、普通文章配图。",
+        "en": "Articles, READMEs, product explainers, general article art."
+      },
       "style_id": "clean-docs",
       "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
@@ -62,7 +99,10 @@
       "id": "tech-diagram",
       "category": "article-docs",
       "name": "tech-diagram",
-      "description": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
+      "description": {
+        "zh": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
+        "en": "System structure, RPC, databases, LSM trees, architecture boundaries, data flow."
+      },
       "style_id": "technical-minimal",
       "composition_pattern_id": "system-slice",
       "prompt_template_id": "technical-image",
@@ -91,7 +131,10 @@
       "id": "code-review",
       "category": "article-docs",
       "name": "code-review",
-      "description": "代码 review、bug path、风险传播、测试缺口、before/after。",
+      "description": {
+        "zh": "代码 review、bug path、风险传播、测试缺口、before/after。",
+        "en": "Code review, bug paths, risk propagation, test gaps, before/after."
+      },
       "style_id": "review-minimal",
       "composition_pattern_id": "before-after",
       "prompt_template_id": "technical-image",
@@ -116,7 +159,10 @@
       "id": "article-sketch",
       "category": "article-docs",
       "name": "article-sketch",
-      "description": "文章观点、方法论、抽象隐喻、认知转折。",
+      "description": {
+        "zh": "文章观点、方法论、抽象隐喻、认知转折。",
+        "en": "Article arguments, methodology, abstract metaphors, cognitive turns."
+      },
       "style_id": "editorial-sketch",
       "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
@@ -142,7 +188,10 @@
       "id": "product-explainer",
       "category": "article-docs",
       "name": "product-explainer",
-      "description": "产品能力、feature 介绍、工具说明、docs intro。",
+      "description": {
+        "zh": "产品能力、feature 介绍、工具说明、docs intro。",
+        "en": "Product capabilities, feature intros, tool explainers, docs intros."
+      },
       "style_id": "product-explainer",
       "composition_pattern_id": "layered-method",
       "prompt_template_id": "single-image",
@@ -168,7 +217,10 @@
       "id": "whiteboard-story",
       "category": "article-docs",
       "name": "whiteboard-story",
-      "description": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
+      "description": {
+        "zh": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
+        "en": "Engineering stories, bug explanations, before/after, fail-to-fix, teaching panels."
+      },
       "style_id": "whiteboard-comic",
       "composition_pattern_id": "comic-panels",
       "prompt_template_id": "technical-image",
@@ -195,7 +247,10 @@
       "id": "doodle-light",
       "category": "video-light",
       "name": "doodle-light",
-      "description": "短视频知识图、轻量技术解释、简笔画。",
+      "description": {
+        "zh": "短视频知识图、轻量技术解释、简笔画。",
+        "en": "Short-video knowledge frames, lightweight tech explainers, doodles."
+      },
       "style_id": "simple-doodle",
       "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
@@ -221,7 +276,10 @@
       "id": "sticker-layers",
       "category": "video-light",
       "name": "sticker-layers",
-      "description": "短视频动画拆层、组件介绍、流程分解。",
+      "description": {
+        "zh": "短视频动画拆层、组件介绍、流程分解。",
+        "en": "Short-video animation layers, component intros, process breakdowns."
+      },
       "style_id": "sticker-layer",
       "composition_pattern_id": "layered-method",
       "prompt_template_id": "single-image",
@@ -247,7 +305,10 @@
       "id": "clay-metaphor",
       "category": "video-light",
       "name": "clay-metaphor",
-      "description": "概念隐喻、视频插图、轻松技术解释。",
+      "description": {
+        "zh": "概念隐喻、视频插图、轻松技术解释。",
+        "en": "Concept metaphors, video illustrations, light tech explainers."
+      },
       "style_id": "soft-clay-cartoon",
       "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
@@ -273,7 +334,10 @@
       "id": "software-news",
       "category": "video-character-comic",
       "name": "software-news",
-      "description": "软件新闻、AI 工程、平台、开发者工具解释视频。",
+      "description": {
+        "zh": "软件新闻、AI 工程、平台、开发者工具解释视频。",
+        "en": "Software news, AI engineering, platforms, developer-tool explainer videos."
+      },
       "style_id": "cartoon-explainer",
       "composition_pattern_id": "comic-panels",
       "prompt_template_id": "single-image",
@@ -300,7 +364,10 @@
       "id": "consumer-coupon",
       "category": "video-character-comic",
       "name": "consumer-coupon",
-      "description": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理短视频。",
+      "description": {
+        "zh": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理短视频。",
+        "en": "Coupons, subscriptions, delivery platforms, membership pricing, dynamic pricing, consumer-psychology shorts."
+      },
       "style_id": "coupon-worker-comic",
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "single-image",
@@ -328,7 +395,10 @@
       "id": "finance-news",
       "category": "video-character-comic",
       "name": "finance-news",
-      "description": "财经、公司新闻、财报解释、AI 基建、供应链、监管、估值、商业模式视频。",
+      "description": {
+        "zh": "财经、公司新闻、财报解释、AI 基建、供应链、监管、估值、商业模式视频。",
+        "en": "Finance, company news, earnings explainers, AI infrastructure, supply chain, regulation, valuation, business-model videos."
+      },
       "style_id": "yellow-worker-comic",
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "yellow-worker-video-frame",
@@ -365,7 +435,10 @@
       "id": "infra-meme",
       "category": "video-meme-motion",
       "name": "infra-meme",
-      "description": "Kafka 堆积、下单链路卡死、consumer 追 offset、Redis 热点、慢查询等系统机制。",
+      "description": {
+        "zh": "Kafka 堆积、下单链路卡死、consumer 追 offset、Redis 热点、慢查询等系统机制。",
+        "en": "System mechanics: Kafka backlog, stalled order paths, consumers chasing offset, Redis hot keys, slow queries."
+      },
       "style_id": "mambo-meme-comic",
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "mambo-meme-video-frame",
@@ -393,7 +466,10 @@
       "id": "story-infra",
       "category": "video-meme-motion",
       "name": "story-infra",
-      "description": "Kafka / 消息队列 / 分布式系统中文短视频系列：事故开场、消息流、分区、副本、offset、consumer group、重试、幂等、ISR 机制。",
+      "description": {
+        "zh": "Kafka / 消息队列 / 分布式系统中文短视频系列：事故开场、消息流、分区、副本、offset、consumer group、重试、幂等、ISR 机制。",
+        "en": "Kafka / message-queue / distributed-systems series: incident openers, message flow, partitions, replicas, offset, consumer groups, retries, idempotency, ISR."
+      },
       "style_id": "story-infra-kafka-mambo-technical",
       "composition_pattern_id": "action-loop-scenes",
       "prompt_template_id": "story-infra-kafka-video-frame",
@@ -416,7 +492,10 @@
       "id": "honglou-keyframe",
       "category": "literary-period",
       "name": "honglou-keyframe",
-      "description": "红楼梦 / 古典文学短视频复古电视动画关键帧、连续分镜。",
+      "description": {
+        "zh": "红楼梦 / 古典文学短视频复古电视动画关键帧、连续分镜。",
+        "en": "Hongloumeng / classical-literature retro TV-anime keyframes and sequential storyboards."
+      },
       "style_id": "honglou-retro-flat-anime",
       "composition_pattern_id": "state-scenes",
       "prompt_template_id": "honglou-anime-video-frame",
@@ -447,7 +526,10 @@
       "id": "honglou-painterly",
       "category": "literary-period",
       "name": "honglou-painterly",
-      "description": "红楼梦文学视频需要更接近真人演员转绘、电视剧剧照感、成熟人物肖像和严肃家族叙事时使用。",
+      "description": {
+        "zh": "红楼梦文学视频需要更接近真人演员转绘、电视剧剧照感、成熟人物肖像和严肃家族叙事时使用。",
+        "en": "For Hongloumeng videos needing live-actor-like repainting, a TV-drama-still feel, mature portraits, and serious family narratives."
+      },
       "style_id": "honglou-period-drama-painterly",
       "composition_pattern_id": "state-scenes",
       "prompt_template_id": "honglou-period-drama-video-frame",

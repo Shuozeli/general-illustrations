@@ -6,7 +6,7 @@
     <title>General Illustrations Gallery</title>
     <meta
       name="description"
-      content="Recipe gallery for provider-neutral illustration recipes: categories, styles, composition patterns, prompt templates, provider sets, and per-provider example comparison."
+      content="Bilingual recipe gallery for provider-neutral illustration recipes: categories, styles, composition patterns, prompt templates, provider sets, and per-provider example comparison."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -14,41 +14,25 @@
     <header class="site-header">
       <div>
         <p class="eyebrow">Shuozeli / general-illustrations</p>
-        <h1>Recipe Gallery</h1>
+        <h1 data-i18n="h1">Recipe Gallery</h1>
       </div>
-      <p class="summary">
-        Browse reusable illustration recipes by category. Each card binds a
-        style, composition pattern, prompt template, provider set, tags, and a
-        per-provider example strip (Codex / Ark / Gemini / ChatGPT). Cards are
-        generated from <code>specs/general-illustrations.json</code> via
-        <code>gallery/build_gallery.py</code>, so the page cannot drift from the
-        canonical recipes.
-      </p>
+      <p class="summary" data-i18n="summary"></p>
     </header>
 
     <main>
       <section class="toolbar" id="category-nav" aria-label="Category filters">
-        <a href="#all">All</a>
+        <button type="button" id="lang-toggle" class="lang-toggle"></button>
+        <a href="#all" data-i18n="navAll">All</a>
       </section>
 
       <section class="intro-grid">
         <div>
-          <h2>What This Shows</h2>
-          <p>
-            The gallery is the human-facing layer over the JSON spec. Pick a
-            category first, then a recipe. Each recipe carries a recipe-faithful
-            Gemini prompt and a ChatGPT prompt (override or Gemini fallback) --
-            no global photorealistic wrapper.
-          </p>
+          <h2 data-i18n="introTitle1"></h2>
+          <p data-i18n="introBody1"></p>
         </div>
         <div>
-          <h2>Provider Comparison</h2>
-          <p>
-            The image strip on each card shows the same recipe rendered by
-            different providers (Codex, Ark/Seedream, Gemini, ChatGPT) where
-            example assets exist. The <code>recommended_providers</code> chips
-            list which backends suit the recipe.
-          </p>
+          <h2 data-i18n="introTitle2"></h2>
+          <p data-i18n="introBody2"></p>
         </div>
       </section>
 
@@ -58,14 +42,80 @@
     </main>
 
     <footer class="site-footer">
-      <p>
-        Generated from <code>specs/general-illustrations.json</code>. Edit the
-        spec, run <code>build_gallery.py</code> and
-        <code>skill render</code>, do not hand-edit this page.
-      </p>
+      <p data-i18n="footer"></p>
     </footer>
 
     <script>
+      // ---- i18n strings for the static page chrome ----
+      const UI = {
+        en: {
+          htmlLang: "en",
+          h1: "Recipe Gallery",
+          summary:
+            "Browse reusable illustration recipes by category. Each card binds a style, composition pattern, prompt template, provider set, tags, and a per-provider example strip (Codex / Ark / Gemini / ChatGPT). Cards are generated from specs/general-illustrations.json, so the page cannot drift from the canonical recipes.",
+          navAll: "All",
+          introTitle1: "What This Shows",
+          introBody1:
+            "The gallery is the human-facing layer over the JSON spec. Pick a category first, then a recipe. Each recipe carries a recipe-faithful Gemini prompt and a ChatGPT prompt (override or Gemini fallback) — no global photorealistic wrapper.",
+          introTitle2: "Provider Comparison",
+          introBody2:
+            "The image strip on each card shows the same recipe rendered by different providers (Codex, Ark/Seedream, Gemini, ChatGPT) where example assets exist. The recommended-providers chips list which backends suit the recipe.",
+          footer:
+            "Generated from specs/general-illustrations.json. Edit the spec, run build_gallery.py and skill render — do not hand-edit this page.",
+          loading: "Loading recipes...",
+          loadFailed: "Failed to load gallery.json: ",
+          noExample: "no example yet",
+          style: "Style",
+          pattern: "Pattern",
+          template: "Template",
+          toOther: "中文",
+        },
+        zh: {
+          htmlLang: "zh",
+          h1: "配方画廊",
+          summary:
+            "按类别浏览可复用的插图配方。每张卡片绑定一个风格、构图模式、提示词模板、provider 集、标签，以及一条按 provider 的示例对比图带（Codex / Ark / Gemini / ChatGPT）。卡片由 specs/general-illustrations.json 生成，因此页面不会与规范里的配方脱节。",
+          navAll: "全部",
+          introTitle1: "这个页面展示什么",
+          introBody1:
+            "画廊是 JSON 规范之上的人类可读层。先选类别，再选配方。每个配方都带一条忠于风格的 Gemini 提示词和一条 ChatGPT 提示词（覆盖或回退到 Gemini）——不套全局写实包装。",
+          introTitle2: "Provider 对比",
+          introBody2:
+            "每张卡片的图带展示同一配方在不同 provider（Codex、Ark/Seedream、Gemini、ChatGPT）下的产出（有示例资产时）。recommended-providers 标签列出适合该配方的后端。",
+          footer:
+            "由 specs/general-illustrations.json 生成。修改规范后运行 build_gallery.py 与 skill render——请勿手改本页面。",
+          loading: "加载配方中…",
+          loadFailed: "加载 gallery.json 失败：",
+          noExample: "暂无示例",
+          style: "风格",
+          pattern: "构图",
+          template: "模板",
+          toOther: "EN",
+        },
+      };
+
+      const SUPPORTED = ["en", "zh"];
+
+      function detectLang() {
+        const saved = localStorage.getItem("gi-lang");
+        if (saved && SUPPORTED.includes(saved)) return saved;
+        return (navigator.language || "en").toLowerCase().startsWith("zh")
+          ? "zh"
+          : "en";
+      }
+
+      let lang = detectLang();
+      let galleryData = null;
+
+      // Pick a localized value: a {zh,en} object -> field[lang] with fallback,
+      // a plain string -> returned as-is.
+      function loc(value) {
+        if (value && typeof value === "object") {
+          return value[lang] || value.en || value.zh || "";
+        }
+        return value == null ? "" : value;
+      }
+
       function el(tag, cls, text) {
         const node = document.createElement(tag);
         if (cls) node.className = cls;
@@ -76,14 +126,14 @@
       function imageStrip(recipe) {
         const images = recipe.images || [];
         if (!images.length) {
-          return el("div", "img-placeholder", "no example yet");
+          return el("div", "img-placeholder", UI[lang].noExample);
         }
         const strip = el("div", "provider-strip");
         for (const im of images) {
           const fig = el("figure", "provider-shot");
           const img = el("img");
           img.src = im.src;
-          img.alt = `${recipe.name} - ${im.provider}`;
+          img.alt = `${loc(recipe.name)} - ${im.provider}`;
           img.loading = "lazy";
           fig.appendChild(img);
           fig.appendChild(el("figcaption", null, im.provider));
@@ -104,14 +154,14 @@
         topline.appendChild(el("span", null, recipe.id));
         body.appendChild(topline);
 
-        body.appendChild(el("h2", null, recipe.name));
-        body.appendChild(el("p", null, recipe.description));
+        body.appendChild(el("h2", null, loc(recipe.name)));
+        body.appendChild(el("p", null, loc(recipe.description)));
 
         const dl = el("dl");
         const rows = [
-          ["Style", recipe.style_id],
-          ["Pattern", recipe.composition_pattern_id],
-          ["Template", recipe.prompt_template_id],
+          [UI[lang].style, recipe.style_id],
+          [UI[lang].pattern, recipe.composition_pattern_id],
+          [UI[lang].template, recipe.prompt_template_id],
         ];
         for (const [k, v] of rows) {
           const row = el("div");
@@ -133,44 +183,72 @@
         return card;
       }
 
-      function render(data) {
-        document.title = data.title;
+      function applyChrome() {
+        const strings = UI[lang];
+        document.documentElement.lang = strings.htmlLang;
+        document.title = galleryData ? galleryData.title : "General Illustrations Gallery";
+        for (const node of document.querySelectorAll("[data-i18n]")) {
+          const key = node.getAttribute("data-i18n");
+          if (strings[key] != null) node.textContent = strings[key];
+        }
+        document.getElementById("lang-toggle").textContent = strings.toOther;
+      }
+
+      function renderGallery() {
         const root = document.getElementById("gallery-root");
         root.innerHTML = "";
+        if (!galleryData) return;
 
         const nav = document.getElementById("category-nav");
-        for (const cat of data.categories) {
-          const a = el("a", null, cat.name);
+        // remove previously rendered category links (keep toggle + All)
+        nav.querySelectorAll("a.cat-link").forEach((a) => a.remove());
+        for (const cat of galleryData.categories) {
+          const a = el("a", "cat-link", loc(cat.name));
           a.href = `#cat-${cat.id}`;
           nav.appendChild(a);
         }
 
-        for (const cat of data.categories) {
+        for (const cat of galleryData.categories) {
           const section = el("section", "category");
           section.id = `cat-${cat.id}`;
           const head = el("div", "category-head");
-          head.appendChild(el("h2", null, cat.name));
-          head.appendChild(el("p", "category-summary", cat.summary));
+          head.appendChild(el("h2", null, loc(cat.name)));
+          head.appendChild(el("p", "category-summary", loc(cat.summary)));
           head.appendChild(el("code", "category-id", cat.id));
           section.appendChild(head);
 
           const grid = el("section", "recipe-grid");
-          const recipes = data.recipes.filter((r) => r.category === cat.id);
+          const recipes = galleryData.recipes.filter((r) => r.category === cat.id);
           for (const r of recipes) grid.appendChild(recipeCard(r));
           section.appendChild(grid);
           root.appendChild(section);
         }
       }
 
+      function renderAll() {
+        applyChrome();
+        renderGallery();
+      }
+
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        lang = lang === "en" ? "zh" : "en";
+        localStorage.setItem("gi-lang", lang);
+        renderAll();
+      });
+
+      applyChrome();
       fetch("gallery.json")
         .then((r) => {
           if (!r.ok) throw new Error(`gallery.json ${r.status}`);
           return r.json();
         })
-        .then(render)
+        .then((data) => {
+          galleryData = data;
+          renderAll();
+        })
         .catch((err) => {
           document.getElementById("gallery-root").innerHTML =
-            `<p class="loading">Failed to load gallery.json: ${err.message}</p>`;
+            `<p class="loading">${UI[lang].loadFailed}${err.message}</p>`;
         });
     </script>
   </body>
