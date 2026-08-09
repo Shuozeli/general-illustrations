@@ -1,4 +1,26 @@
+<!-- agent-updated: 2026-08-09T00:00:00Z -->
 # Skill Generation Design
+
+## Schema Addendum (2026-08-09)
+
+The data model below has been extended so the recipe is discoverable and
+provider-aware:
+
+- **`CategorySpec`** (`categories[]`): a use-context bucket. Every `StyleSpec`
+  now has a required `category` referencing a `CategorySpec.id`. `styles.md` is
+  rendered grouped by category. Categories: `article-docs`, `video-light`,
+  `video-character-comic`, `video-meme-motion`, `literary-period`.
+- **`RecipeSpec`** (`recipes[]`): a first-class, selectable unit that binds
+  `category` + `style_id` + `default_composition_id` + `prompt_template_id` +
+  `providers`. Validation enforces referential integrity across all four ids.
+- **`RecipeProvidersSpec.gemini` / `ProviderPromptSpec`**: the per-recipe Gemini
+  (Imagen web/CDP) prompt. It must contain `{scene}` and must NOT reintroduce a
+  global `photorealistic, cinematic` wrapper. Rendered to
+  `references/recipes.md`, `references/providers/gemini.md`, and `agents/gemini.yaml`.
+
+Generated skill now has 10 files (added `agents/gemini.yaml`,
+`references/recipes.md`, `references/providers/gemini.md`). A golden test renders
+the committed spec and diffs it against `skill/general-illustrations`.
 
 ## Goal
 

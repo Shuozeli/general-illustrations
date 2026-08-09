@@ -6,7 +6,7 @@
     <title>General Illustrations Gallery</title>
     <meta
       name="description"
-      content="Recipe gallery for provider-neutral illustration styles, composition patterns, prompt templates, and generated examples."
+      content="Recipe gallery for provider-neutral illustration recipes: categories, styles, composition patterns, prompt templates, provider sets, and example output."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -17,284 +17,157 @@
         <h1>Recipe Gallery</h1>
       </div>
       <p class="summary">
-        Browse reusable illustration recipes by use case, visual family, and
-        prompt structure. Each card links a style, composition pattern, prompt
-        template, tags, provider, and example output.
+        Browse reusable illustration recipes by category. Each card binds a
+        style, composition pattern, prompt template, provider set, tags, and an
+        example output. Cards are generated from
+        <code>specs/general-illustrations.json</code> via
+        <code>gallery/build_gallery.py</code>, so the page cannot drift from the
+        canonical recipes.
       </p>
     </header>
 
     <main>
-      <section class="toolbar" aria-label="Gallery filters">
-        <a href="#video">Video</a>
-        <a href="#technical">Technical</a>
-        <a href="#business">Business</a>
-        <a href="#engineering">Engineering</a>
-        <a href="#all">All recipes</a>
+      <section class="toolbar" id="category-nav" aria-label="Category filters">
+        <a href="#all">All</a>
       </section>
 
       <section class="intro-grid">
         <div>
           <h2>What This Shows</h2>
           <p>
-            The gallery is the human-facing layer over the JSON spec. It makes
-            the recipe system inspectable before contributors edit
-            <code>specs/general-illustrations.json</code>.
+            The gallery is the human-facing layer over the JSON spec. Pick a
+            category first, then a recipe. Each recipe carries a recipe-faithful
+            Gemini prompt and a ChatGPT prompt (override or Gemini fallback) --
+            no global photorealistic wrapper.
           </p>
         </div>
         <div>
-          <h2>Contribution Rule</h2>
+          <h2>Provider Set</h2>
           <p>
-            New recipes should include tags, sample briefs, prompts, and local
-            example images. Generated skill Markdown remains an artifact, not
-            the authoring source.
+            <code>gemini</code> and <code>chatgpt</code> chips mean both web
+            image backends (driven over the same CDP browser) can render the
+            recipe. <code>chatgpt-override</code> means the recipe ships a
+            ChatGPT-specific prompt; otherwise ChatGPT reuses the Gemini prompt.
           </p>
         </div>
       </section>
 
-      <section id="all" class="recipe-grid" aria-label="Recipe cards">
-        <article class="recipe-card">
-          <img src="assets/clean-docs-overview/reference.png" alt="Clean docs overview reference" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>clean-docs</span>
-              <span>reference</span>
-            </div>
-            <h2>Clean Docs Overview</h2>
-            <p>Quiet documentation-friendly illustration direction for README, docs, and product explanation pages.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>workflow</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">article / docs / minimal / product</p>
-          </div>
-        </article>
-
-        <article class="recipe-card" id="technical">
-          <img src="assets/technical-lsm-tree/codex.png" alt="Technical minimal LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>technical-minimal</span>
-              <span>sample</span>
-            </div>
-            <h2>Technical LSM Tree</h2>
-            <p>Precise technical explainer diagram for database internals and systems docs.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>system-slice</dd></div>
-              <div><dt>Template</dt><dd>technical-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">technical / systems / minimal / diagram</p>
-          </div>
-        </article>
-
-        <article class="recipe-card" id="video">
-          <img src="assets/cartoon-lsm-tree/codex.png" alt="Simple doodle LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>simple-doodle</span>
-              <span>sample</span>
-            </div>
-            <h2>Simple Doodle LSM Tree</h2>
-            <p>Lightweight cartoon explainer for short-form technical education.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / doodle / cartoon / technical</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/cartoon-explainer-lsm/codex.png" alt="Cartoon explainer LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>cartoon-explainer</span>
-              <span>sample</span>
-            </div>
-            <h2>Cartoon Explainer LSM Tree</h2>
-            <p>Rounded character-friendly explainer direction for light technical stories and reaction-based visuals.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>state-scenes</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / cartoon / character / humor</p>
-          </div>
-        </article>
-
-        <article class="recipe-card" id="engineering">
-          <img src="assets/whiteboard-lsm-tree/codex.png" alt="Whiteboard comic LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>whiteboard-comic</span>
-              <span>sample</span>
-            </div>
-            <h2>Whiteboard Engineering Story</h2>
-            <p>Comic-like whiteboard frame for engineering flows and before/after stories.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>comic-panels</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">engineering / whiteboard / comic / teaching</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/sticker-layer-lsm-tree/codex.png" alt="Sticker layer LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>sticker-layer</span>
-              <span>sample</span>
-            </div>
-            <h2>Sticker Layer Explainer</h2>
-            <p>Layered sticker-like diagram for product, component, and motion-friendly explainers.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>layered-method</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / product / sticker / animation</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/product-explainer-api/reference.png" alt="Product explainer API layer reference" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>product-explainer</span>
-              <span>reference</span>
-            </div>
-            <h2>Product Explainer API Layers</h2>
-            <p>SaaS/docs-style product explanation direction for APIs, features, and capability layers.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>layered-method</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">product / docs / saas / explainer</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/soft-clay-lsm-tree/codex.png" alt="Soft clay LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>soft-clay-cartoon</span>
-              <span>sample</span>
-            </div>
-            <h2>Soft Clay Concept</h2>
-            <p>Rounded clay-like metaphor for approachable concept explanations.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / cartoon / clay / metaphor</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/motion-editorial-lsm-tree/codex.png" alt="Motion editorial LSM Tree illustration" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>editorial-sketch</span>
-              <span>sample</span>
-            </div>
-            <h2>Motion Editorial Explainer</h2>
-            <p>Editorial visual metaphor with motion-ready spacing and short labels.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>concept-metaphor</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">article / editorial / video / metaphor</p>
-          </div>
-        </article>
-
-        <article class="recipe-card" id="business">
-          <img src="assets/yellow-worker-finance-video/reference.png" alt="Yellow worker finance video reference" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>yellow-worker-comic</span>
-              <span>reference</span>
-            </div>
-            <h2>Yellow Worker Finance Video</h2>
-            <p>Original yellow worker comic direction for business, finance, and tech-news video frames.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>action-loop-scenes</dd></div>
-              <div><dt>Template</dt><dd>yellow-worker-video-frame</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / business / finance / tech-news / comic</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/mambo-meme-kafka/codex.png" alt="Mambo meme comic Kafka lag demo" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>mambo-meme-comic</span>
-              <span>sample</span>
-            </div>
-            <h2>Mambo Meme Kafka Lag</h2>
-            <p>Original Chinese short-video meme comic direction for Kafka lag, queues, offsets, and infrastructure pressure.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>action-loop-scenes</dd></div>
-              <div><dt>Template</dt><dd>mambo-meme-video-frame</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / tech / meme / comic / infrastructure</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/coupon-worker-consumer-video/reference.png" alt="Coupon worker consumer video reference" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>coupon-worker-comic</span>
-              <span>reference</span>
-            </div>
-            <h2>Coupon Worker Consumer Video</h2>
-            <p>Action-first comic direction for coupons, app deals, subscription, and consumer behavior explainers.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>action-loop-scenes</dd></div>
-              <div><dt>Template</dt><dd>yellow-worker-video-frame</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">video / business / consumer / coupon / comic</p>
-          </div>
-        </article>
-
-        <article class="recipe-card">
-          <img src="assets/code-review-risk-path/reference.png" alt="Code review risk path reference" />
-          <div class="card-body">
-            <div class="card-topline">
-              <span>review-minimal</span>
-              <span>reference</span>
-            </div>
-            <h2>Code Review Risk Path</h2>
-            <p>Visual recipe direction for code review risk, missing validation, and test gap explanations.</p>
-            <dl>
-              <div><dt>Pattern</dt><dd>before-after</dd></div>
-              <div><dt>Template</dt><dd>single-image</dd></div>
-              <div><dt>Provider</dt><dd>Codex</dd></div>
-            </dl>
-            <p class="tags">code-review / risk / engineering / minimal</p>
-          </div>
-        </article>
-      </section>
+      <div id="gallery-root" aria-live="polite">
+        <p class="loading">Loading recipes...</p>
+      </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>
-        Source of truth:
-        <a href="https://github.com/Shuozeli/general-illustrations/blob/main/specs/general-illustrations.json">
-          specs/general-illustrations.json
-        </a>
+        Generated from <code>specs/general-illustrations.json</code>. Edit the
+        spec, run <code>build_gallery.py</code> and
+        <code>skill render</code>, do not hand-edit this page.
       </p>
     </footer>
+
+    <script>
+      const PROVIDER_LABEL = {
+        gemini: "gemini",
+        chatgpt: "chatgpt",
+        "chatgpt-override": "chatgpt override",
+      };
+
+      function el(tag, cls, text) {
+        const node = document.createElement(tag);
+        if (cls) node.className = cls;
+        if (text != null) node.textContent = text;
+        return node;
+      }
+
+      function recipeCard(recipe) {
+        const card = el("article", "recipe-card");
+        card.id = recipe.id;
+
+        if (recipe.image) {
+          const img = el("img");
+          img.src = recipe.image;
+          img.alt = `${recipe.name} example`;
+          img.loading = "lazy";
+          card.appendChild(img);
+        } else {
+          card.appendChild(el("div", "img-placeholder", "no example yet"));
+        }
+
+        const body = el("div", "card-body");
+
+        const topline = el("div", "card-topline");
+        topline.appendChild(el("span", null, recipe.style_id));
+        topline.appendChild(el("span", null, recipe.id));
+        body.appendChild(topline);
+
+        body.appendChild(el("h2", null, recipe.name));
+        body.appendChild(el("p", null, recipe.description));
+
+        const dl = el("dl");
+        const rows = [
+          ["Style", recipe.style_id],
+          ["Pattern", recipe.composition_pattern_id],
+          ["Template", recipe.prompt_template_id],
+        ];
+        for (const [k, v] of rows) {
+          const row = el("div");
+          row.appendChild(el("dt", null, k));
+          row.appendChild(el("dd", null, v));
+          dl.appendChild(row);
+        }
+        body.appendChild(dl);
+
+        const providers = el("div", "providers");
+        for (const p of recipe.providers || []) {
+          providers.appendChild(el("span", "chip", PROVIDER_LABEL[p] || p));
+        }
+        body.appendChild(providers);
+
+        body.appendChild(el("p", "tags", (recipe.tags || []).join(" / ")));
+
+        card.appendChild(body);
+        return card;
+      }
+
+      function render(data) {
+        document.title = data.title;
+        const root = document.getElementById("gallery-root");
+        root.innerHTML = "";
+
+        const nav = document.getElementById("category-nav");
+        for (const cat of data.categories) {
+          const a = el("a", null, cat.name);
+          a.href = `#cat-${cat.id}`;
+          nav.appendChild(a);
+        }
+
+        for (const cat of data.categories) {
+          const section = el("section", "category");
+          section.id = `cat-${cat.id}`;
+          const head = el("div", "category-head");
+          head.appendChild(el("h2", null, cat.name));
+          head.appendChild(el("p", "category-summary", cat.summary));
+          head.appendChild(el("code", "category-id", cat.id));
+          section.appendChild(head);
+
+          const grid = el("section", "recipe-grid");
+          const recipes = data.recipes.filter((r) => r.category === cat.id);
+          for (const r of recipes) grid.appendChild(recipeCard(r));
+          section.appendChild(grid);
+          root.appendChild(section);
+        }
+      }
+
+      fetch("gallery.json")
+        .then((r) => {
+          if (!r.ok) throw new Error(`gallery.json ${r.status}`);
+          return r.json();
+        })
+        .then(render)
+        .catch((err) => {
+          document.getElementById("gallery-root").innerHTML =
+            `<p class="loading">Failed to load gallery.json: ${err.message}</p>`;
+        });
+    </script>
   </body>
 </html>

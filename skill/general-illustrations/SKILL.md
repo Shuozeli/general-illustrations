@@ -23,6 +23,8 @@ description: "生成通用中文正文配图、技术解释图、短视频知识
 - `references/prompt-template.md`：单张生图提示词模板。
 - `references/qa-checklist.md`：生成后检查和迭代规则。
 - `assets/examples/`：只作低频视觉校准，不进入默认生成路径。不要照抄这些案例的构图、物件或标注。
+- `references/recipes.md`：配方目录：类别 → 风格 + 构图 + 模板 + Gemini 提示词。
+- `references/providers/gemini.md`：Gemini provider 集：每个配方忠于风格的 Gemini 提示词 + CDP 使用契约。
 
 ## 工作流
 

@@ -1,162 +1,306 @@
 {
   "title": "General Illustrations Gallery",
-  "updated": "2026-06-12",
+  "updated": "2026-08-09",
+  "categories": [
+    {
+      "id": "article-docs",
+      "name": "文章 / 技术文档",
+      "summary": "文章、README、技术博客、文档的静态解释配图。"
+    },
+    {
+      "id": "video-light",
+      "name": "轻量短视频",
+      "summary": "简笔、贴纸、软黏土等轻量短视频知识画面。"
+    },
+    {
+      "id": "video-character-comic",
+      "name": "角色动作漫画",
+      "summary": "财经、商业、消费、科技、软件新闻的黄/蓝小人角色动作漫画。"
+    },
+    {
+      "id": "video-meme-motion",
+      "name": "梗感节奏动画",
+      "summary": "系统机制、工程故事的梗感循环节奏画面。"
+    },
+    {
+      "id": "literary-period",
+      "name": "古典文学关键帧",
+      "summary": "红楼梦 / 古典文学复古电视动画关键帧。"
+    }
+  ],
   "recipes": [
     {
-      "id": "clean-docs-overview",
-      "name": "Clean Docs Overview",
-      "description": "Quiet documentation-friendly illustration direction for README, docs, and product explanation pages.",
+      "id": "clean-doc",
+      "category": "article-docs",
+      "name": "clean-doc",
+      "description": "文章、README、产品解释、普通文章配图。",
       "style_id": "clean-docs",
-      "composition_pattern_id": "workflow",
+      "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "reference",
-      "tags": ["article", "docs", "minimal", "product"],
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "article",
+        "docs"
+      ],
       "image": "assets/clean-docs-overview/reference.png"
     },
     {
-      "id": "technical-lsm-tree",
-      "name": "Technical LSM Tree",
-      "description": "Precise technical explainer diagram for database internals and systems docs.",
+      "id": "tech-diagram",
+      "category": "article-docs",
+      "name": "tech-diagram",
+      "description": "系统结构、RPC、数据库、LSM Tree、架构边界、数据流。",
       "style_id": "technical-minimal",
       "composition_pattern_id": "system-slice",
       "prompt_template_id": "technical-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["technical", "systems", "minimal", "diagram"],
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "technical",
+        "systems"
+      ],
       "image": "assets/technical-lsm-tree/codex.png"
     },
     {
-      "id": "cartoon-lsm-tree",
-      "name": "Simple Doodle LSM Tree",
-      "description": "Lightweight cartoon explainer for short-form technical education.",
-      "style_id": "simple-doodle",
-      "composition_pattern_id": "concept-metaphor",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["video", "doodle", "cartoon", "technical"],
-      "image": "assets/cartoon-lsm-tree/codex.png"
+      "id": "code-review",
+      "category": "article-docs",
+      "name": "code-review",
+      "description": "代码 review、bug path、风险传播、测试缺口、before/after。",
+      "style_id": "review-minimal",
+      "composition_pattern_id": "before-after",
+      "prompt_template_id": "technical-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "code-review",
+        "risk"
+      ],
+      "image": "assets/code-review-risk-path/reference.png"
     },
     {
-      "id": "cartoon-explainer-lsm",
-      "name": "Cartoon Explainer LSM Tree",
-      "description": "Rounded character-friendly explainer direction for light technical stories and reaction-based visuals.",
-      "style_id": "cartoon-explainer",
-      "composition_pattern_id": "state-scenes",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["video", "cartoon", "character", "humor"],
-      "image": "assets/cartoon-explainer-lsm/codex.png"
-    },
-    {
-      "id": "whiteboard-lsm-tree",
-      "name": "Whiteboard Engineering Story",
-      "description": "Comic-like whiteboard frame for explaining engineering flows and before/after stories.",
-      "style_id": "whiteboard-comic",
-      "composition_pattern_id": "comic-panels",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["engineering", "whiteboard", "comic", "teaching"],
-      "image": "assets/whiteboard-lsm-tree/codex.png"
-    },
-    {
-      "id": "sticker-layer-lsm-tree",
-      "name": "Sticker Layer Explainer",
-      "description": "Layered sticker-like diagram for product, component, and motion-friendly explainers.",
-      "style_id": "sticker-layer",
-      "composition_pattern_id": "layered-method",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["video", "product", "sticker", "animation"],
-      "image": "assets/sticker-layer-lsm-tree/codex.png"
-    },
-    {
-      "id": "product-explainer-api",
-      "name": "Product Explainer API Layers",
-      "description": "SaaS/docs-style product explanation direction for APIs, features, and capability layers.",
-      "style_id": "product-explainer",
-      "composition_pattern_id": "layered-method",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "reference",
-      "tags": ["product", "docs", "saas", "explainer"],
-      "image": "assets/product-explainer-api/reference.png"
-    },
-    {
-      "id": "soft-clay-lsm-tree",
-      "name": "Soft Clay Concept",
-      "description": "Rounded clay-like metaphor for approachable concept explanations.",
-      "style_id": "soft-clay-cartoon",
-      "composition_pattern_id": "concept-metaphor",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["video", "cartoon", "clay", "metaphor"],
-      "image": "assets/soft-clay-lsm-tree/codex.png"
-    },
-    {
-      "id": "motion-editorial-lsm-tree",
-      "name": "Motion Editorial Explainer",
-      "description": "Editorial visual metaphor with motion-ready spacing and short labels.",
+      "id": "article-sketch",
+      "category": "article-docs",
+      "name": "article-sketch",
+      "description": "文章观点、方法论、抽象隐喻、认知转折。",
       "style_id": "editorial-sketch",
       "composition_pattern_id": "concept-metaphor",
       "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["article", "editorial", "video", "metaphor"],
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "article",
+        "editorial",
+        "sketch"
+      ],
       "image": "assets/motion-editorial-lsm-tree/codex.png"
     },
     {
-      "id": "yellow-worker-finance-video",
-      "name": "Yellow Worker Finance Video",
-      "description": "Original yellow worker comic direction for business, finance, and tech-news video frames.",
-      "style_id": "yellow-worker-comic",
-      "composition_pattern_id": "action-loop-scenes",
-      "prompt_template_id": "yellow-worker-video-frame",
-      "provider": "codex",
-      "status": "reference",
-      "tags": ["video", "business", "finance", "tech-news", "comic"],
-      "image": "assets/yellow-worker-finance-video/reference.png"
+      "id": "product-explainer",
+      "category": "article-docs",
+      "name": "product-explainer",
+      "description": "产品能力、feature 介绍、工具说明、docs intro。",
+      "style_id": "product-explainer",
+      "composition_pattern_id": "layered-method",
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "product",
+        "saas",
+        "explainer"
+      ],
+      "image": "assets/product-explainer-api/reference.png"
     },
     {
-      "id": "mambo-meme-kafka",
-      "name": "Mambo Meme Kafka Lag",
-      "description": "Original Chinese short-video meme comic direction for Kafka lag, queues, offsets, and infrastructure pressure.",
-      "style_id": "mambo-meme-comic",
-      "composition_pattern_id": "action-loop-scenes",
-      "prompt_template_id": "mambo-meme-video-frame",
-      "provider": "codex",
-      "status": "sample",
-      "tags": ["video", "tech", "meme", "comic", "infrastructure"],
-      "image": "assets/mambo-meme-kafka/codex.png"
+      "id": "whiteboard-story",
+      "category": "article-docs",
+      "name": "whiteboard-story",
+      "description": "工程故事、bug 解释、before/after、失败到成功、教学分镜。",
+      "style_id": "whiteboard-comic",
+      "composition_pattern_id": "comic-panels",
+      "prompt_template_id": "technical-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "engineering",
+        "teaching",
+        "comic",
+        "whiteboard"
+      ],
+      "image": "assets/whiteboard-lsm-tree/codex.png"
     },
     {
-      "id": "coupon-worker-consumer-video",
-      "name": "Coupon Worker Consumer Video",
-      "description": "Action-first comic direction for coupons, app deals, subscription, and consumer behavior explainers.",
+      "id": "doodle-light",
+      "category": "video-light",
+      "name": "doodle-light",
+      "description": "短视频知识图、轻量技术解释、简笔画。",
+      "style_id": "simple-doodle",
+      "composition_pattern_id": "concept-metaphor",
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "doodle",
+        "lightweight"
+      ],
+      "image": "assets/cartoon-lsm-tree/codex.png"
+    },
+    {
+      "id": "sticker-layers",
+      "category": "video-light",
+      "name": "sticker-layers",
+      "description": "短视频动画拆层、组件介绍、流程分解。",
+      "style_id": "sticker-layer",
+      "composition_pattern_id": "layered-method",
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "sticker",
+        "layered"
+      ],
+      "image": "assets/sticker-layer-lsm-tree/codex.png"
+    },
+    {
+      "id": "clay-metaphor",
+      "category": "video-light",
+      "name": "clay-metaphor",
+      "description": "概念隐喻、视频插图、轻松技术解释。",
+      "style_id": "soft-clay-cartoon",
+      "composition_pattern_id": "concept-metaphor",
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "clay",
+        "metaphor"
+      ],
+      "image": "assets/soft-clay-lsm-tree/codex.png"
+    },
+    {
+      "id": "software-news",
+      "category": "video-character-comic",
+      "name": "software-news",
+      "description": "软件新闻、AI 工程、平台、开发者工具解释视频。",
+      "style_id": "cartoon-explainer",
+      "composition_pattern_id": "comic-panels",
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "software",
+        "cartoon",
+        "character"
+      ],
+      "image": "assets/cartoon-explainer-lsm/codex.png"
+    },
+    {
+      "id": "consumer-coupon",
+      "category": "video-character-comic",
+      "name": "consumer-coupon",
+      "description": "优惠券、订阅、外卖平台、会员价、动态定价、消费心理短视频。",
       "style_id": "coupon-worker-comic",
       "composition_pattern_id": "action-loop-scenes",
-      "prompt_template_id": "yellow-worker-video-frame",
-      "provider": "codex",
-      "status": "reference",
-      "tags": ["video", "business", "consumer", "coupon", "comic"],
+      "prompt_template_id": "single-image",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "consumer",
+        "comic",
+        "character",
+        "coupon"
+      ],
       "image": "assets/coupon-worker-consumer-video/reference.png"
     },
     {
-      "id": "code-review-risk-path",
-      "name": "Code Review Risk Path",
-      "description": "Visual recipe direction for code review risk, missing validation, and test gap explanations.",
-      "style_id": "review-minimal",
-      "composition_pattern_id": "before-after",
-      "prompt_template_id": "single-image",
-      "provider": "codex",
-      "status": "reference",
-      "tags": ["code-review", "risk", "engineering", "minimal"],
-      "image": "assets/code-review-risk-path/reference.png"
+      "id": "finance-news",
+      "category": "video-character-comic",
+      "name": "finance-news",
+      "description": "财经、公司新闻、财报解释、AI 基建、供应链、监管、估值、商业模式视频。",
+      "style_id": "yellow-worker-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "yellow-worker-video-frame",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "finance",
+        "business",
+        "tech-news",
+        "comic",
+        "character"
+      ],
+      "image": "assets/finance-news/chatgpt.png"
+    },
+    {
+      "id": "infra-meme",
+      "category": "video-meme-motion",
+      "name": "infra-meme",
+      "description": "Kafka 堆积、下单链路卡死、consumer 追 offset、Redis 热点、慢查询等系统机制。",
+      "style_id": "mambo-meme-comic",
+      "composition_pattern_id": "action-loop-scenes",
+      "prompt_template_id": "mambo-meme-video-frame",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "tech",
+        "meme",
+        "comic",
+        "infrastructure"
+      ],
+      "image": "assets/mambo-meme-kafka/codex.png"
+    },
+    {
+      "id": "honglou-keyframe",
+      "category": "literary-period",
+      "name": "honglou-keyframe",
+      "description": "红楼梦 / 古典文学短视频关键帧、连续分镜、演员表演感镜头。",
+      "style_id": "honglou-retro-flat-anime",
+      "composition_pattern_id": "state-scenes",
+      "prompt_template_id": "honglou-anime-video-frame",
+      "providers": [
+        "gemini",
+        "chatgpt"
+      ],
+      "tags": [
+        "video",
+        "anime",
+        "literary",
+        "honglou"
+      ],
+      "image": null
     }
   ]
 }
